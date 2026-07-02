@@ -15,8 +15,15 @@
 | `redis-docs`         | Docs-grounded answers for [Redis](https://redis.io/docs/latest/)                                        |
 | `kafka-docs`         | Docs-grounded answers for [Apache Kafka 4.3](https://kafka.apache.org/43/getting-started/introduction/) |
 | `aws-cli-docs`       | Docs-grounded answers for the [AWS CLI](https://docs.aws.amazon.com/cli/)                               |
-| `docker-docs`        | Docs-grounded answers for [Docker](https://docs.docker.com/reference/)                                |
-| `kubernetes-docs`    | Docs-grounded answers for [Kubernetes](https://kubernetes.io/docs/home/)                              |
+| `docker-docs`        | Docs-grounded answers for [Docker](https://docs.docker.com/reference/)                                  |
+| `kubernetes-docs`    | Docs-grounded answers for [Kubernetes](https://kubernetes.io/docs/home/)                                |
+| `terraform-docs`     | Docs-grounded answers for [Terraform](https://developer.hashicorp.com/terraform/docs)                   |
+| `helm-docs`          | Docs-grounded answers for [Helm](https://helm.sh/docs/)                                                 |
+| `rabbitmq-docs`      | Docs-grounded answers for [RabbitMQ](https://www.rabbitmq.com/docs)                                     |
+| `opentelemetry-docs` | Docs-grounded answers for [OpenTelemetry](https://opentelemetry.io/docs/)                               |
+| `bullmq-docs`        | Docs-grounded answers for [BullMQ](https://docs.bullmq.io/)                                             |
+| `grafana-docs`       | Docs-grounded answers for [Grafana Labs](https://grafana.com/docs/)                                     |
+| `mongodb-docs`       | Docs-grounded answers for [MongoDB](https://www.mongodb.com/docs/)                                      |
 
 ## Install with Skills CLI
 
