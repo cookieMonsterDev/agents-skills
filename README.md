@@ -24,6 +24,7 @@
 | `bullmq-docs`        | Docs-grounded answers for [BullMQ](https://docs.bullmq.io/)                                             |
 | `grafana-docs`       | Docs-grounded answers for [Grafana Labs](https://grafana.com/docs/)                                     |
 | `mongodb-docs`       | Docs-grounded answers for [MongoDB](https://www.mongodb.com/docs/)                                      |
+| `nginx-docs`         | Docs-grounded answers for [NGINX](https://nginx.org/en/docs/)                                           |
 
 ## Install with Skills CLI
 
