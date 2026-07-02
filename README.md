@@ -15,6 +15,8 @@
 | `redis-docs`         | Docs-grounded answers for [Redis](https://redis.io/docs/latest/)                                        |
 | `kafka-docs`         | Docs-grounded answers for [Apache Kafka 4.3](https://kafka.apache.org/43/getting-started/introduction/) |
 | `aws-cli-docs`       | Docs-grounded answers for the [AWS CLI](https://docs.aws.amazon.com/cli/)                               |
+| `docker-docs`        | Docs-grounded answers for [Docker](https://docs.docker.com/reference/)                                |
+| `kubernetes-docs`    | Docs-grounded answers for [Kubernetes](https://kubernetes.io/docs/home/)                              |
 
 ## Install with Skills CLI
 
