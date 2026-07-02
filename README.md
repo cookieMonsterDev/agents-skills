@@ -15,6 +15,11 @@
 | `redis-docs`         | Docs-grounded answers for [Redis](https://redis.io/docs/latest/)                                        |
 | `kafka-docs`         | Docs-grounded answers for [Apache Kafka 4.3](https://kafka.apache.org/43/getting-started/introduction/) |
 | `aws-cli-docs`       | Docs-grounded answers for the [AWS CLI](https://docs.aws.amazon.com/cli/)                               |
+| `aws-s3-docs`        | Docs-grounded answers for [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/)           |
+| `aws-eks-docs`       | Docs-grounded answers for [Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/)               |
+| `aws-ecs-docs`       | Docs-grounded answers for [Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/)    |
+| `aws-lambda-docs`    | Docs-grounded answers for [AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/)                   |
+| `aws-iam-docs`       | Docs-grounded answers for [AWS IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/)                  |
 | `docker-docs`        | Docs-grounded answers for [Docker](https://docs.docker.com/reference/)                                  |
 | `kubernetes-docs`    | Docs-grounded answers for [Kubernetes](https://kubernetes.io/docs/home/)                                |
 | `terraform-docs`     | Docs-grounded answers for [Terraform](https://developer.hashicorp.com/terraform/docs)                   |
