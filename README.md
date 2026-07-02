@@ -4,14 +4,17 @@
 
 ## Available skills
 
-| Skill                | Description                                                                              |
-| -------------------- | ---------------------------------------------------------------------------------------- |
-| `postgresql-16-docs` | Docs-grounded answers for [PostgreSQL 16](https://www.postgresql.org/docs/16/index.html) |
-| `postgresql-17-docs` | Docs-grounded answers for [PostgreSQL 17](https://www.postgresql.org/docs/17/index.html) |
-| `postgresql-18-docs` | Docs-grounded answers for [PostgreSQL 18](https://www.postgresql.org/docs/18/index.html) |
-| `nestjs-docs`        | Docs-grounded answers for [NestJS](https://docs.nestjs.com/)                           |
-| `fastify-docs`       | Docs-grounded answers for [Fastify](https://fastify.dev/docs/latest/)                   |
-| `expressjs-docs`     | Docs-grounded answers for [Express.js](https://expressjs.com/en/)                      |
+| Skill                | Description                                                                                             |
+| -------------------- | ------------------------------------------------------------------------------------------------------- |
+| `postgresql-16-docs` | Docs-grounded answers for [PostgreSQL 16](https://www.postgresql.org/docs/16/index.html)                |
+| `postgresql-17-docs` | Docs-grounded answers for [PostgreSQL 17](https://www.postgresql.org/docs/17/index.html)                |
+| `postgresql-18-docs` | Docs-grounded answers for [PostgreSQL 18](https://www.postgresql.org/docs/18/index.html)                |
+| `nestjs-docs`        | Docs-grounded answers for [NestJS](https://docs.nestjs.com/)                                            |
+| `fastify-docs`       | Docs-grounded answers for [Fastify](https://fastify.dev/docs/latest/)                                   |
+| `expressjs-docs`     | Docs-grounded answers for [Express.js](https://expressjs.com/en/)                                       |
+| `redis-docs`         | Docs-grounded answers for [Redis](https://redis.io/docs/latest/)                                        |
+| `kafka-docs`         | Docs-grounded answers for [Apache Kafka 4.3](https://kafka.apache.org/43/getting-started/introduction/) |
+| `aws-cli-docs`       | Docs-grounded answers for the [AWS CLI](https://docs.aws.amazon.com/cli/)                               |
 
 ## Install with Skills CLI
 
