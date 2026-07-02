@@ -12,6 +12,10 @@
 | `nestjs-docs`        | Docs-grounded answers for [NestJS](https://docs.nestjs.com/)                                                   |
 | `fastify-docs`       | Docs-grounded answers for [Fastify](https://fastify.dev/docs/latest/)                                          |
 | `expressjs-docs`     | Docs-grounded answers for [Express.js](https://expressjs.com/en/)                                              |
+| `fastapi-docs`       | Docs-grounded answers for [FastAPI](https://fastapi.tiangolo.com/)                                             |
+| `django-docs`        | Docs-grounded answers for [Django 6.0](https://docs.djangoproject.com/en/6.0/)                                 |
+| `flask-docs`         | Docs-grounded answers for [Flask](https://flask.palletsprojects.com/en/stable/)                                |
+| `phoenix-docs`       | Docs-grounded answers for [Phoenix](https://phoenix.hexdocs.pm/overview.html)                                  |
 | `redis-docs`         | Docs-grounded answers for [Redis](https://redis.io/docs/latest/)                                               |
 | `kafka-docs`         | Docs-grounded answers for [Apache Kafka 4.3](https://kafka.apache.org/43/getting-started/introduction/)        |
 | `aws-cli-docs`       | Docs-grounded answers for the [AWS CLI](https://docs.aws.amazon.com/cli/)                                      |
