@@ -1,4 +1,4 @@
-# agents-skills
+# Agents Skills
 
 [Agent Skills](https://skills.sh/) for coding agents. Each skill is a folder with a `SKILL.md` file that teaches the agent how to answer questions using official documentation.
 
