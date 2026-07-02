@@ -29,6 +29,9 @@
 | `bullmq-docs`        | Docs-grounded answers for [BullMQ](https://docs.bullmq.io/)                                             |
 | `grafana-docs`       | Docs-grounded answers for [Grafana Labs](https://grafana.com/docs/)                                     |
 | `mongodb-docs`       | Docs-grounded answers for [MongoDB](https://www.mongodb.com/docs/)                                      |
+| `mysql-docs`         | Docs-grounded answers for [MySQL](https://dev.mysql.com/doc/)                                           |
+| `elasticsearch-docs` | Docs-grounded answers for [Elasticsearch](https://www.elastic.co/docs)                                  |
+| `opensearch-docs`    | Docs-grounded answers for [OpenSearch](https://docs.opensearch.org/latest/)                           |
 | `nginx-docs`         | Docs-grounded answers for [NGINX](https://nginx.org/en/docs/)                                           |
 
 ## Install with Skills CLI
