@@ -1,6 +1,6 @@
 # agents-skills
 
-Personal [Agent Skills](https://skills.sh/) for Cursor and other coding agents. Each skill is a folder with a `SKILL.md` file that teaches the agent how to answer questions using official documentation.
+[Agent Skills](https://skills.sh/) for coding agents. Each skill is a folder with a `SKILL.md` file that teaches the agent how to answer questions using official documentation.
 
 ## Available skills
 
@@ -9,6 +9,9 @@ Personal [Agent Skills](https://skills.sh/) for Cursor and other coding agents. 
 | `postgresql-16-docs` | Docs-grounded answers for [PostgreSQL 16](https://www.postgresql.org/docs/16/index.html) |
 | `postgresql-17-docs` | Docs-grounded answers for [PostgreSQL 17](https://www.postgresql.org/docs/17/index.html) |
 | `postgresql-18-docs` | Docs-grounded answers for [PostgreSQL 18](https://www.postgresql.org/docs/18/index.html) |
+| `nestjs-docs`        | Docs-grounded answers for [NestJS](https://docs.nestjs.com/)                           |
+| `fastify-docs`       | Docs-grounded answers for [Fastify](https://fastify.dev/docs/latest/)                   |
+| `expressjs-docs`     | Docs-grounded answers for [Express.js](https://expressjs.com/en/)                      |
 
 ## Install with Skills CLI
 
@@ -71,10 +74,10 @@ postgresql-18-docs/
 
 ## How it works
 
-When a skill is installed, the agent can load it for matching questions. These PostgreSQL skills:
+When a skill is installed, the agent can load it for matching questions. Each docs skill:
 
-1. Route the question to the right docs section
-2. Search the official PostgreSQL docs for that major version
-3. Answer with direct links to `postgresql.org/docs/<version>/...`
+1. Routes the question to the right docs section
+2. Searches the official documentation for that framework or product
+3. Answers with direct links to the authoritative docs pages
 
-Pick the skill that matches your PostgreSQL version. If you are unsure, check `SELECT version();` or your deployment docs.
+Pick the skill that matches your stack. For PostgreSQL, use the skill that matches your major version — check `SELECT version();` or your deployment docs if unsure.
