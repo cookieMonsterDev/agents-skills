@@ -86,7 +86,9 @@ Each pattern has a folder `examples/<pattern>/` with self-contained, runnable ex
 | PHP        | `<pattern>.php`   |                                                                             |
 | Swift      | `<pattern>.swift` |                                                                             |
 
-A language file may be absent when the pattern does not translate meaningfully to that language; the pattern's reference file notes such gaps and idiomatic alternatives (e.g. iterators, decorators, and singletons that are built into a language).
+Design patterns are expressed idiomatically per language — not as literal Java-style class hierarchies. C emulates with structs and function pointers; Go and Rust use interfaces, traits, and composition instead of inheritance. That is why those languages appear here but are omitted from the `object-oriented-programming-paradigm` skill, which requires first-class classes.
+
+A language file may be absent when a pattern does not translate meaningfully to that language or is already built in (iterators in Python, module-scope singletons in JavaScript, `sync.Once` idioms in Go). The pattern's reference file notes such gaps and the idiomatic alternative.
 
 ## Answering Guidelines
 

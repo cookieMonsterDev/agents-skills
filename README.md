@@ -49,9 +49,12 @@ Architecture skills live under [`architecture-skills/`](architecture-skills/). E
 
 ## Architecture Skills
 
-| Skill             | Description                                                                                                                                              |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `design-patterns` | Explains and applies the 23 Gang of Four (GoF) design patterns with idiomatic examples in Python, C, C++, Java, C#, JavaScript, Rust, Go, PHP, and Swift |
+Each skill ships reference explanations per catalog item and runnable examples in the languages listed. Not every architecture skill uses the same language set — include only languages that genuinely support the skill's concepts (see [Choosing languages](templates/architecture-template/SKILL.md#choosing-languages) in the architecture template).
+
+| Skill                                  | Description                                                                                             | Languages                                                  |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| `design-patterns`                      | Explains and applies the 23 Gang of Four (GoF) design patterns                                          | Python, C, C++, Java, C#, JavaScript, Rust, Go, PHP, Swift |
+| `object-oriented-programming-paradigm` | Explains and applies OOP — classes, the four pillars, object relationships, SOLID, and design qualities | Python, C++, Java, C#, JavaScript, PHP, Swift |
 
 ## Install with Skills CLI
 
@@ -114,7 +117,7 @@ docs-skills/postgresql-18-docs/
 
 ## Authoring new skills
 
-Skill templates live under [`template/`](template/):
+Skill templates live under [`templates/`](templates/):
 
 | Template                | Use for                                                                                                                                        |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -124,7 +127,7 @@ Skill templates live under [`template/`](template/):
 To create a new docs skill:
 
 ```bash
-cp -R template/docs-template docs-skills/my-product-docs
+cp -R templates/docs-template docs-skills/my-product-docs
 ```
 
 Then replace the `{placeholder}` values in `SKILL.md` and `references/topic-map.md`, and add the skill to the table above.
@@ -132,10 +135,12 @@ Then replace the `{placeholder}` values in `SKILL.md` and `references/topic-map.
 To create a new architecture skill:
 
 ```bash
-cp -R template/architecture-template architecture-skills/my-catalog-skill
+cp -R templates/architecture-template architecture-skills/my-catalog-skill
 ```
 
 Then replace the `{placeholder}` values in `SKILL.md`, duplicate `references/example-item.md` (and its matching `examples/example-item/` folder, if used) per catalog item, and add the skill to the table under "Architecture Skills" above.
+
+**Language examples:** add a file only for languages that support the skill's concepts. OOP skills need first-class classes (Python, C++, Java, C#, JavaScript, PHP, Swift — not C, Go, or Rust). Design-pattern skills may also include C, Go, and Rust where patterns are idiomatically emulated. Omit a language per catalog item when the concept is built into the language or has no honest mapping. See the [Choosing languages](templates/architecture-template/SKILL.md#choosing-languages) section in the architecture template.
 
 ## How it works
 

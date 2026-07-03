@@ -51,13 +51,25 @@ Group {items} into the categories that make sense for this domain (creational/st
 
 ## Examples
 
-Each {item} has a folder `examples/<item>/` with self-contained, runnable examples named `<item>.<ext>`:
+Each {item} has a folder `examples/<item>/` with self-contained, runnable examples named `<item>.<ext>`.
+
+### Choosing languages
+
+**Only add an example file when the language genuinely supports the skill's concepts** — do not ship a file in every language for completeness.
+
+| Skill type | Include | Omit | Rule |
+| ---------- | ------- | ---- | ---- |
+| OOP paradigm (classes, inheritance, pillars, SOLID) | Python, C++, Java, C#, JavaScript, PHP, Swift | C, Go, Rust | Requires first-class classes. Note idiomatic mappings in reference Language Notes only. |
+| Design patterns (GoF, composable techniques) | Python, C, C++, Java, C#, JavaScript, Rust, Go, PHP, Swift | — | Patterns are idiomatically adapted (C emulates with structs/function pointers; Go/Rust use interfaces/traits). |
+| Other catalog skills | Pick per item | — | Omit a language when the item is built into the language or has no honest mapping. |
+
+List only the languages your skill actually ships in the table below and in the skill `description` frontmatter.
 
 | Language   | File            | Notes                                            |
 | ---------- | --------------- | ------------------------------------------------- |
 | {Language} | `<item>.{ext}`  | {Any gap or idiomatic substitution for this language} |
 
-A language file may be absent when {an item} does not translate meaningfully to that language; the {item}'s reference file notes such gaps and idiomatic alternatives.
+A language file may be absent per {item} when it does not translate meaningfully; the {item}'s reference file notes such gaps and idiomatic alternatives in **Language Notes**.
 
 ## Answering Guidelines
 

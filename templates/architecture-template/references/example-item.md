@@ -45,14 +45,19 @@
 
 - **{Language/Context A}:** {the idiomatic form this item takes here, and any built-in language feature that replaces it outright.}
 - **{Language/Context B}:** {ditto — call out where the textbook shape doesn't fit and what's used instead.}
+- **Languages without examples:** when a language lacks the paradigm your skill teaches (e.g. no classes in Go for an OOP skill), document the mapping here instead of adding an example file.
 
 <!--
   Delete the "Examples" section if this skill has no bundled code examples.
+  Link only languages that actually have a file in examples/<item>/.
+  Do not list every language your skill might ever support — list only what exists.
 -->
 
 ## Examples
 
 - [examples/example-item/example-item.py](../examples/example-item/example-item.py)
+- [examples/example-item/example-item.cpp](../examples/example-item/example-item.cpp)
+<!-- Add one line per language file that exists. Omit languages with no file. -->
 
 ## Related {Items}
 
