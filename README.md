@@ -12,6 +12,7 @@
 | `nestjs-docs`        | Docs-grounded answers for [NestJS](https://docs.nestjs.com/)                                                   |
 | `fastify-docs`       | Docs-grounded answers for [Fastify](https://fastify.dev/docs/latest/)                                          |
 | `expressjs-docs`     | Docs-grounded answers for [Express.js](https://expressjs.com/en/)                                              |
+| `graphql-docs`       | Docs-grounded answers for [GraphQL](https://graphql.org/learn/)                                                |
 | `fastapi-docs`       | Docs-grounded answers for [FastAPI](https://fastapi.tiangolo.com/)                                             |
 | `django-docs`        | Docs-grounded answers for [Django 6.0](https://docs.djangoproject.com/en/6.0/)                                 |
 | `flask-docs`         | Docs-grounded answers for [Flask](https://flask.palletsprojects.com/en/stable/)                                |
