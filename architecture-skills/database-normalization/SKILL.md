@@ -58,15 +58,15 @@ The deliberate, informed reversal of normalization for a specific performance or
 
 Each form has a folder `examples/<form>/` with a worked example per database, named `<database>.<ext>`:
 
-| Database   | File            | Notes                                                                                                                                               |
-| ---------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| PostgreSQL | `postgres.sql`  | Runnable DDL/DML; uses `psql`-compatible SQL (identity columns, `CHECK`, `jsonb` where relevant)                                                    |
-| MySQL      | `mysql.sql`     | Runnable DDL/DML; calls out `AUTO_INCREMENT`, engine (InnoDB), and syntax that diverges from PostgreSQL                                             |
-| SQLite     | `sqlite.sql`    | Runnable DDL/DML; uses `INTEGER PRIMARY KEY AUTOINCREMENT`, `PRAGMA foreign_keys`, and a summary table instead of materialized views where relevant |
-| MongoDB    | `mongodb.js`    | `mongosh` script; shows the document shape and when embedding vs. referencing plays the role a normal form plays in SQL                             |
-| Cassandra  | `cassandra.cql` | CQL script; shows the query-driven, denormalized-by-default table design and where atomicity/dependency concerns still apply                        |
+| Database   | File            | Notes                                                                                                                                                   |
+| ---------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| PostgreSQL | `postgres.sql`  | Runnable DDL/DML; uses `psql`-compatible SQL (identity columns, `CHECK`, `jsonb` where relevant)                                                        |
+| MySQL      | `mysql.sql`     | Runnable DDL/DML; calls out `AUTO_INCREMENT`, engine (InnoDB), and syntax that diverges from PostgreSQL                                                 |
+| SQLite     | `sqlite.sql`    | Runnable DDL/DML; uses `INTEGER PRIMARY KEY AUTOINCREMENT`, `PRAGMA foreign_keys`, and a summary table instead of materialized views where relevant     |
+| MongoDB    | `mongodb.js`    | `mongosh` script; shows the document shape and when embedding vs. referencing plays the role a normal form plays in SQL                                 |
+| Cassandra  | `cassandra.cql` | CQL script; shows the query-driven, denormalized-by-default table design and where atomicity/dependency concerns still apply                            |
 | ScyllaDB   | `scylladb.cql`  | CQL script (compatible with Cassandra); same query-driven modeling posture as Cassandra with ScyllaDB-specific operational notes in the reference files |
-| DynamoDB   | `dynamodb.md`   | Walkthrough with item JSON and access patterns (no native query language); shows single-table design as the intentional counterpoint to normalizing |
+| DynamoDB   | `dynamodb.md`   | Walkthrough with item JSON and access patterns (no native query language); shows single-table design as the intentional counterpoint to normalizing     |
 
 Normalization is a relational concept built on functional/multivalued/join dependencies. The PostgreSQL, MySQL, and SQLite examples are direct applications of a form. The MongoDB, Cassandra, ScyllaDB, and DynamoDB examples show the _analogous_ problem (an anomaly-causing shape) and that database's idiomatic answer, which is frequently "duplicate the data on purpose" rather than "add another table." The reference files explain why that's a rational trade-off there, not a violation of best practice.
 

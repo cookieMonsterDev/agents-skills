@@ -4,7 +4,7 @@
 
 ## Intent
 
-Require every non-key attribute to depend on the *whole* primary key, not just part of it. 2NF only has teeth when the primary key is composite (two or more columns) — a table with a single-column key is automatically in 2NF once it's in 1NF.
+Require every non-key attribute to depend on the _whole_ primary key, not just part of it. 2NF only has teeth when the primary key is composite (two or more columns) — a table with a single-column key is automatically in 2NF once it's in 1NF.
 
 ## Problem
 
@@ -26,7 +26,7 @@ Require every non-key attribute to depend on the *whole* primary key, not just p
 ## When Not to Use
 
 - Tables with a single-column (non-composite) primary key are already in 2NF by definition once in 1NF — there's no partial dependency to have.
-- If an attribute is deliberately a point-in-time snapshot (e.g., `unit_price_at_purchase` capturing the price *as charged*, independent of the current product price), it is not a 2NF violation — it's a distinct fact that happens to share a name with a fact in another table. Don't "fix" a historical snapshot into a live foreign-key lookup; that changes its meaning.
+- If an attribute is deliberately a point-in-time snapshot (e.g., `unit_price_at_purchase` capturing the price _as charged_, independent of the current product price), it is not a 2NF violation — it's a distinct fact that happens to share a name with a fact in another table. Don't "fix" a historical snapshot into a live foreign-key lookup; that changes its meaning.
 
 ## Trade-offs
 
@@ -53,4 +53,4 @@ Require every non-key attribute to depend on the *whole* primary key, not just p
 ## Related Forms
 
 - **First Normal Form ([[first-normal-form]])** is a prerequisite — 2NF assumes atomic values and a real key already exist.
-- **Third Normal Form ([[third-normal-form]])** closes the parallel gap for tables with a single-column key: a non-key attribute depending on *another non-key attribute* rather than on part of a composite key.
+- **Third Normal Form ([[third-normal-form]])** closes the parallel gap for tables with a single-column key: a non-key attribute depending on _another non-key attribute_ rather than on part of a composite key.

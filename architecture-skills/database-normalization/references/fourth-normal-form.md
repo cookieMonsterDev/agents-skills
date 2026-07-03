@@ -4,7 +4,7 @@
 
 ## Intent
 
-Require that a table have no non-trivial **multivalued dependency** unless that dependency is on a candidate key. A multivalued dependency exists when one attribute determines a *set* of values for another attribute, independently of a third attribute — forcing two independent one-to-many facts into a single table produces a spurious many-to-many cross-product.
+Require that a table have no non-trivial **multivalued dependency** unless that dependency is on a candidate key. A multivalued dependency exists when one attribute determines a _set_ of values for another attribute, independently of a third attribute — forcing two independent one-to-many facts into a single table produces a spurious many-to-many cross-product.
 
 ## Problem
 
@@ -12,7 +12,7 @@ Require that a table have no non-trivial **multivalued dependency** unless that 
 - To represent this in one table without losing information, every skill must be paired with every language: (E1, SQL, English), (E1, SQL, Spanish), (E1, Python, English), (E1, Python, Spanish) — four rows to represent 2 + 2 = 4 independent facts, not because SQL relates to English but because the table's shape forces a cross-product.
 - **Insertion anomaly:** adding a third skill means adding a row for every existing language, or the table becomes inconsistent about which skill/language pairs are "real."
 - **Deletion anomaly:** removing the last row that happens to pair a given skill with a given language can accidentally delete the only record that the employee has that skill at all, even though the skill and the language deletion were unrelated.
-- This can be in BCNF already — every functional dependency's determinant can be a superkey (there may be no non-trivial *functional* dependency at all) — and still have this anomaly, because the problem is a multivalued dependency, which functional-dependency-based forms (1NF–BCNF) don't address.
+- This can be in BCNF already — every functional dependency's determinant can be a superkey (there may be no non-trivial _functional_ dependency at all) — and still have this anomaly, because the problem is a multivalued dependency, which functional-dependency-based forms (1NF–BCNF) don't address.
 
 ## Structure
 
@@ -26,7 +26,7 @@ Require that a table have no non-trivial **multivalued dependency** unless that 
 
 ## When Not to Use
 
-- If the two multivalued facts are *not* independent (e.g., "which language each skill is taught in" is a genuine pairing, not a cross-product), there's no multivalued dependency to eliminate — that's a legitimate three-way relationship, and forcing it apart loses information (this is closer to the [[fifth-normal-form]] territory of join dependencies).
+- If the two multivalued facts are _not_ independent (e.g., "which language each skill is taught in" is a genuine pairing, not a cross-product), there's no multivalued dependency to eliminate — that's a legitimate three-way relationship, and forcing it apart loses information (this is closer to the [[fifth-normal-form]] territory of join dependencies).
 - Two multivalued facts with genuinely small, fixed cardinality and no independent growth (rare) may not be worth splitting if the redundancy is trivial and the combined table is never a bottleneck — judge against the actual anomaly, not the rule.
 
 ## Trade-offs
@@ -54,4 +54,4 @@ Require that a table have no non-trivial **multivalued dependency** unless that 
 ## Related Forms
 
 - **Boyce-Codd Normal Form ([[boyce-codd-normal-form]])** can hold on a table that still violates 4NF — 4NF targets multivalued dependencies, a distinct class from the functional dependencies BCNF governs.
-- **Fifth Normal Form ([[fifth-normal-form]])** targets the case 4NF's "independent facts" assumption doesn't cover: three or more facts that *are* genuinely interrelated and can't be losslessly split into independent pairs at all.
+- **Fifth Normal Form ([[fifth-normal-form]])** targets the case 4NF's "independent facts" assumption doesn't cover: three or more facts that _are_ genuinely interrelated and can't be losslessly split into independent pairs at all.

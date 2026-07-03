@@ -8,9 +8,9 @@ Require that a table have no join dependency that isn't implied by its candidate
 
 ## Problem
 
-- The classic example (C. J. Date): `agent_company_product(agent, company, product)` records that agent A sells product P made by company C — but only under a three-way business rule: *if* agent A represents company C, *and* company C makes product P, *and* agent A sells product P, *then* the combination (A, C, P) is valid.
+- The classic example (C. J. Date): `agent_company_product(agent, company, product)` records that agent A sells product P made by company C — but only under a three-way business rule: _if_ agent A represents company C, _and_ company C makes product P, _and_ agent A sells product P, _then_ the combination (A, C, P) is valid.
 - This looks like it might split into two tables the way [[fourth-normal-form]] would suggest — but a two-way split loses information here. Splitting into `agent_company(agent, company)` and `agent_product(agent, product)` and rejoining them produces combinations that were never actually true: if agent A represents companies C1 and C2, and sells products P1 (from C1) and P2 (from C2), rejoining the two binary tables would also assert that A sells P1-from-C2, which was never a fact.
-- This is a genuine **three-way join dependency**: the table can only be losslessly decomposed into *three* pairwise tables (`agent_company`, `company_product`, `agent_product`) together — no two of the three suffice, and all three must be rejoined to reconstruct exactly the original valid combinations, no more and no less.
+- This is a genuine **three-way join dependency**: the table can only be losslessly decomposed into _three_ pairwise tables (`agent_company`, `company_product`, `agent_product`) together — no two of the three suffice, and all three must be rejoined to reconstruct exactly the original valid combinations, no more and no less.
 - The anomaly this prevents: without the three-way split, adding a new company-product relationship (company C now makes product P) that hasn't yet been sold by any agent has nowhere to go in the single flat table, and removing the one row recording an agent-company-product fact can silently destroy the independently true company-product or agent-company facts it happened to be the last row expressing.
 
 ## Structure
@@ -21,7 +21,7 @@ Require that a table have no join dependency that isn't implied by its candidate
 ## When to Use
 
 - Extremely rare in practice: a genuine ternary (or higher) relationship where the binary projections are each independently meaningful and the combined constraint can't be expressed as a simpler functional or multivalued dependency.
-- A strong signal: the entity has three or more roles in a relationship, each pairwise combination of which is separately meaningful and separately maintained (agents represent companies regardless of products; companies make products regardless of agents; agents sell products regardless of which company made them), yet the *three-way* combination carries a business rule beyond either pairing alone.
+- A strong signal: the entity has three or more roles in a relationship, each pairwise combination of which is separately meaningful and separately maintained (agents represent companies regardless of products; companies make products regardless of agents; agents sell products regardless of which company made them), yet the _three-way_ combination carries a business rule beyond either pairing alone.
 
 ## When Not to Use
 

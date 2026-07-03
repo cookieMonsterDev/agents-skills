@@ -28,7 +28,7 @@ Require every column to hold a single, atomic value from its domain, and require
 ## When Not to Use
 
 - Never skip 1NF in an OLTP relational schema; every anomaly the higher forms fix presupposes atomic values and a real key.
-- A single JSON/array column can be the *right* denormalized choice for a value that is always read and written as a whole and never queried by its individual elements — that is a deliberate exception made by name (see [[denormalization]]), not an accidental 1NF violation.
+- A single JSON/array column can be the _right_ denormalized choice for a value that is always read and written as a whole and never queried by its individual elements — that is a deliberate exception made by name (see [[denormalization]]), not an accidental 1NF violation.
 
 ## Trade-offs
 
@@ -37,13 +37,13 @@ Require every column to hold a single, atomic value from its domain, and require
 
 ## Database Notes
 
-- **PostgreSQL:** supports native array and `jsonb` columns, which can hold non-atomic values without an error — a schema can *look* 1NF-violating and still be queryable via `ANY()`, `unnest()`, or `jsonb` operators. This is a legitimate design choice for genuinely bag-of-values data (tags, feature flags), but it forfeits foreign keys, per-element constraints, and join-based aggregation on that data; default to a child table when the values relate to other tables or need per-value constraints.
+- **PostgreSQL:** supports native array and `jsonb` columns, which can hold non-atomic values without an error — a schema can _look_ 1NF-violating and still be queryable via `ANY()`, `unnest()`, or `jsonb` operators. This is a legitimate design choice for genuinely bag-of-values data (tags, feature flags), but it forfeits foreign keys, per-element constraints, and join-based aggregation on that data; default to a child table when the values relate to other tables or need per-value constraints.
 - **MySQL:** has JSON columns but no native array type; a comma-separated `VARCHAR` or a JSON array are the two ways to accidentally violate 1NF, and MySQL will not stop either. `JSON_TABLE()` can query into a JSON array, but a child table with a foreign key is still the normalized answer when the values need indexing or referential integrity.
 - **SQLite:** enforces neither atomicity nor foreign keys by default (`PRAGMA foreign_keys = ON` is required per connection). A comma-separated `TEXT` column is the most common accidental 1NF violation in embedded/mobile apps; the fix is the same child-table split as PostgreSQL/MySQL, using `INTEGER PRIMARY KEY AUTOINCREMENT` for surrogate keys.
-- **MongoDB:** documents are schema-flexible by design, and arrays of embedded values are idiomatic (`{ "phones": ["555-1234", "555-5678"] }`) rather than a violation — MongoDB has no notion of 1NF. The atomicity concern still exists one level down: keep each array *element* a well-structured, independently meaningful value (an object with typed fields) rather than another delimited string, so `$unwind`, array filters, and indexes on array fields keep working.
+- **MongoDB:** documents are schema-flexible by design, and arrays of embedded values are idiomatic (`{ "phones": ["555-1234", "555-5678"] }`) rather than a violation — MongoDB has no notion of 1NF. The atomicity concern still exists one level down: keep each array _element_ a well-structured, independently meaningful value (an object with typed fields) rather than another delimited string, so `$unwind`, array filters, and indexes on array fields keep working.
 - **Cassandra:** collection types (`list`, `set`, `map`) let a column hold multiple values natively; this is the idiomatic way to store an unbounded-but-small list, not a 1NF violation, because Cassandra has no normal forms — the schema is defined by queries, not by dependency theory. Large or fast-growing collections still cause performance issues (they're read/written whole in older versions, and the values live in one partition), so a child table (a second CQL table keyed for the "list items" query) is still the right call once the collection can grow without bound.
 - **ScyllaDB:** same CQL collection types and query-driven modeling posture as Cassandra. An unbounded list belongs in a separate query table keyed for the access pattern, not in a `list`/`set` column that grows without bound on one partition.
-- **DynamoDB:** items support `List` and `Map` attribute types natively, so storing structured, nested data in one item is normal, not a violation. The 1NF-shaped question DynamoDB actually asks is different: is this list ever an *access pattern* on its own (query for one item within it, page through it, update one element concurrently)? If so, model it as its own item collection (separate items sharing a partition key) instead of a single attribute, because DynamoDB has no way to index into or paginate a `List` attribute directly.
+- **DynamoDB:** items support `List` and `Map` attribute types natively, so storing structured, nested data in one item is normal, not a violation. The 1NF-shaped question DynamoDB actually asks is different: is this list ever an _access pattern_ on its own (query for one item within it, page through it, update one element concurrently)? If so, model it as its own item collection (separate items sharing a partition key) instead of a single attribute, because DynamoDB has no way to index into or paginate a `List` attribute directly.
 
 ## Examples
 
@@ -57,5 +57,5 @@ Require every column to hold a single, atomic value from its domain, and require
 
 ## Related Forms
 
-- **Second Normal Form ([[second-normal-form]])** assumes 1NF already holds and additionally requires non-key attributes to depend on the *whole* key, not part of it.
+- **Second Normal Form ([[second-normal-form]])** assumes 1NF already holds and additionally requires non-key attributes to depend on the _whole_ key, not part of it.
 - **Denormalization ([[denormalization]])** is the informed, named exception to storing atomic values in separate rows — not the same as an accidental 1NF violation, which happens without anyone deciding it should.

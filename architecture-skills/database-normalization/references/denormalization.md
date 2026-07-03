@@ -4,7 +4,7 @@
 
 ## Intent
 
-Deliberately reintroduce redundancy that normalization removed, in order to trade write-time consistency and storage for read-time speed — fewer joins, fewer round trips, fewer partitions touched per query. Denormalization done well is a *named, scoped* decision made after normalizing, not a schema that was never normalized in the first place.
+Deliberately reintroduce redundancy that normalization removed, in order to trade write-time consistency and storage for read-time speed — fewer joins, fewer round trips, fewer partitions touched per query. Denormalization done well is a _named, scoped_ decision made after normalizing, not a schema that was never normalized in the first place.
 
 ## Problem
 
@@ -33,11 +33,11 @@ Deliberately reintroduce redundancy that normalization removed, in order to trad
 ## Trade-offs
 
 - **Pros:** fewer joins/round trips per read, often the only way to get single-digit-millisecond reads at scale or in a distributed store; can shape data exactly for one access pattern instead of general-purpose.
-- **Cons:** every redundant copy is a place the data can go stale or disagree with the source of truth; every write that should update all copies is a place a bug or a missed step can introduce an anomaly identical to the ones normalization existed to prevent; more storage; the schema now encodes *how the data is read*, which makes it more brittle to new, un-anticipated access patterns.
+- **Cons:** every redundant copy is a place the data can go stale or disagree with the source of truth; every write that should update all copies is a place a bug or a missed step can introduce an anomaly identical to the ones normalization existed to prevent; more storage; the schema now encodes _how the data is read_, which makes it more brittle to new, un-anticipated access patterns.
 
 ## Database Notes
 
-- **PostgreSQL:** `CREATE MATERIALIZED VIEW` is the built-in, explicit form — a denormalized, queryable snapshot refreshed with `REFRESH MATERIALIZED VIEW` (optionally `CONCURRENTLY`), so the redundancy and its staleness window are both visible in the schema rather than hidden in application code. Regular (non-materialized) views give the *appearance* of a denormalized read shape without actually duplicating storage, and are the right first choice when the join itself, not the storage, is what's expensive to write repeatedly.
+- **PostgreSQL:** `CREATE MATERIALIZED VIEW` is the built-in, explicit form — a denormalized, queryable snapshot refreshed with `REFRESH MATERIALIZED VIEW` (optionally `CONCURRENTLY`), so the redundancy and its staleness window are both visible in the schema rather than hidden in application code. Regular (non-materialized) views give the _appearance_ of a denormalized read shape without actually duplicating storage, and are the right first choice when the join itself, not the storage, is what's expensive to write repeatedly.
 - **MySQL:** no native materialized view; the idiomatic substitute is a real table kept in sync by triggers on the source tables, or a scheduled job (`EVENT`) that rebuilds a summary table. This makes the synchronization mechanism an explicit, auditable piece of schema rather than an implicit assumption.
 - **SQLite:** no materialized view either; use a summary table populated by triggers on the source tables or rebuilt by application code on a schedule. Common in mobile and embedded apps where a single-file database serves a read-heavy local cache.
 - **MongoDB:** the Extended Reference Pattern (embed a small, frequently-needed subset of a referenced document's fields alongside the reference itself) and the Subset Pattern (embed only the most relevant N items of an unboundedly large array, referencing the rest) are MongoDB's named vocabulary for exactly this trade — embed what's read together and changes rarely, reference what's large, shared, or changes independently. Most production MongoDB schemas are a deliberate mix of both within the same document.
@@ -57,5 +57,5 @@ Deliberately reintroduce redundancy that normalization removed, in order to trad
 
 ## Related
 
-- **Third Normal Form ([[third-normal-form]])** and **Fifth Normal Form ([[fifth-normal-form]])** describe the redundancy denormalization reintroduces on purpose — understanding the anomaly a form prevents is what lets you scope a denormalization to *only* the read path that needs it, instead of losing the anomaly's protection everywhere.
+- **Third Normal Form ([[third-normal-form]])** and **Fifth Normal Form ([[fifth-normal-form]])** describe the redundancy denormalization reintroduces on purpose — understanding the anomaly a form prevents is what lets you scope a denormalization to _only_ the read path that needs it, instead of losing the anomaly's protection everywhere.
 - **First Normal Form ([[first-normal-form]])** — a deliberately-chosen array/JSON column for bag-of-values data is a narrow, single-column instance of the same trade discussed here.
