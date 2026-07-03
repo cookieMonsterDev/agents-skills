@@ -67,7 +67,7 @@ From a local clone:
 ```bash
 git clone git@github.com:cookieMonsterDev/agents-skills.git
 cd agents-skills
-npx skills add .@postgresql-16-docs -g -y
+npx skills add . --skill postgresql-16-docs -g -y
 ```
 
 Other useful commands:
