@@ -49,12 +49,13 @@ Architecture skills live under [`architecture-skills/`](architecture-skills/). E
 
 ## Architecture Skills
 
-Each skill ships reference explanations per catalog item and runnable examples in the languages listed. Not every architecture skill uses the same language set — include only languages that genuinely support the skill's concepts (see [Choosing languages](templates/architecture-template/SKILL.md#choosing-languages) in the architecture template).
+Each skill ships reference explanations per catalog item and runnable examples in the languages or databases listed. Not every architecture skill uses the same language set — include only languages that genuinely support the skill's concepts (see [Choosing languages](templates/architecture-template/SKILL.md#choosing-languages) in the architecture template).
 
-| Skill                                  | Description                                                                                             | Languages                                                  |
-| -------------------------------------- | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| `design-patterns`                      | Explains and applies the 23 Gang of Four (GoF) design patterns                                          | Python, C, C++, Java, C#, JavaScript, Rust, Go, PHP, Swift |
-| `object-oriented-programming-paradigm` | Explains and applies OOP — classes, the four pillars, object relationships, SOLID, and design qualities | Python, C++, Java, C#, JavaScript, PHP, Swift |
+| Skill                                  | Description                                                                                             | Languages                                                         |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `design-patterns`                      | Explains and applies the 23 Gang of Four (GoF) design patterns                                          | Python, C, C++, Java, C#, JavaScript, Rust, Go, PHP, Swift        |
+| `object-oriented-programming-paradigm` | Explains and applies OOP — classes, the four pillars, object relationships, SOLID, and design qualities | Python, C++, Java, C#, JavaScript, PHP, Swift                     |
+| `database-normalization`               | Explains and applies database normal forms (1NF–5NF, BCNF) and strategic denormalization                | PostgreSQL, MySQL, SQLite, MongoDB, Cassandra, ScyllaDB, DynamoDB |
 
 ## Install with Skills CLI
 
