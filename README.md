@@ -1,8 +1,10 @@
 # Agents Skills
 
-[Agent Skills](https://skills.sh/) for coding agents. Each skill is a folder with a `SKILL.md` file that teaches the agent how to answer questions using official documentation.
+[Agent Skills](https://skills.sh/) for coding agents. Each skill is a folder with a `SKILL.md` file that teaches the agent how to perform a specific task.
 
-## Available skills
+Documentation-grounded skills live under [`docs-skills/`](docs-skills/). Each one teaches the agent how to answer questions using official product or framework documentation.
+
+## Available docs skills
 
 | Skill                | Description                                                                                                    |
 | -------------------- | -------------------------------------------------------------------------------------------------------------- |
@@ -89,13 +91,13 @@ Copy or symlink a skill folder into one of these locations:
 Example:
 
 ```bash
-ln -s ~/Projects/personal/agents-skills/postgresql-18-docs ~/.cursor/skills/postgresql-18-docs
+ln -s ~/Projects/personal/agents-skills/docs-skills/postgresql-18-docs ~/.cursor/skills/postgresql-18-docs
 ```
 
-Each skill needs at least:
+Each docs skill needs at least:
 
 ```
-postgresql-18-docs/
+docs-skills/postgresql-18-docs/
 ├── SKILL.md
 └── references/
     └── topic-map.md
