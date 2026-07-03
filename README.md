@@ -19,7 +19,7 @@
 | `phoenix-docs`       | Docs-grounded answers for [Phoenix](https://phoenix.hexdocs.pm/overview.html)                                  |
 | `redis-docs`         | Docs-grounded answers for [Redis](https://redis.io/docs/latest/)                                               |
 | `kafka-docs`         | Docs-grounded answers for [Apache Kafka 4.3](https://kafka.apache.org/43/getting-started/introduction/)        |
-| `aws-cli-docs`       | Docs-grounded answers for the [AWS CLI](https://docs.aws.amazon.com/cli/)                                      |
+| `aws-cli-docs`       | Docs-grounded answers for [AWS CLI](https://docs.aws.amazon.com/cli/)                                      |
 | `aws-s3-docs`        | Docs-grounded answers for [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/)                  |
 | `aws-eks-docs`       | Docs-grounded answers for [Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/)                      |
 | `aws-ecs-docs`       | Docs-grounded answers for [Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/)           |
