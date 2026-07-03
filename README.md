@@ -4,7 +4,9 @@
 
 Documentation-grounded skills live under [`docs-skills/`](docs-skills/). Each one teaches the agent how to answer questions using official product or framework documentation.
 
-## Available docs skills
+Architecture skills live under [`architecture-skills/`](architecture-skills/). Each one teaches the agent a catalog of design items (patterns, principles, practices) with reference explanations and, where useful, runnable examples.
+
+## Docs Skills
 
 | Skill                | Description                                                                                                    |
 | -------------------- | -------------------------------------------------------------------------------------------------------------- |
@@ -21,7 +23,7 @@ Documentation-grounded skills live under [`docs-skills/`](docs-skills/). Each on
 | `phoenix-docs`       | Docs-grounded answers for [Phoenix](https://phoenix.hexdocs.pm/overview.html)                                  |
 | `redis-docs`         | Docs-grounded answers for [Redis](https://redis.io/docs/latest/)                                               |
 | `kafka-docs`         | Docs-grounded answers for [Apache Kafka 4.3](https://kafka.apache.org/43/getting-started/introduction/)        |
-| `aws-cli-docs`       | Docs-grounded answers for [AWS CLI](https://docs.aws.amazon.com/cli/)                                      |
+| `aws-cli-docs`       | Docs-grounded answers for [AWS CLI](https://docs.aws.amazon.com/cli/)                                          |
 | `aws-s3-docs`        | Docs-grounded answers for [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/)                  |
 | `aws-eks-docs`       | Docs-grounded answers for [Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/)                      |
 | `aws-ecs-docs`       | Docs-grounded answers for [Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/)           |
@@ -44,6 +46,12 @@ Documentation-grounded skills live under [`docs-skills/`](docs-skills/). Each on
 | `cassandra-docs`     | Docs-grounded answers for [Apache Cassandra](https://cassandra.apache.org/doc/latest/)                         |
 | `scylladb-docs`      | Docs-grounded answers for [ScyllaDB](https://docs.scylladb.com/stable/)                                        |
 | `nginx-docs`         | Docs-grounded answers for [NGINX](https://nginx.org/en/docs/)                                                  |
+
+## Architecture Skills
+
+| Skill             | Description                                                                                                                                              |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `design-patterns` | Explains and applies the 23 Gang of Four (GoF) design patterns with idiomatic examples in Python, C, C++, Java, C#, JavaScript, Rust, Go, PHP, and Swift |
 
 ## Install with Skills CLI
 
@@ -108,9 +116,10 @@ docs-skills/postgresql-18-docs/
 
 Skill templates live under [`template/`](template/):
 
-| Template        | Use for                                                                 |
-| --------------- | ----------------------------------------------------------------------- |
-| `docs-template` | Documentation-grounded skills that route to official product docs       |
+| Template                | Use for                                                                                                                                        |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `docs-template`         | Documentation-grounded skills that route to official product docs                                                                              |
+| `architecture-template` | Catalog-style skills that teach a set of design items (patterns, principles, practices) with reference explanations and optional code examples |
 
 To create a new docs skill:
 
@@ -119,6 +128,14 @@ cp -R template/docs-template docs-skills/my-product-docs
 ```
 
 Then replace the `{placeholder}` values in `SKILL.md` and `references/topic-map.md`, and add the skill to the table above.
+
+To create a new architecture skill:
+
+```bash
+cp -R template/architecture-template architecture-skills/my-catalog-skill
+```
+
+Then replace the `{placeholder}` values in `SKILL.md`, duplicate `references/example-item.md` (and its matching `examples/example-item/` folder, if used) per catalog item, and add the skill to the table under "Architecture Skills" above.
 
 ## How it works
 
