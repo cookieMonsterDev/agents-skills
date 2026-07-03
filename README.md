@@ -32,6 +32,7 @@ Documentation-grounded skills live under [`docs-skills/`](docs-skills/). Each on
 | `kubernetes-docs`    | Docs-grounded answers for [Kubernetes](https://kubernetes.io/docs/home/)                                       |
 | `terraform-docs`     | Docs-grounded answers for [Terraform](https://developer.hashicorp.com/terraform/docs)                          |
 | `helm-docs`          | Docs-grounded answers for [Helm](https://helm.sh/docs/)                                                        |
+| `gitlab-ci-docs`     | Docs-grounded answers for [GitLab CI/CD](https://docs.gitlab.com/ci/)                                          |
 | `rabbitmq-docs`      | Docs-grounded answers for [RabbitMQ](https://www.rabbitmq.com/docs)                                            |
 | `opentelemetry-docs` | Docs-grounded answers for [OpenTelemetry](https://opentelemetry.io/docs/)                                      |
 | `bullmq-docs`        | Docs-grounded answers for [BullMQ](https://docs.bullmq.io/)                                                    |
@@ -102,6 +103,22 @@ docs-skills/postgresql-18-docs/
 └── references/
     └── topic-map.md
 ```
+
+## Authoring new skills
+
+Skill templates live under [`template/`](template/):
+
+| Template        | Use for                                                                 |
+| --------------- | ----------------------------------------------------------------------- |
+| `docs-template` | Documentation-grounded skills that route to official product docs       |
+
+To create a new docs skill:
+
+```bash
+cp -R template/docs-template docs-skills/my-product-docs
+```
+
+Then replace the `{placeholder}` values in `SKILL.md` and `references/topic-map.md`, and add the skill to the table above.
 
 ## How it works
 
