@@ -52,7 +52,8 @@ If you need a quick starting point, load `references/topic-map.md` and jump to t
 ### 2. Search official ScyllaDB docs first
 
 - Treat `docs.scylladb.com` as the source of truth for ScyllaDB.
-- Prefer pages under <https://docs.scylladb.com/stable/> unless the user names a specific version.
+- Prefer the server manual under <https://docs.scylladb.com/manual/stable/> unless the user names a specific version.
+- The get-started tutorials stay under <https://docs.scylladb.com/stable/get-started/>; the manual sections moved to `/manual/stable/`, so drop older `/stable/operating-scylla/...` style links.
 - Distinguish open-source ScyllaDB, ScyllaDB Cloud, Alternator, and supporting product docs before answering.
 - Search with the user's exact terms plus focused ScyllaDB phrases such as `shard-aware driver`, `Alternator`, `LWT`, `CDC`, `large partitions`, or `nodetool`.
 - When multiple pages are plausible, compare 2-3 candidate pages and pick the one that most directly answers the user's question.

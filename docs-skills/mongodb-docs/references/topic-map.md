@@ -33,7 +33,7 @@ Markdown pages: append `.md` to any docs URL path.
 - [Update Documents](https://www.mongodb.com/docs/manual/tutorial/update-documents/)
 - [Delete Documents](https://www.mongodb.com/docs/manual/tutorial/remove-documents/)
 - [Indexes](https://www.mongodb.com/docs/manual/indexes/)
-- [Create an Index](https://www.mongodb.com/docs/manual/indexes/create-index/)
+- [Create an Index](https://www.mongodb.com/docs/manual/core/indexes/create-index/)
 - [Data Modeling Introduction](https://www.mongodb.com/docs/manual/data-modeling/)
 - [Aggregation Operations](https://www.mongodb.com/docs/manual/aggregation/)
 - [Aggregation Pipeline](https://www.mongodb.com/docs/manual/core/aggregation-pipeline/)

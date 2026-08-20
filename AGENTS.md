@@ -70,6 +70,7 @@ You are an AI agent with access to this repository. Use the contents of this rep
 
 - use templates for adding new skills [templates](templates)
 - update skills map and skills descriptions in [AGENTS.md](AGENTS.md) and [README.md](README.md)
+- run `scripts/check_doc_links.py` before committing docs-skill link changes; it reports broken links and lists bot-blocked hosts (`dev.mysql.com`, `docs.gitlab.com`) separately as inconclusive
 
 ## Commit messages (Conventional Commits)
 

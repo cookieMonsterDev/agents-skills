@@ -49,6 +49,7 @@ If you need a quick starting point, load `references/topic-map.md` and jump to t
 
 - Treat `phoenix.hexdocs.pm` as the source of truth for Phoenix.
 - Prefer pages under <https://phoenix.hexdocs.pm/>.
+- LiveView, PubSub, and HEEx components ship as separate Hex packages, so their module docs live at <https://hexdocs.pm/phoenix_live_view/> and <https://hexdocs.pm/phoenix_pubsub/> rather than under `phoenix.hexdocs.pm`.
 - Search with the user's exact terms plus focused Phoenix phrases such as `pipe_through`, `assign`, `LiveView`, `context`, `changeset`, or `mix phx.gen.auth`.
 - When multiple pages are plausible, compare 2-3 candidate pages and pick the one that most directly answers the user's question.
 - For version-specific changes, check the changelog and migration notes before answering from older knowledge.

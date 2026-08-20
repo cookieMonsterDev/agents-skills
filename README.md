@@ -18,7 +18,7 @@ Architecture skills live under [`architecture-skills/`](architecture-skills/). E
 | `expressjs-docs`     | Docs-grounded answers for [Express.js](https://expressjs.com/en/)                                              |
 | `graphql-docs`       | Docs-grounded answers for [GraphQL](https://graphql.org/learn/)                                                |
 | `fastapi-docs`       | Docs-grounded answers for [FastAPI](https://fastapi.tiangolo.com/)                                             |
-| `django-docs`        | Docs-grounded answers for [Django 6.0](https://docs.djangoproject.com/en/6.0/)                                 |
+| `django-docs`        | Docs-grounded answers for [Django 6.1](https://docs.djangoproject.com/en/6.1/)                                 |
 | `flask-docs`         | Docs-grounded answers for [Flask](https://flask.palletsprojects.com/en/stable/)                                |
 | `phoenix-docs`       | Docs-grounded answers for [Phoenix](https://phoenix.hexdocs.pm/overview.html)                                  |
 | `redis-docs`         | Docs-grounded answers for [Redis](https://redis.io/docs/latest/)                                               |
@@ -40,11 +40,11 @@ Architecture skills live under [`architecture-skills/`](architecture-skills/). E
 | `bullmq-docs`        | Docs-grounded answers for [BullMQ](https://docs.bullmq.io/)                                                    |
 | `grafana-docs`       | Docs-grounded answers for [Grafana Labs](https://grafana.com/docs/)                                            |
 | `mongodb-docs`       | Docs-grounded answers for [MongoDB](https://www.mongodb.com/docs/)                                             |
-| `mysql-docs`         | Docs-grounded answers for [MySQL](https://dev.mysql.com/doc/)                                                  |
+| `mysql-docs`         | Docs-grounded answers for [MySQL 9.7](https://dev.mysql.com/doc/refman/9.7/en/)                                |
 | `elasticsearch-docs` | Docs-grounded answers for [Elasticsearch](https://www.elastic.co/docs)                                         |
 | `opensearch-docs`    | Docs-grounded answers for [OpenSearch](https://docs.opensearch.org/latest/)                                    |
 | `cassandra-docs`     | Docs-grounded answers for [Apache Cassandra](https://cassandra.apache.org/doc/latest/)                         |
-| `scylladb-docs`      | Docs-grounded answers for [ScyllaDB](https://docs.scylladb.com/stable/)                                        |
+| `scylladb-docs`      | Docs-grounded answers for [ScyllaDB](https://docs.scylladb.com/manual/stable/)                                 |
 | `nginx-docs`         | Docs-grounded answers for [NGINX](https://nginx.org/en/docs/)                                                  |
 
 ## Architecture Skills
@@ -115,6 +115,31 @@ docs-skills/postgresql-18-docs/
 └── references/
     └── topic-map.md
 ```
+
+## Keeping docs links fresh
+
+Docs sites reorganize, so every skill's links are machine-checkable:
+
+```bash
+# Check every skill (docs-skills/ and architecture-skills/)
+scripts/check_doc_links.py
+
+# Check one skill while editing it
+scripts/check_doc_links.py docs-skills/redis-docs
+
+# Slow down a host that answers 429, and keep a machine-readable report
+scripts/check_doc_links.py --host-delay 2 --json /tmp/links.json
+```
+
+The script exits non-zero when a link is broken, so it works as a CI gate. Links that
+answer 401/403/429 are listed separately as inconclusive rather than broken: those
+statuses mean the host refused a scripted request. `dev.mysql.com` and `docs.gitlab.com`
+block the checker this way, so their links need a browser to confirm. Pass `--strict`
+to count them as failures anyway.
+
+When a link is genuinely gone, fix the entry in the skill's `references/topic-map.md`
+and, if the docs site moved a whole section, update the "Search official docs first"
+guidance in its `SKILL.md` too.
 
 ## Authoring new skills
 

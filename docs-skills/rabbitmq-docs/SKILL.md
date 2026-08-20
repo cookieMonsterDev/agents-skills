@@ -49,6 +49,7 @@ If you need a quick starting point, load `references/topic-map.md` and jump to t
 - Treat `rabbitmq.com/docs` as the source of truth for RabbitMQ.
 - Prefer pages under <https://www.rabbitmq.com/docs>.
 - Default to the current documentation version (4.3) unless the user specifies another supported version.
+- Classic queue mirroring was removed in RabbitMQ 4.x and its `/docs/ha` page is gone. Route high-availability questions to quorum queues or streams instead.
 - Search with the user's exact terms plus focused RabbitMQ phrases such as `quorum queue`, `prefetch`, `dead letter`, `stream`, `management plugin`, or `virtual host`.
 - When multiple pages are plausible, compare 2-3 candidate pages and pick the one that most directly answers the user's question.
 - For protocol-specific behavior, distinguish AMQP 0-9-1 from AMQP 1.0 before answering.

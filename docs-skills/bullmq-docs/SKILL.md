@@ -42,7 +42,7 @@ Decide which bucket the question belongs to before searching:
 - Patterns and production guidance
 - NestJS and framework integration
 
-If you need a quick starting point, load `references/topic-map.md` and jump to the closest section. For broader discovery, the live docs index is at <https://docs.bullmq.io/llms.txt>.
+If you need a quick starting point, load `references/topic-map.md` and jump to the closest section.
 
 ### 2. Search official BullMQ docs first
 
@@ -56,7 +56,6 @@ If you need a quick starting point, load `references/topic-map.md` and jump to t
 
 - Read the most relevant page, and the exact section when practical.
 - Use the topic map only to narrow the search space or surface likely starting pages.
-- Markdown versions of pages are available by appending `.md` to page URLs when helpful for reading.
 - If a page appears renamed, moved, or incomplete, say that explicitly and return the nearest authoritative pages instead of guessing.
 
 ### 4. Answer with docs-grounded guidance

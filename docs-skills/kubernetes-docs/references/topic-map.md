@@ -78,7 +78,7 @@ Current documentation version: v1.36
 
 - [kubectl Overview](https://kubernetes.io/docs/reference/kubectl/)
 - [kubectl Quick Reference](https://kubernetes.io/docs/reference/kubectl/quick-reference/)
-- [kubectl Commands](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_commands/)
+- [kubectl Commands](https://kubernetes.io/docs/reference/kubectl/generated/)
 - [kubectl apply](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/)
 - [kubectl get](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/)
 - [kubectl describe](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/)

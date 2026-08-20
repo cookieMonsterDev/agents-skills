@@ -53,7 +53,8 @@ If you need a quick starting point, load `references/topic-map.md` and jump to t
 ### 2. Search official Apache Cassandra docs first
 
 - Treat `cassandra.apache.org/doc` as the source of truth for Apache Cassandra.
-- Prefer pages under <https://cassandra.apache.org/doc/latest/>.
+- Prefer pages under <https://cassandra.apache.org/doc/latest/>, which currently serves the 5.0 documentation. Cassandra 5.0 is the newest GA line; 4.1 and 4.0 are still maintained.
+- The docs site shows a prerelease banner on `latest` and `stable` because a 6.0 alpha branch is published. Pin <https://cassandra.apache.org/doc/5.0/> when the user needs GA-only behavior.
 - If the user names a specific Cassandra version, switch the docs version selector path when needed.
 - Search with the user's exact terms plus focused Cassandra phrases such as `partition key`, `clustering column`, `SAI`, `compaction`, `repair`, `consistency level`, or `nodetool`.
 - When multiple pages are plausible, compare 2-3 candidate pages and pick the one that most directly answers the user's question.

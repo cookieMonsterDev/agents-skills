@@ -1,6 +1,6 @@
 ---
 name: django-docs
-description: Use when users ask how to build, explain, configure, model, query, secure, test, deploy, migrate, or troubleshoot Django web applications, including models, views, templates, forms, URLconfs, the admin, ORM, migrations, authentication, middleware, REST patterns, async views, caching, or management commands, especially when they need official Django 6.0 documentation, exact links, or docs-grounded Python guidance.
+description: Use when users ask how to build, explain, configure, model, query, secure, test, deploy, migrate, or troubleshoot Django web applications, including models, views, templates, forms, URLconfs, the admin, ORM, migrations, authentication, middleware, REST patterns, async views, caching, or management commands, especially when they need official Django 6.1 documentation, exact links, or docs-grounded Python guidance.
 ---
 
 Django questions are easy to answer from stale memory or Flask/FastAPI assumptions. Use this skill to ground answers in the official Django documentation and return the closest authoritative page instead of generic Python web advice.
@@ -47,8 +47,8 @@ If you need a quick starting point, load `references/topic-map.md` and jump to t
 
 ### 2. Search official Django docs first
 
-- Treat `docs.djangoproject.com/en/6.0` as the source of truth for Django 6.0.
-- Prefer pages under <https://docs.djangoproject.com/en/6.0/>.
+- Treat `docs.djangoproject.com/en/6.1` as the source of truth for Django 6.1.
+- Prefer pages under <https://docs.djangoproject.com/en/6.1/>.
 - If the user names a specific Django version, switch the docs version path when needed.
 - Search with the user's exact terms plus focused Django phrases such as `QuerySet`, `ModelForm`, `path()`, `migrate`, `MIDDLEWARE`, or `class-based views`.
 - When multiple pages are plausible, compare 2-3 candidate pages and pick the one that most directly answers the user's question.
@@ -94,7 +94,7 @@ Keep citations close to the claim they support.
 
 ## Common Mistakes
 
-- Answering from memory without verifying the current Django 6.0 docs
+- Answering from memory without verifying the current Django 6.1 docs
 - Linking the Django docs homepage when a narrower topic or reference page exists
 - Treating Django like Flask (no built-in ORM/admin unless explicitly using those layers)
 - Using deprecated APIs without checking the deprecation timeline

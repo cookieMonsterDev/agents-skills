@@ -22,14 +22,18 @@ Current documentation version: 4.2.2
 ## How-to
 
 - [Chart Development Guide](https://helm.sh/docs/howto/charts_tips_and_tricks/)
-- [Developing Charts](https://helm.sh/docs/howto/chart_developer_guide/)
-- [Chart Repository Guide](https://helm.sh/docs/howto/chart_repository/)
+- [Syncing Your Chart Repository](https://helm.sh/docs/howto/chart_repository_sync_example/)
+- [Chart Releaser Action](https://helm.sh/docs/howto/chart_releaser_action/)
 
 ## Topics
 
 - [Charts](https://helm.sh/docs/topics/charts/)
 - [Chart Hooks](https://helm.sh/docs/topics/charts_hooks/)
 - [Chart Tests](https://helm.sh/docs/topics/chart_tests/)
+- [Library Charts](https://helm.sh/docs/topics/library_charts/)
+- [Chart Repository Guide](https://helm.sh/docs/topics/chart_repository/)
+- [Provenance and Integrity](https://helm.sh/docs/topics/provenance/)
+- [Version Support Policy](https://helm.sh/docs/topics/version_skew/)
 - [Values Files](https://helm.sh/docs/chart_best_practices/values/)
 - [Kubernetes Distribution Guide](https://helm.sh/docs/topics/kubernetes_distros/)
 - [Registries](https://helm.sh/docs/topics/registries/)
@@ -58,7 +62,9 @@ Current documentation version: 4.2.2
 - [Accessing Files](https://helm.sh/docs/chart_template_guide/accessing_files/)
 - [Notes Files](https://helm.sh/docs/chart_template_guide/notes_files/)
 - [Debugging Templates](https://helm.sh/docs/chart_template_guide/debugging/)
-- [Next Steps](https://helm.sh/docs/chart_template_guide/next_steps/)
+- [Next Steps](https://helm.sh/docs/chart_template_guide/wrapping_up/)
+- [Appendix: YAML Techniques](https://helm.sh/docs/chart_template_guide/yaml_techniques/)
+- [Appendix: Go Data Types and Templates](https://helm.sh/docs/chart_template_guide/data_types/)
 
 ## Helm Commands
 
@@ -80,4 +86,4 @@ Current documentation version: 4.2.2
 ## Plugins and SDK
 
 - [Plugins Overview](https://helm.sh/docs/topics/plugins/)
-- [Go SDK](https://helm.sh/docs/topics/go_sdk/)
+- [Go SDK](https://helm.sh/docs/sdk/)

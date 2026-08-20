@@ -45,7 +45,7 @@ Base URL for all links below: <https://fastapi.tiangolo.com/>
 - [Return a Response Directly](https://fastapi.tiangolo.com/advanced/response-directly/)
 - [Custom Response Classes](https://fastapi.tiangolo.com/advanced/custom-response/)
 - [Additional Responses in OpenAPI](https://fastapi.tiangolo.com/advanced/additional-responses/)
-- [Advanced Middleware](https://fastapi.tiangolo.com/advanced/advanced-middleware/)
+- [Advanced Middleware](https://fastapi.tiangolo.com/advanced/middleware/)
 - [Sub Applications - Mounts](https://fastapi.tiangolo.com/advanced/sub-applications/)
 - [Behind a Proxy](https://fastapi.tiangolo.com/advanced/behind-a-proxy/)
 - [Templates](https://fastapi.tiangolo.com/advanced/templates/)

@@ -4,18 +4,18 @@ This reference is a compact routing aid derived from the BullMQ documentation ca
 
 Base URL for all links below: <https://docs.bullmq.io/>
 
-Full docs index: <https://docs.bullmq.io/llms.txt>
-
 ## Getting Started
 
 - [What is BullMQ](https://docs.bullmq.io/)
-- [Quick Start](https://docs.bullmq.io/readme-1/quick-start)
-- [API Reference](https://docs.bullmq.io/api-reference)
+- [Quick Start](https://docs.bullmq.io/quick-start)
+- [API Reference](https://docs.bullmq.io/api/index.html)
+- [Changelog](https://docs.bullmq.io/changelog)
 
 ## Guide
 
 - [Introduction](https://docs.bullmq.io/guide/introduction)
 - [Connections](https://docs.bullmq.io/guide/connections)
+- [PostgreSQL Backend](https://docs.bullmq.io/guide/postgresql)
 - [Queues](https://docs.bullmq.io/guide/queues)
 - [Workers](https://docs.bullmq.io/guide/workers)
 - [Jobs](https://docs.bullmq.io/guide/jobs)
@@ -33,14 +33,16 @@ Full docs index: <https://docs.bullmq.io/llms.txt>
 - [Architecture](https://docs.bullmq.io/guide/architecture)
 - [NestJS](https://docs.bullmq.io/guide/nestjs)
 - [Going to Production](https://docs.bullmq.io/guide/going-to-production)
-- [Migrations](https://docs.bullmq.io/guide/migrations)
+- [Migrations](https://docs.bullmq.io/guide/migrations/migration-to-newer-versions)
+- [Bull to BullMQ](https://docs.bullmq.io/guide/migrations/bull-to-bullmq)
+- [Migrate v5 to v6](https://docs.bullmq.io/guide/migrations/migrate-from-v5-to-v6)
 - [Troubleshooting](https://docs.bullmq.io/guide/troubleshooting)
 
 ## Patterns
 
-- [Adding Jobs in Bulk Across Different Queues](https://docs.bullmq.io/patterns/adding-jobs-in-bulk-across-different-queues)
+- [Adding Jobs in Bulk](https://docs.bullmq.io/patterns/adding-bulks)
 - [Deduplication](https://docs.bullmq.io/patterns/deduplication)
-- [Manually Processing Jobs](https://docs.bullmq.io/patterns/manually-processing-jobs)
+- [Manually Fetching Jobs](https://docs.bullmq.io/patterns/manually-fetching-jobs)
 - [Named Processor](https://docs.bullmq.io/patterns/named-processor)
 - [Flows](https://docs.bullmq.io/patterns/flows)
 - [Idempotent Jobs](https://docs.bullmq.io/patterns/idempotent-jobs)
@@ -50,7 +52,15 @@ Full docs index: <https://docs.bullmq.io/llms.txt>
 - [Failing Fast When Redis is Down](https://docs.bullmq.io/patterns/failing-fast-when-redis-is-down)
 - [Stop Retrying Jobs](https://docs.bullmq.io/patterns/stop-retrying-jobs)
 - [Timeout Jobs](https://docs.bullmq.io/patterns/timeout-jobs)
+- [Timeout for Sandboxed Processors](https://docs.bullmq.io/patterns/timeout-for-sandboxed-processors)
 - [Redis Cluster](https://docs.bullmq.io/patterns/redis-cluster)
+
+## BullMQ Pro
+
+- [Introduction](https://docs.bullmq.io/bullmq-pro/introduction)
+- [Groups](https://docs.bullmq.io/bullmq-pro/groups)
+- [Observables](https://docs.bullmq.io/bullmq-pro/observables)
+- [Batches](https://docs.bullmq.io/bullmq-pro/batches)
 
 ## Other Languages
 
