@@ -46,6 +46,12 @@ Architecture skills live under [`architecture-skills/`](architecture-skills/). E
 | `cassandra-docs`     | Docs-grounded answers for [Apache Cassandra](https://cassandra.apache.org/doc/latest/)                         |
 | `scylladb-docs`      | Docs-grounded answers for [ScyllaDB](https://docs.scylladb.com/manual/stable/)                                 |
 | `nginx-docs`         | Docs-grounded answers for [NGINX](https://nginx.org/en/docs/)                                                  |
+| `qdrant-docs`        | Docs-grounded answers for [Qdrant](https://qdrant.tech/documentation/)                                         |
+| `pinecone-docs`      | Docs-grounded answers for [Pinecone](https://docs.pinecone.io/)                                                |
+| `weaviate-docs`      | Docs-grounded answers for [Weaviate](https://docs.weaviate.io/weaviate)                                        |
+| `stripe-docs`        | Docs-grounded answers for [Stripe](https://docs.stripe.com/)                                                   |
+| `git-docs`           | Docs-grounded answers for [Git](https://git-scm.com/doc)                                                       |
+| `firebase-docs`      | Docs-grounded answers for [Firebase](https://firebase.google.com/docs)                                         |
 
 ## Architecture Skills
 
