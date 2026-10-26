@@ -1,9 +1,9 @@
 ---
 name: nestjs-docs
-description: Use when users ask how to build, explain, configure, secure, test, deploy, or troubleshoot NestJS applications, including modules, controllers, providers, dependency injection, middleware, guards, pipes, interceptors, exception filters, configuration, databases, validation, caching, queues, GraphQL, microservices, WebSockets, OpenAPI/Swagger, CLI, or platform adapters (Express/Fastify), especially when they need official NestJS documentation, exact links, or docs-grounded TypeScript guidance.
+description: Use when users ask how to build, explain, configure, secure, test, deploy, or troubleshoot NestJS applications, including modules, controllers, providers, dependency injection, middleware, guards, pipes, interceptors, exception filters, configuration, databases, validation, caching, queues, GraphQL, microservices, WebSockets, OpenAPI/Swagger, observability, reliability, CLI, NestJS 12 migration, or platform adapters (Express/Fastify), especially when they need official NestJS documentation, exact links, or docs-grounded TypeScript guidance.
 ---
 
-NestJS questions are easy to answer from stale memory or generic Node.js advice. Use this skill to ground answers in the official NestJS documentation and return the closest authoritative page instead of improvising framework patterns.
+NestJS questions are easy to answer from stale memory, NestJS 11 assumptions that no longer apply in NestJS 12, or generic Node.js advice. Use this skill to ground answers in the official NestJS documentation and return the closest authoritative page instead of improvising framework patterns.
 
 ## When to Use
 
@@ -19,6 +19,8 @@ Use this skill when the request is about:
 - GraphQL, microservices, WebSockets, and hybrid applications
 - OpenAPI/Swagger documentation and API design with `@nestjs/swagger`
 - Testing, CLI scaffolding, deployment, serverless, and performance tuning
+- Observability, reliability patterns (resilience, idempotency, outbox, locks), and health checks
+- NestJS 12 migration, ESM packages, and version differences from NestJS 11
 - Express or Fastify as the underlying HTTP platform (`@nestjs/platform-express`, `@nestjs/platform-fastify`)
 
 Do not use this skill for:
@@ -40,15 +42,18 @@ Decide which bucket the question belongs to before searching:
 - Security and authentication
 - GraphQL, microservices, or WebSockets
 - OpenAPI/Swagger
+- Observability or reliability
 - CLI, testing, deployment, or FAQ
+- Migration and version differences
 - Recipes and integration patterns
 
 If you need a quick starting point, load `references/topic-map.md` and jump to the closest section.
 
 ### 2. Search official NestJS docs first
 
-- Treat `docs.nestjs.com` as the source of truth for NestJS.
-- Prefer pages under <https://docs.nestjs.com/>.
+- Treat `docs.nestjs.com` as the source of truth for NestJS 12, the current major version.
+- Prefer pages under <https://docs.nestjs.com/>. Use <https://docs.nestjs.com/v11> only when the user explicitly needs NestJS 11.
+- For upgrade or version-specific questions, check the migration guide before answering from NestJS 11 knowledge.
 - Search with the user's exact terms plus focused NestJS phrases such as `CanActivate`, `ValidationPipe`, `NestFactory`, `SwaggerModule`, or `Transport`.
 - When multiple pages are plausible, compare 2-3 candidate pages and pick the one that most directly answers the user's question.
 - For lifecycle or ordering questions, check the request lifecycle FAQ before answering from memory.
@@ -88,6 +93,8 @@ Keep citations close to the claim they support.
 - For OpenAPI questions, start with the OpenAPI introduction, then decorators or operations as needed.
 - For microservice questions, distinguish message patterns, event patterns, and HTTP gateways.
 - For platform-specific behavior, check whether the user is on Express or Fastify and consult the platform section in First Steps.
+- For module system or test runner questions, check whether the project is ESM or CommonJS: NestJS 12 packages ship as ESM, ESM projects default to Vitest, and CommonJS projects keep Jest.
+- For validation questions on NestJS 12, check whether the docs page uses Standard Schema (`StandardSchemaValidationPipe`, route `schema` options) or `class-validator` before answering.
 
 ## Common Mistakes
 
@@ -96,7 +103,8 @@ Keep citations close to the claim they support.
 - Confusing middleware order with guard/pipe/interceptor order in the request lifecycle
 - Suggesting Express-only patterns when the user is on the Fastify adapter (or vice versa)
 - Mixing up `@nestjs/swagger` decorators with framework-agnostic OpenAPI concepts
-- Treating third-party ORM or queue library APIs as NestJS core behavior without checking the relevant technique or recipe page
+- Treating third-party ORM or queue library APIs as NestJS core behavior without checking the relevant application, data, or recipe page
+- Assuming NestJS 11 behavior on NestJS 12, such as CommonJS-only packages, Jest as the default test runner, `subscriptions-transport-ws`, the legacy Terminus health indicator API, or inherited `@Optional()` constructor parameters
 
 ## Bundled Reference
 

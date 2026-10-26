@@ -45,7 +45,7 @@ If you need a quick starting point, load `references/topic-map.md` and jump to t
 
 - Treat `helm.sh/docs` as the source of truth for Helm.
 - Prefer pages under <https://helm.sh/docs/>.
-- Default to the current documentation version (4.2.4) unless the user specifies another supported version.
+- Default to the current documentation version (4.3.1) unless the user specifies another supported version.
 - Search with the user's exact terms plus focused Helm phrases such as `helm upgrade`, `values.yaml`, `chart hooks`, `helm template`, `OCI`, or `Artifact Hub`.
 - When multiple pages are plausible, compare 2-3 candidate pages and pick the one that most directly answers the user's question.
 - For Helm 4 questions, check the Helm 4 Overview before answering from Helm 3 knowledge.

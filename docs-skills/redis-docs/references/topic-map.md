@@ -10,7 +10,7 @@ Base URL for all links below: <https://redis.io/docs/latest/>
 - [Develop with Redis](https://redis.io/docs/latest/develop/)
 - [Using Redis Commands](https://redis.io/docs/latest/develop/using-commands/)
 - [Commands Reference](https://redis.io/docs/latest/commands/)
-- [Redis 8.6 Commands Reference](https://redis.io/docs/latest/commands/redis-8-6-commands/)
+- [Redis 8.10 Commands Reference](https://redis.io/docs/latest/commands/redis-8-10-commands/)
 
 ## Data Types
 

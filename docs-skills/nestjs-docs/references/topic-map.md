@@ -1,14 +1,16 @@
 # NestJS Topic Map
 
-This reference is a compact routing aid derived from the NestJS documentation catalog. It is intentionally selective and deduplicated. Use it to find the right documentation neighborhood quickly, then verify against the live docs on `docs.nestjs.com`.
+This reference is a compact routing aid derived from the NestJS 12 documentation catalog. It is intentionally selective and deduplicated. Use it to find the right documentation neighborhood quickly, then verify against the live docs on `docs.nestjs.com`.
 
 Base URL for all links below: <https://docs.nestjs.com/>
+
+NestJS 11 documentation: <https://docs.nestjs.com/v11>
 
 ## Getting Started
 
 - [Introduction](https://docs.nestjs.com/)
 - [First Steps](https://docs.nestjs.com/first-steps)
-- [Standalone Applications](https://docs.nestjs.com/application-context)
+- [Standalone Applications](https://docs.nestjs.com/standalone-applications)
 - [CLI Overview](https://docs.nestjs.com/cli/overview)
 - [Migration Guide](https://docs.nestjs.com/migration-guide)
 
@@ -33,32 +35,48 @@ Base URL for all links below: <https://docs.nestjs.com/>
 - [Circular Dependency](https://docs.nestjs.com/fundamentals/circular-dependency)
 - [Module Reference](https://docs.nestjs.com/fundamentals/module-ref)
 - [Lazy-Loading Modules](https://docs.nestjs.com/fundamentals/lazy-loading-modules)
+- [Execution Context](https://docs.nestjs.com/fundamentals/execution-context)
 - [Lifecycle Events](https://docs.nestjs.com/fundamentals/lifecycle-events)
 - [Discovery Service](https://docs.nestjs.com/fundamentals/discovery-service)
-- [Platform Agnosticism](https://docs.nestjs.com/fundamentals/platform-agnostic)
+- [Platform Agnosticism](https://docs.nestjs.com/fundamentals/platform-agnosticism)
 - [Testing](https://docs.nestjs.com/fundamentals/testing)
 
-## Techniques
+## Application
 
-- [Configuration](https://docs.nestjs.com/techniques/configuration)
-- [Database](https://docs.nestjs.com/techniques/database)
-- [MongoDB (Mongoose)](https://docs.nestjs.com/techniques/mongodb)
-- [Validation](https://docs.nestjs.com/techniques/validation)
-- [Caching](https://docs.nestjs.com/techniques/caching)
-- [Serialization](https://docs.nestjs.com/techniques/serialization)
-- [Task Scheduling](https://docs.nestjs.com/techniques/task-scheduling)
-- [Queues](https://docs.nestjs.com/techniques/queues)
-- [Logger](https://docs.nestjs.com/techniques/logger)
-- [Cookies](https://docs.nestjs.com/techniques/cookies)
-- [Events](https://docs.nestjs.com/techniques/events)
-- [File Upload](https://docs.nestjs.com/techniques/file-upload)
-- [Streaming Files](https://docs.nestjs.com/techniques/streaming-files)
-- [HTTP Module](https://docs.nestjs.com/techniques/http-module)
-- [Session](https://docs.nestjs.com/techniques/session)
-- [MVC](https://docs.nestjs.com/techniques/mvc)
-- [Versioning](https://docs.nestjs.com/techniques/versioning)
-- [Compression](https://docs.nestjs.com/techniques/compression)
-- [Performance (Fastify)](https://docs.nestjs.com/techniques/performance)
+- [Configuration](https://docs.nestjs.com/application/configuration)
+- [Validation](https://docs.nestjs.com/application/validation)
+- [Serialization](https://docs.nestjs.com/application/serialization)
+- [Logger](https://docs.nestjs.com/application/logger)
+- [Events](https://docs.nestjs.com/application/events)
+- [Task Scheduling](https://docs.nestjs.com/application/task-scheduling)
+- [Queues](https://docs.nestjs.com/application/queues)
+- [HTTP Client](https://docs.nestjs.com/application/http-client)
+- [Internationalization](https://docs.nestjs.com/application/i18n)
+- [Mail](https://docs.nestjs.com/application/mail)
+- [File Storage](https://docs.nestjs.com/application/file-storage)
+
+## Data
+
+- [Data Overview](https://docs.nestjs.com/data/overview)
+- [TypeORM](https://docs.nestjs.com/data/typeorm)
+- [Drizzle](https://docs.nestjs.com/data/drizzle)
+- [MongoDB (Mongoose)](https://docs.nestjs.com/data/mongodb)
+- [Prisma](https://docs.nestjs.com/data/prisma)
+- [MikroORM](https://docs.nestjs.com/data/mikroorm)
+- [Sequelize](https://docs.nestjs.com/data/sequelize)
+- [Caching](https://docs.nestjs.com/data/caching)
+
+## HTTP
+
+- [Versioning](https://docs.nestjs.com/http/versioning)
+- [Cookies](https://docs.nestjs.com/http/cookies)
+- [Session](https://docs.nestjs.com/http/session)
+- [File Upload](https://docs.nestjs.com/http/file-upload)
+- [Compression](https://docs.nestjs.com/http/compression)
+- [Server-Sent Events](https://docs.nestjs.com/http/server-sent-events)
+- [MVC](https://docs.nestjs.com/http/mvc)
+- [Performance (Fastify)](https://docs.nestjs.com/http/performance)
+- [Webhooks](https://docs.nestjs.com/http/webhooks)
 
 ## Security
 
@@ -69,6 +87,24 @@ Base URL for all links below: <https://docs.nestjs.com/>
 - [CORS](https://docs.nestjs.com/security/cors)
 - [CSRF Protection](https://docs.nestjs.com/security/csrf)
 - [Rate Limiting](https://docs.nestjs.com/security/rate-limiting)
+
+## Observability
+
+- [Observability Overview](https://docs.nestjs.com/observability/overview)
+- [SDK](https://docs.nestjs.com/observability/sdk)
+- [Manual Instrumentation](https://docs.nestjs.com/observability/manual-instrumentation)
+- [Distributed Tracing](https://docs.nestjs.com/observability/distributed-tracing)
+- [Error Monitoring](https://docs.nestjs.com/observability/error-monitoring)
+- [OpenTelemetry](https://docs.nestjs.com/observability/opentelemetry)
+
+## Reliability
+
+- [Resilience](https://docs.nestjs.com/reliability/resilience)
+- [Idempotency](https://docs.nestjs.com/reliability/idempotency)
+- [Outbox](https://docs.nestjs.com/reliability/outbox)
+- [Workflows](https://docs.nestjs.com/reliability/workflows)
+- [Locks](https://docs.nestjs.com/reliability/locks)
+- [Health Checks (Terminus)](https://docs.nestjs.com/reliability/terminus)
 
 ## GraphQL
 
@@ -107,7 +143,7 @@ Base URL for all links below: <https://docs.nestjs.com/>
 - [Security](https://docs.nestjs.com/openapi/security)
 - [Mapped Types](https://docs.nestjs.com/openapi/mapped-types)
 - [Decorators](https://docs.nestjs.com/openapi/decorators)
-- [CLI Plugin](https://docs.nestjs.com/openapi/cli)
+- [CLI Plugin](https://docs.nestjs.com/openapi/cli-plugin)
 
 ## Deployment, FAQ, and Recipes
 
@@ -118,8 +154,8 @@ Base URL for all links below: <https://docs.nestjs.com/>
 - [Hybrid Application (FAQ)](https://docs.nestjs.com/faq/hybrid-application)
 - [Multiple Servers (FAQ)](https://docs.nestjs.com/faq/multiple-servers)
 - [Keep-Alive Connections (FAQ)](https://docs.nestjs.com/faq/keep-alive-connections)
-- [SQL (TypeORM) Recipe](https://docs.nestjs.com/recipes/sql-typeorm)
-- [MongoDB Recipe](https://docs.nestjs.com/recipes/mongodb)
-- [Prisma Recipe](https://docs.nestjs.com/recipes/prisma)
+- [Common Errors (FAQ)](https://docs.nestjs.com/faq/common-errors)
+- [CQRS Recipe](https://docs.nestjs.com/recipes/cqrs)
+- [SWC Recipe](https://docs.nestjs.com/recipes/swc)
 - [Serve Static Recipe](https://docs.nestjs.com/recipes/serve-static)
 - [Hot Reload Recipe](https://docs.nestjs.com/recipes/hot-reload)

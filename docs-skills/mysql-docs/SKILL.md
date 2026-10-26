@@ -55,8 +55,8 @@ If you need a quick starting point, load `references/topic-map.md` and jump to t
 
 - Treat `dev.mysql.com/doc` as the source of truth for MySQL.
 - Prefer the MySQL Reference Manual at <https://dev.mysql.com/doc/refman/9.7/en/> unless the user names a different major version.
-- 9.7 is the current LTS series. 8.4 and 8.0 are the older LTS series; 5.7 is end-of-life. Since 9.7, Innovation and LTS releases use calendar versioning in `YY.M` form, so `26.7` is the July 2026 Innovation release.
-- For version-specific behavior, switch the manual path segment (`9.7`, `8.4`, `8.0`, `26.7`, etc.) before answering.
+- 9.7 is the current LTS series. 8.4 and 8.0 are the older LTS series; 5.7 is end-of-life. Since 9.7, Innovation and LTS releases use calendar versioning in `YY.M` form, so `26.10` is the October 2026 Innovation release.
+- For version-specific behavior, switch the manual path segment (`9.7`, `8.4`, `8.0`, `26.10`, etc.) before answering.
 - Search with the user's exact terms plus focused MySQL phrases such as `InnoDB`, `binary log`, `Group Replication`, `EXPLAIN`, `privileges`, or `replication`.
 - When multiple pages are plausible, compare 2-3 candidate pages and pick the one that most directly answers the user's question.
 - For connector or API questions, prefer the Connectors & APIs docs rather than the server reference manual.
@@ -104,7 +104,7 @@ Keep citations close to the claim they support.
 - Answering from memory without verifying the current MySQL docs
 - Linking the MySQL docs landing page when a narrower manual or connector page exists
 - Mixing MySQL 8.0, 8.4, and 9.7 behavior without checking release notes
-- Reading a calendar version such as `26.7` as an older release than `9.7` - it is newer
+- Reading a calendar version such as `26.10` as an older release than `9.7` - it is newer
 - Applying PostgreSQL syntax or semantics to MySQL without checking the manual
 - Confusing Group Replication, InnoDB Cluster, and traditional replication
 - Recommending deprecated storage engines or authentication plugins without checking current guidance

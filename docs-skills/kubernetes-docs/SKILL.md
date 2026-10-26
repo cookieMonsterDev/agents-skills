@@ -52,7 +52,7 @@ If you need a quick starting point, load `references/topic-map.md` and jump to t
 
 - Treat `kubernetes.io/docs` as the source of truth for Kubernetes.
 - Prefer pages under <https://kubernetes.io/docs/home/>.
-- Default to the current documentation version (v1.36) unless the user specifies another supported version.
+- Default to the current documentation version (v1.37) unless the user specifies another supported version.
 - Search with the user's exact terms plus focused Kubernetes phrases such as `PodDisruptionBudget`, `readinessProbe`, `server-side apply`, `kubeconfig`, `taints`, or `StorageClass`.
 - When multiple pages are plausible, compare 2-3 candidate pages and pick the one that most directly answers the user's question.
 - For deprecated APIs or removed features, check the deprecation guide before answering from older knowledge.

@@ -6,7 +6,7 @@ Default reference manual base URL: <https://dev.mysql.com/doc/refman/9.7/en/>
 
 Docs home: <https://dev.mysql.com/doc/>
 
-To switch MySQL versions, replace `9.7` in manual URLs with `8.4` or `8.0` for the older LTS series, or with a calendar version such as `26.7` for the current Innovation release.
+To switch MySQL versions, replace `9.7` in manual URLs with `8.4` or `8.0` for the older LTS series, or with a calendar version such as `26.10` for the current Innovation release.
 
 ## Getting Started
 

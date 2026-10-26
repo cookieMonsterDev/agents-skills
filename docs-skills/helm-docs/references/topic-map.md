@@ -4,7 +4,7 @@ This reference is a compact routing aid derived from the Helm documentation cata
 
 Base URL for all links below: <https://helm.sh/docs/>
 
-Current documentation version: 4.2.2
+Current documentation version: 4.3.1
 
 ## Documentation Home
 

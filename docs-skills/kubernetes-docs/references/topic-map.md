@@ -4,7 +4,7 @@ This reference is a compact routing aid derived from the Kubernetes documentatio
 
 Base URL for all links below: <https://kubernetes.io/docs/>
 
-Current documentation version: v1.36
+Current documentation version: v1.37
 
 ## Documentation Home
 
