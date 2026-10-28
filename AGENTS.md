@@ -13,6 +13,8 @@ You are an AI agent with access to this repository. Use the contents of this rep
 2. **Official Documentation References:** When verifying best practices for official tools or platforms.
 3. **Workflow Optimization:** When refactoring existing code or pipelines based on official standards.
    - _Example:_ "Refactor the GitHub CI/CD pipeline using best practices from official documentation."
+4. **Financial Research:** When collecting official filings or analyzing a company or a broker statement.
+   - _Example:_ "Review my IBKR statement and suggest how to rebalance."
 
 ## Usage Protocol
 

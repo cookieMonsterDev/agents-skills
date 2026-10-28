@@ -1,0 +1,30 @@
+{
+  "model": "stress",
+  "label": "Synthetic demonstration only",
+  "currency": "USD",
+  "as_of": "2026-03-01",
+  "assumptions": {
+    "currency": "USD",
+    "as_of": "2026-03-01",
+    "label": "Synthetic demonstration only",
+    "rationale": "Independent fictional assumptions to demonstrate the calculator; not estimates for DEMO or a real issuer.",
+    "unrestricted_cash": 100,
+    "available_committed_credit": 50,
+    "one_off_obligations": 30,
+    "monthly_cash_burn": 10,
+    "horizon_months": 18,
+    "sources": {
+      "unrestricted_cash": "Synthetic assumption for offline testing, not observed market/company data.",
+      "available_committed_credit": "Synthetic assumption for offline testing, not observed market/company data.",
+      "one_off_obligations": "Synthetic assumption for offline testing, not observed market/company data.",
+      "monthly_cash_burn": "Synthetic assumption for offline testing, not observed market/company data.",
+      "horizon_months": "Synthetic assumption for offline testing, not observed market/company data."
+    }
+  },
+  "liquidity_after_one_off_obligations": 120,
+  "runway_months": 12.0,
+  "horizon_funding_gap": 60,
+  "formula": "(unrestricted cash + available committed credit - one-off obligations) / monthly cash burn",
+  "limitation": "Static liquidity stress; verify covenant availability and obligation dates. Include each cash use once. Does not predict default.",
+  "input_sha256": "d07fd709ab4fc103c1e55d2ba04f5ae1c85a3b71c60f9b49a8c8ac2fbbad1067"
+}

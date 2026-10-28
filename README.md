@@ -10,7 +10,10 @@ agents-skills/
 │   ├── docs/              # docs-grounded skills, one per product or framework
 │   │   ├── README.md      # category index
 │   │   └── <skill>/
-│   └── architecture/      # catalog skills: patterns, principles, practices
+│   ├── architecture/      # catalog skills: patterns, principles, practices
+│   │   ├── README.md
+│   │   └── <skill>/
+│   └── finance/           # workflow skills: filings, company and portfolio analysis
 │       ├── README.md
 │       └── <skill>/
 ├── templates/             # starting points for new skills (not installable)
@@ -25,6 +28,7 @@ Skills are grouped as `skills/<category>/<skill-name>/`. Skill names are unique 
 | ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | [`docs`](skills/docs/README.md)                 | Route a question to the official docs of a product or framework and answer with direct links to the authoritative pages |
 | [`architecture`](skills/architecture/README.md) | Teach a catalog of design items with a reference explanation per item and runnable examples where useful                |
+| [`finance`](skills/finance/README.md)           | Research companies and portfolios from official filings and broker statements, with cited Markdown reports              |
 
 ## Install with Skills CLI
 

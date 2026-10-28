@@ -1,0 +1,43 @@
+# Scraper handoff and period policy
+
+## Acquisition
+
+The required sibling is `../financial-reports-scraper/` relative to this skill root. Read its SKILL.md before use; its `scripts/financial_reports_scraper/schema.py` owns CSV columns. `analyze_report.py` imports that schema locally, validates all required headers, and leaves the input unchanged. Extra columns are allowed. It calculates one ticker at a time; for a portfolio enumerate stocks and run separately, retaining identifiers. Conflicting CIKs or ISINs under one ticker require an identifier-filtered copy with provenance.
+
+For a five-year starting window, run from the user's working directory, where `<scraper-dir>` is the scraper's folder (dates are illustrative; use the user's cutoff):
+
+```bash
+python3 <scraper-dir>/scripts/run_report.py --tickers ACME \
+  --history-years 5 --as-of 2026-09-15 --all-facts --download-filings --max-filings 32 \
+  --out-dir /absolute/path/to/new-run
+```
+
+The scraper requires its own installed requirements and a real `SEC_USER_AGENT` contact. Reuse configured identity; ask for the contact when missing. Fetch acquisition history long enough for the actual needed fiscal periods, checking returned coverage. A window is neither a guarantee of five complete annual periods nor a full archive. The scraper follows historical submissions files and applies an information cutoff, then selects fallback facts by economic period and duration class. The analyzer independently rechecks `filed_at` and `period_end`, including for legacy CSVs generated before these protections.
+
+Core mode now includes more debt/lease components, goodwill, inventory, receivables and stock compensation. `--all-facts` adds other supported standard concepts, but Companyfacts still lacks custom tags and dimensional notes. Optional primary filing snapshots provide the source HTML/PDF and readable HTML text for MD&A and note review; they do not automatically normalize prose or segment tables. Follow missing material exhibits or official filing links as necessary. Keep manually extracted evidence in a separate source ledger with section/page, date, unit, scope and calculation bridge; do not silently rewrite the CSV or treat custom tags as standard tags.
+
+Read the matching `.manifest.json` for per-entity coverage, download status and source-document locators. The analyzer verifies its CSV hash and carries its location and snapshot list into the workpaper JSON. Mismatching bundles are rejected. `document_directory` is relative to the CSV parent; each raw/text filename is relative to that directory. Check document hashes before citing local copies. A partial bundle or snapshot limit is a visible evidence gap, even if some financial metrics calculate successfully. CSV-only legacy inputs remain supported. The scraper refuses existing output bundles; use a new `--out-dir` when retrying.
+
+## Intake outcomes
+
+- `fact`: numeric candidate. Source rows retain accession, form, filed date, economic dates, concept, unit, URL, and raw notes.
+- `filing` / `document`: document locator, never a numerical zero.
+- `holding`: fund exposure; route separately from company financial statements.
+- `error`: failed/incomplete acquisition; show it in limitations and follow the scraper retry policy. A successful CSV write can still contain failed adapters.
+- Header-only CSV, wrong schema, mixed issuer identities or non-stock targets: fail with a specific diagnostic.
+
+CSV record numbers in the audit count parsed records starting at 2 after the header, not physical text lines when a cell contains newlines. SHA-256 binds all record citations to the exact input file.
+
+## Selection rules implemented by the helper
+
+1. Require valid publication/end dates, finite values, supported filing forms, explicit reporting currency and an exact unit (`USD`, `USD/shares`, or `shares`, for example). Unknown or incompatible rows remain in the rejection audit. Missing values never become zero.
+2. Classify by actual start/end: annual 350–380 days, standalone quarter 75–105, interim YTD 150–200 or 240–290. Instant facts have no start. These are conservative duration buckets, not proof of comparability; verify odd fiscal years against the filing. A first-quarter YTD period is indistinguishable from the quarter and belongs to `quarter`.
+3. Keep annual facts by default; `--period quarter` or `ytd` selects those durations. Exact period matches link income and cash flow; balance facts must share that end date. No nearest-date filling, Q4/TTM derivation or automatic annualization. Review unmatched instants in the audit.
+4. Within a concept, unit and exact economic interval choose the latest publication available by cutoff. Collapse exact duplicates. Conflicting values at that latest date invalidate the metric. Multiple mapped concepts with different values also invalidate it; reconcile with the filing before using either.
+5. Compute growth only between comparable year-apart intervals with similar durations and a positive prior denominator. Negative-to-positive changes require narrative and absolute changes. The output's null/reason is part of the result.
+
+The JSON retains selected and excluded rows, formulas, units and source-record identifiers. The Markdown workpaper surfaces the selected evidence. Check the audit's rejection reasons before treating a small workpaper as complete coverage.
+
+For current analysis, the latest-known comparative values can mix publication vintages. Check restatement/accounting-policy consistency across selected periods; a cutoff filter alone cannot establish a coherent accounting basis. Historical analysis also needs price and qualitative sources that were available by that cutoff.
+
+Primary implementation reference: [SEC API documentation](https://www.sec.gov/search-filings/edgar-application-programming-interfaces), checked 2026-09-15. Units and reported fiscal boundaries govern comparison; calendar frames and `fy`/`fp` labels do not replace them.

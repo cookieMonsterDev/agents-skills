@@ -63,3 +63,13 @@ Teach a catalog of design items (patterns, principles, practices) with reference
 | Design Patterns                      | [`design-patterns`](skills/architecture/design-patterns/SKILL.md)                                           |
 | Object-Oriented Programming Paradigm | [`object-oriented-programming-paradigm`](skills/architecture/object-oriented-programming-paradigm/SKILL.md) |
 | Database Normalization               | [`database-normalization`](skills/architecture/database-normalization/SKILL.md)                             |
+
+## Finance
+
+Research companies and portfolios from official filings and broker statements, with offline helpers and cited Markdown reports. Install the three together; they depend on each other. Category index: [`skills/finance/README.md`](skills/finance/README.md).
+
+| Topic                     | Skill                                                                                 |
+| ------------------------- | ------------------------------------------------------------------------------------- |
+| Financial Reports Scraper | [`financial-reports-scraper`](skills/finance/financial-reports-scraper/SKILL.md)      |
+| Fundamental Analysis      | [`fundamental-analysis`](skills/finance/fundamental-analysis/SKILL.md)                |
+| Portfolio Analysis        | [`portfolio-analysis`](skills/finance/portfolio-analysis/SKILL.md)                    |

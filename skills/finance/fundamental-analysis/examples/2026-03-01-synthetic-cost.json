@@ -1,0 +1,30 @@
+{
+  "model": "cost",
+  "label": "Synthetic demonstration only",
+  "currency": "USD",
+  "as_of": "2026-03-01",
+  "assumptions": {
+    "currency": "USD",
+    "as_of": "2026-03-01",
+    "label": "Synthetic demonstration only",
+    "rationale": "Independent fictional assumptions to demonstrate the calculator; not estimates for DEMO or a real issuer.",
+    "initial_capital": 10000,
+    "gross_annual_return": 0.06,
+    "active_annual_cost": 0.01,
+    "benchmark_annual_cost": 0.001,
+    "years": 20,
+    "sources": {
+      "initial_capital": "Synthetic assumption for offline testing, not observed market/company data.",
+      "gross_annual_return": "Synthetic assumption for offline testing, not observed market/company data.",
+      "active_annual_cost": "Synthetic assumption for offline testing, not observed market/company data.",
+      "benchmark_annual_cost": "Synthetic assumption for offline testing, not observed market/company data.",
+      "years": "Synthetic assumption for offline testing, not observed market/company data."
+    }
+  },
+  "active_ending_value": 26532.97705144422,
+  "benchmark_ending_value": 31471.627491201154,
+  "cost_difference": 4938.650439756933,
+  "formula": "initial capital \u00d7 (1 + same assumed gross return - annual cost)^years",
+  "limitation": "Cost-only illustration: same gross return, no cash flows, no taxes. Not an outperformance forecast or a stock-selection rule.",
+  "input_sha256": "8c4f72b7766766273160a0a8833ebe5a454be9f474cf9e5aee58cdebf99468db"
+}

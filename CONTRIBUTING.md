@@ -32,6 +32,8 @@ cp -R templates/architecture-template skills/architecture/my-catalog-skill
 
 Then replace the `{placeholder}` values in `SKILL.md`, duplicate `references/example-item.md` (and its matching `examples/example-item/` folder, if used) per catalog item, and add the skill to [`skills/architecture/README.md`](skills/architecture/README.md) and the skills map in [`SKILLS.md`](SKILLS.md).
 
+Finance skills have no template: they are workflow skills with Python helpers, `scripts/`, `tests/` and synthetic fixtures. When changing one, run its test command (in the Maintenance section of its `SKILL.md`) in addition to `scripts/lint.sh`. Keep fixtures synthetic, and never commit broker statements, generated reports or copyrighted third-party material such as books.
+
 To add a category, create `skills/<category>/README.md` with a skills table, add the category to the categories table in [`README.md`](README.md), and give it a section in [`SKILLS.md`](SKILLS.md).
 
 Run `scripts/lint.sh` before committing; it fails when a placeholder is left over or a skill is missing from a registry.

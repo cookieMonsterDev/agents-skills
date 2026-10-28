@@ -1,0 +1,18 @@
+{
+  "currency": "USD",
+  "as_of": "2026-03-01",
+  "label": "Synthetic demonstration only",
+  "rationale": "Independent fictional assumptions to demonstrate the calculator; not estimates for DEMO or a real issuer.",
+  "unrestricted_cash": 100,
+  "available_committed_credit": 50,
+  "one_off_obligations": 30,
+  "monthly_cash_burn": 10,
+  "horizon_months": 18,
+  "sources": {
+    "unrestricted_cash": "Synthetic assumption for offline testing, not observed market/company data.",
+    "available_committed_credit": "Synthetic assumption for offline testing, not observed market/company data.",
+    "one_off_obligations": "Synthetic assumption for offline testing, not observed market/company data.",
+    "monthly_cash_burn": "Synthetic assumption for offline testing, not observed market/company data.",
+    "horizon_months": "Synthetic assumption for offline testing, not observed market/company data."
+  }
+}
