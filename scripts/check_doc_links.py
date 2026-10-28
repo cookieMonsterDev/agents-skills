@@ -10,7 +10,7 @@ statuses mean the host refused a scripted request, not that the page is gone.
 
 Usage:
     scripts/check_doc_links.py                        # check every skill
-    scripts/check_doc_links.py docs-skills/redis-docs # check selected paths
+    scripts/check_doc_links.py skills/docs/redis-docs # check selected paths
     scripts/check_doc_links.py --json report.json     # machine-readable output
     scripts/check_doc_links.py --host-delay 2         # slow hosts that answer 429
     scripts/check_doc_links.py --strict               # count blocked links as failures
@@ -35,7 +35,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_ROOTS = ("docs-skills", "architecture-skills")
+DEFAULT_ROOTS = ("skills",)
 
 # Markdown inline links, angle-bracket autolinks and bare URLs all appear in the
 # skills, so match the URL itself and strip trailing punctuation afterwards.
@@ -194,7 +194,7 @@ def attempt_url(opener, url: str, timeout: float) -> tuple[int | None, str, str]
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("paths", nargs="*", default=list(DEFAULT_ROOTS),
-                        help="Markdown files or directories to scan (default: docs-skills architecture-skills)")
+                        help="Markdown files or directories to scan (default: skills)")
     parser.add_argument("--workers", type=int, default=16, help="concurrent requests (default: 16)")
     parser.add_argument("--timeout", type=float, default=25.0, help="per-request timeout in seconds (default: 25)")
     parser.add_argument("--retries", type=int, default=1, help="retries for network-level failures (default: 1)")

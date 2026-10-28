@@ -2,66 +2,29 @@
 
 [Agent Skills](https://skills.sh/) for coding agents. Each skill is a folder with a `SKILL.md` file that teaches the agent how to perform a specific task.
 
-Documentation-grounded skills live under [`docs-skills/`](docs-skills/). Each one teaches the agent how to answer questions using official product or framework documentation.
+## Repository layout
 
-Architecture skills live under [`architecture-skills/`](architecture-skills/). Each one teaches the agent a catalog of design items (patterns, principles, practices) with reference explanations and, where useful, runnable examples.
+```
+agents-skills/
+├── skills/
+│   ├── docs/              # docs-grounded skills, one per product or framework
+│   │   ├── README.md      # category index
+│   │   └── <skill>/
+│   └── architecture/      # catalog skills: patterns, principles, practices
+│       ├── README.md
+│       └── <skill>/
+├── templates/             # starting points for new skills (not installable)
+└── scripts/               # lint, list, link and link-check tooling
+```
 
-## Docs Skills
+Skills are grouped as `skills/<category>/<skill-name>/`. Skill names are unique across categories, so a skill installs under its own name regardless of its category.
 
-| Skill                | Description                                                                                                    |
-| -------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `postgresql-16-docs` | Docs-grounded answers for [PostgreSQL 16](https://www.postgresql.org/docs/16/index.html)                       |
-| `postgresql-17-docs` | Docs-grounded answers for [PostgreSQL 17](https://www.postgresql.org/docs/17/index.html)                       |
-| `postgresql-18-docs` | Docs-grounded answers for [PostgreSQL 18](https://www.postgresql.org/docs/18/index.html)                       |
-| `nestjs-docs`        | Docs-grounded answers for [NestJS](https://docs.nestjs.com/)                                                   |
-| `fastify-docs`       | Docs-grounded answers for [Fastify](https://fastify.dev/docs/latest/)                                          |
-| `expressjs-docs`     | Docs-grounded answers for [Express.js](https://expressjs.com/en/)                                              |
-| `graphql-docs`       | Docs-grounded answers for [GraphQL](https://graphql.org/learn/)                                                |
-| `fastapi-docs`       | Docs-grounded answers for [FastAPI](https://fastapi.tiangolo.com/)                                             |
-| `django-docs`        | Docs-grounded answers for [Django 6.1](https://docs.djangoproject.com/en/6.1/)                                 |
-| `flask-docs`         | Docs-grounded answers for [Flask](https://flask.palletsprojects.com/en/stable/)                                |
-| `phoenix-docs`       | Docs-grounded answers for [Phoenix](https://phoenix.hexdocs.pm/overview.html)                                  |
-| `redis-docs`         | Docs-grounded answers for [Redis](https://redis.io/docs/latest/)                                               |
-| `kafka-docs`         | Docs-grounded answers for [Apache Kafka 4.3](https://kafka.apache.org/43/getting-started/introduction/)        |
-| `aws-cli-docs`       | Docs-grounded answers for [AWS CLI](https://docs.aws.amazon.com/cli/)                                          |
-| `aws-s3-docs`        | Docs-grounded answers for [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/)                  |
-| `aws-eks-docs`       | Docs-grounded answers for [Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/)                      |
-| `aws-ecs-docs`       | Docs-grounded answers for [Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/)           |
-| `aws-lambda-docs`    | Docs-grounded answers for [AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/)                          |
-| `aws-iam-docs`       | Docs-grounded answers for [AWS IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/)                         |
-| `aws-dynamodb-docs`  | Docs-grounded answers for [Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/) |
-| `docker-docs`        | Docs-grounded answers for [Docker](https://docs.docker.com/reference/)                                         |
-| `kubernetes-docs`    | Docs-grounded answers for [Kubernetes](https://kubernetes.io/docs/home/)                                       |
-| `terraform-docs`     | Docs-grounded answers for [Terraform](https://developer.hashicorp.com/terraform/docs)                          |
-| `helm-docs`          | Docs-grounded answers for [Helm](https://helm.sh/docs/)                                                        |
-| `gitlab-ci-docs`     | Docs-grounded answers for [GitLab CI/CD](https://docs.gitlab.com/ci/)                                          |
-| `rabbitmq-docs`      | Docs-grounded answers for [RabbitMQ](https://www.rabbitmq.com/docs)                                            |
-| `opentelemetry-docs` | Docs-grounded answers for [OpenTelemetry](https://opentelemetry.io/docs/)                                      |
-| `bullmq-docs`        | Docs-grounded answers for [BullMQ](https://docs.bullmq.io/)                                                    |
-| `grafana-docs`       | Docs-grounded answers for [Grafana Labs](https://grafana.com/docs/)                                            |
-| `mongodb-docs`       | Docs-grounded answers for [MongoDB](https://www.mongodb.com/docs/)                                             |
-| `mysql-docs`         | Docs-grounded answers for [MySQL 9.7](https://dev.mysql.com/doc/refman/9.7/en/)                                |
-| `elasticsearch-docs` | Docs-grounded answers for [Elasticsearch](https://www.elastic.co/docs)                                         |
-| `opensearch-docs`    | Docs-grounded answers for [OpenSearch](https://docs.opensearch.org/latest/)                                    |
-| `cassandra-docs`     | Docs-grounded answers for [Apache Cassandra](https://cassandra.apache.org/doc/latest/)                         |
-| `scylladb-docs`      | Docs-grounded answers for [ScyllaDB](https://docs.scylladb.com/manual/stable/)                                 |
-| `nginx-docs`         | Docs-grounded answers for [NGINX](https://nginx.org/en/docs/)                                                  |
-| `qdrant-docs`        | Docs-grounded answers for [Qdrant](https://qdrant.tech/documentation/)                                         |
-| `pinecone-docs`      | Docs-grounded answers for [Pinecone](https://docs.pinecone.io/)                                                |
-| `weaviate-docs`      | Docs-grounded answers for [Weaviate](https://docs.weaviate.io/weaviate)                                        |
-| `stripe-docs`        | Docs-grounded answers for [Stripe](https://docs.stripe.com/)                                                   |
-| `git-docs`           | Docs-grounded answers for [Git](https://git-scm.com/doc)                                                       |
-| `firebase-docs`      | Docs-grounded answers for [Firebase](https://firebase.google.com/docs)                                         |
+## Categories
 
-## Architecture Skills
-
-Each skill ships reference explanations per catalog item and runnable examples in the languages or databases listed. Not every architecture skill uses the same language set — include only languages that genuinely support the skill's concepts (see [Choosing languages](templates/architecture-template/SKILL.md#choosing-languages) in the architecture template).
-
-| Skill                                  | Description                                                                                             | Languages                                                         |
-| -------------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `design-patterns`                      | Explains and applies the 23 Gang of Four (GoF) design patterns                                          | Python, C, C++, Java, C#, JavaScript, Rust, Go, PHP, Swift        |
-| `object-oriented-programming-paradigm` | Explains and applies OOP — classes, the four pillars, object relationships, SOLID, and design qualities | Python, C++, Java, C#, JavaScript, PHP, Swift                     |
-| `database-normalization`               | Explains and applies database normal forms (1NF–5NF, BCNF) and strategic denormalization                | PostgreSQL, MySQL, SQLite, MongoDB, Cassandra, ScyllaDB, DynamoDB |
+| Category                                        | Skills                                                                                                                  |
+| ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| [`docs`](skills/docs/README.md)                 | Route a question to the official docs of a product or framework and answer with direct links to the authoritative pages |
+| [`architecture`](skills/architecture/README.md) | Teach a catalog of design items with a reference explanation per item and runnable examples where useful                |
 
 ## Install with Skills CLI
 
@@ -110,69 +73,14 @@ Copy or symlink a skill folder into one of these locations:
 Example:
 
 ```bash
-ln -s ~/Projects/personal/agents-skills/docs-skills/postgresql-18-docs ~/.cursor/skills/postgresql-18-docs
+ln -s ~/Projects/personal/agents-skills/skills/docs/postgresql-18-docs ~/.cursor/skills/postgresql-18-docs
 ```
 
-Each docs skill needs at least:
+To symlink every skill at once into `~/.claude/skills` and `~/.agents/skills`, run `scripts/link-skills.sh`. Each entry points back into the clone, so a `git pull` keeps the installed skills current.
 
-```
-docs-skills/postgresql-18-docs/
-├── SKILL.md
-└── references/
-    └── topic-map.md
-```
+## Contributing
 
-## Keeping docs links fresh
-
-Docs sites reorganize, so every skill's links are machine-checkable:
-
-```bash
-# Check every skill (docs-skills/ and architecture-skills/)
-scripts/check_doc_links.py
-
-# Check one skill while editing it
-scripts/check_doc_links.py docs-skills/redis-docs
-
-# Slow down a host that answers 429, and keep a machine-readable report
-scripts/check_doc_links.py --host-delay 2 --json /tmp/links.json
-```
-
-The script exits non-zero when a link is broken, so it works as a CI gate. Links that
-answer 401/403/429 are listed separately as inconclusive rather than broken: those
-statuses mean the host refused a scripted request. `dev.mysql.com` and `docs.gitlab.com`
-block the checker this way, so their links need a browser to confirm. Pass `--strict`
-to count them as failures anyway.
-
-When a link is genuinely gone, fix the entry in the skill's `references/topic-map.md`
-and, if the docs site moved a whole section, update the "Search official docs first"
-guidance in its `SKILL.md` too.
-
-## Authoring new skills
-
-Skill templates live under [`templates/`](templates/):
-
-| Template                | Use for                                                                                                                                        |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `docs-template`         | Documentation-grounded skills that route to official product docs                                                                              |
-| `architecture-template` | Catalog-style skills that teach a set of design items (patterns, principles, practices) with reference explanations and optional code examples |
-
-To create a new docs skill:
-
-```bash
-cp -R templates/docs-template docs-skills/my-product-docs
-```
-
-Then replace the `{placeholder}` values in `SKILL.md` and `references/topic-map.md`, and add the skill to the table above.
-
-To create a new architecture skill:
-
-```bash
-cp -R templates/architecture-template architecture-skills/my-catalog-skill
-```
-
-Then replace the `{placeholder}` values in `SKILL.md`, duplicate `references/example-item.md` (and its matching `examples/example-item/` folder, if used) per catalog item, and add the skill to the table under "Architecture Skills" above.
-
-**Language examples:** add a file only for languages that support the skill's concepts. OOP skills need first-class classes (Python, C++, Java, C#, JavaScript, PHP, Swift — not C, Go, or Rust). Design-pattern skills may also include C, Go, and Rust where patterns are idiomatically emulated. Omit a language per catalog item when the concept is built into the language or has no honest mapping. See the [Choosing languages](templates/architecture-template/SKILL.md#choosing-languages) section in the architecture template.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for authoring new skills, the lint and link-check scripts, and commit conventions. [SKILLS.md](SKILLS.md) lists every skill in the repository.
 
 ## How it works
 
