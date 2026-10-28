@@ -73,3 +73,11 @@ Research companies and portfolios from official filings and broker statements, w
 | Financial Reports Scraper | [`financial-reports-scraper`](skills/finance/financial-reports-scraper/SKILL.md)      |
 | Fundamental Analysis      | [`fundamental-analysis`](skills/finance/fundamental-analysis/SKILL.md)                |
 | Portfolio Analysis        | [`portfolio-analysis`](skills/finance/portfolio-analysis/SKILL.md)                    |
+
+## Compliance
+
+Review code, data flows and documents against a regulation, with article-cited findings, evidence and fixes. Not legal advice. Category index: [`skills/compliance/README.md`](skills/compliance/README.md).
+
+| Topic           | Skill                                                           |
+| --------------- | --------------------------------------------------------------- |
+| GDPR Compliance | [`gdpr-compliance`](skills/compliance/gdpr-compliance/SKILL.md) |

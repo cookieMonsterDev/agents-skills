@@ -15,6 +15,8 @@ You are an AI agent with access to this repository. Use the contents of this rep
    - _Example:_ "Refactor the GitHub CI/CD pipeline using best practices from official documentation."
 4. **Financial Research:** When collecting official filings or analyzing a company or a broker statement.
    - _Example:_ "Review my IBKR statement and suggest how to rebalance."
+5. **Compliance Review:** When checking code, a system design or a document against a regulation.
+   - _Example:_ "Check this signup flow and privacy notice for GDPR compliance."
 
 ## Usage Protocol
 

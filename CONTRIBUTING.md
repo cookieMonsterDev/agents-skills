@@ -5,7 +5,7 @@
 - Put each skill in `skills/<category>/<skill-name>/`, starting from a [template](templates/). Skill names stay unique across categories.
 - List a new skill in its category README (`skills/<category>/README.md`) and in [`SKILLS.md`](SKILLS.md).
 - Run `scripts/lint.sh` before committing. It checks skill layout, frontmatter, placeholders, registry listings and relative links.
-- Run `scripts/check_doc_links.py` before committing docs-skill link changes. It reports broken links and lists bot-blocked hosts (`dev.mysql.com`, `docs.gitlab.com`) separately as inconclusive.
+- Run `scripts/check_doc_links.py` before committing link changes in docs or compliance skills. It reports broken links and lists bot-blocked hosts (`dev.mysql.com`, `docs.gitlab.com`) separately as inconclusive.
 
 ## Authoring new skills
 
@@ -33,6 +33,8 @@ cp -R templates/architecture-template skills/architecture/my-catalog-skill
 Then replace the `{placeholder}` values in `SKILL.md`, duplicate `references/example-item.md` (and its matching `examples/example-item/` folder, if used) per catalog item, and add the skill to [`skills/architecture/README.md`](skills/architecture/README.md) and the skills map in [`SKILLS.md`](SKILLS.md).
 
 Finance skills have no template: they are workflow skills with Python helpers, `scripts/`, `tests/` and synthetic fixtures. When changing one, run its test command (in the Maintenance section of its `SKILL.md`) in addition to `scripts/lint.sh`. Keep fixtures synthetic, and never commit broker statements, generated reports or copyrighted third-party material such as books.
+
+Compliance skills have no template either: they are review workflows with reference checklists that cite the official text of the regulation (article, recital or clause) and link its authoritative source. Examples use synthetic data only.
 
 To add a category, create `skills/<category>/README.md` with a skills table, add the category to the categories table in [`README.md`](README.md), and give it a section in [`SKILLS.md`](SKILLS.md).
 
