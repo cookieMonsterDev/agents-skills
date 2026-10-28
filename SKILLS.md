@@ -78,6 +78,22 @@ Research companies and portfolios from official filings and broker statements, w
 
 Review code, data flows and documents against a regulation, with article-cited findings, evidence and fixes. Not legal advice. Category index: [`skills/compliance/README.md`](skills/compliance/README.md).
 
-| Topic           | Skill                                                           |
-| --------------- | --------------------------------------------------------------- |
-| GDPR Compliance | [`gdpr-compliance`](skills/compliance/gdpr-compliance/SKILL.md) |
+| Topic                             | Skill                                                                                   |
+| --------------------------------- | --------------------------------------------------------------------------------------- |
+| GDPR Compliance                   | [`gdpr-compliance`](skills/compliance/gdpr-compliance/SKILL.md)                         |
+| UK GDPR Compliance                | [`uk-gdpr-compliance`](skills/compliance/uk-gdpr-compliance/SKILL.md)                   |
+| CCPA / CPRA Compliance            | [`ccpa-cpra-compliance`](skills/compliance/ccpa-cpra-compliance/SKILL.md)               |
+| US State Privacy Compliance       | [`us-state-privacy-compliance`](skills/compliance/us-state-privacy-compliance/SKILL.md) |
+| LGPD Compliance                   | [`lgpd-compliance`](skills/compliance/lgpd-compliance/SKILL.md)                         |
+| PIPEDA & Law 25 Compliance        | [`pipeda-law25-compliance`](skills/compliance/pipeda-law25-compliance/SKILL.md)         |
+| DPDP Act Compliance               | [`dpdp-compliance`](skills/compliance/dpdp-compliance/SKILL.md)                         |
+| PIPL & CSL Compliance             | [`pipl-csl-compliance`](skills/compliance/pipl-csl-compliance/SKILL.md)                 |
+| COPPA Compliance                  | [`coppa-compliance`](skills/compliance/coppa-compliance/SKILL.md)                       |
+| Age-Appropriate Design Compliance | [`aadc-compliance`](skills/compliance/aadc-compliance/SKILL.md)                         |
+| HIPAA / HDS Compliance            | [`hipaa-hds-compliance`](skills/compliance/hipaa-hds-compliance/SKILL.md)               |
+| PCI DSS Compliance                | [`pci-dss-compliance`](skills/compliance/pci-dss-compliance/SKILL.md)                   |
+| PSD2 / SCA Compliance             | [`psd2-sca-compliance`](skills/compliance/psd2-sca-compliance/SKILL.md)                 |
+| ePrivacy Compliance               | [`eprivacy-compliance`](skills/compliance/eprivacy-compliance/SKILL.md)                 |
+| EU DSA Compliance                 | [`eu-dsa-compliance`](skills/compliance/eu-dsa-compliance/SKILL.md)                     |
+| EU AI Act Compliance              | [`eu-ai-act-compliance`](skills/compliance/eu-ai-act-compliance/SKILL.md)               |
+| App Store Compliance              | [`app-store-compliance`](skills/compliance/app-store-compliance/SKILL.md)               |
