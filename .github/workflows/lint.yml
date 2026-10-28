@@ -1,0 +1,16 @@
+name: Lint
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # ubuntu-latest ships ShellCheck, so scripts/lint.sh runs it too.
+      - run: scripts/lint.sh
