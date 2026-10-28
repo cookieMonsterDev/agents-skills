@@ -68,11 +68,11 @@ Teach a catalog of design items (patterns, principles, practices) with reference
 
 Research companies and portfolios from official filings and broker statements, with offline helpers and cited Markdown reports. Install the three together; they depend on each other. Category index: [`skills/finance/README.md`](skills/finance/README.md).
 
-| Topic                     | Skill                                                                                 |
-| ------------------------- | ------------------------------------------------------------------------------------- |
-| Financial Reports Scraper | [`financial-reports-scraper`](skills/finance/financial-reports-scraper/SKILL.md)      |
-| Fundamental Analysis      | [`fundamental-analysis`](skills/finance/fundamental-analysis/SKILL.md)                |
-| Portfolio Analysis        | [`portfolio-analysis`](skills/finance/portfolio-analysis/SKILL.md)                    |
+| Topic                     | Skill                                                                            |
+| ------------------------- | -------------------------------------------------------------------------------- |
+| Financial Reports Scraper | [`financial-reports-scraper`](skills/finance/financial-reports-scraper/SKILL.md) |
+| Fundamental Analysis      | [`fundamental-analysis`](skills/finance/fundamental-analysis/SKILL.md)           |
+| Portfolio Analysis        | [`portfolio-analysis`](skills/finance/portfolio-analysis/SKILL.md)               |
 
 ## Compliance
 
@@ -80,6 +80,7 @@ Review code, data flows and documents against a regulation, with article-cited f
 
 | Topic                             | Skill                                                                                   |
 | --------------------------------- | --------------------------------------------------------------------------------------- |
+| World-wide Compliance             | [`world-wide-compliance`](skills/compliance/world-wide-compliance/SKILL.md)             |
 | GDPR Compliance                   | [`gdpr-compliance`](skills/compliance/gdpr-compliance/SKILL.md)                         |
 | UK GDPR Compliance                | [`uk-gdpr-compliance`](skills/compliance/uk-gdpr-compliance/SKILL.md)                   |
 | CCPA / CPRA Compliance            | [`ccpa-cpra-compliance`](skills/compliance/ccpa-cpra-compliance/SKILL.md)               |
