@@ -20,7 +20,7 @@ Establish:
 - **Territorial scope:** EU/EEA establishment, or offering goods or services to, or monitoring, people in the EU (Art. 3). When the GDPR does not apply, report that and stop.
 - **Evidence gaps:** purposes, lawful bases, retention decisions, vendor contracts and hosting regions the artifact cannot show. Ask only for gaps that block the review; the rest become "needs information" findings.
 
-Done when artifact, roles, scope and evidence gaps are written down. Flag UK GDPR, Swiss FADP, member-state law (employment, age of consent, health data) or the ePrivacy Directive when they also apply, for separate review.
+Done when artifact, roles, scope and evidence gaps are written down. Flag other regimes that also apply for separate review: UK GDPR (`uk-gdpr-compliance`), the ePrivacy Directive (`eprivacy-compliance`), children's design codes (`aadc-compliance`), AI systems (`eu-ai-act-compliance`), Swiss FADP, and member-state law (employment, age of consent, health data).
 
 ## 2. Build the inventory
 
