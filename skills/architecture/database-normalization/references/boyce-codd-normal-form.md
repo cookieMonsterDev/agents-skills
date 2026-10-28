@@ -39,7 +39,7 @@ Require that for every non-trivial functional dependency `X → Y` in the table,
 - **PostgreSQL:** enforce `instructor → subject` on the split table with a `UNIQUE (instructor)` constraint (or make `instructor` the primary key of `instructor_subject` outright) — that's what turns the informal rule "each instructor teaches one subject" into something the database rejects violations of.
 - **MySQL / SQLite:** identical approach — `PRIMARY KEY (instructor)` on the split table. MySQL's foreign keys require InnoDB; SQLite requires `PRAGMA foreign_keys = ON`.
 - **MongoDB:** this shape usually surfaces as "should `subject` be embedded on the enrollment document or looked up from an `instructors` collection." Because the rule is about the _instructor_, not the enrollment, model it as a field on the instructor document and reference the instructor from the enrollment — embedding `subject` on every enrollment reintroduces the exact redundancy BCNF removes, with the same update-anomaly cost.
-- **Cassandra / ScyllaDB:** query-driven tables sidestep the BCNF question entirely by asking "what do I query by" instead of "what determines what." An `instructor_subject` table keyed by `instructor` is the natural way to answer "what does this instructor teach," and a separate `enrollments_by_student` table duplicates `subject` for read speed — consistent with the default of denormalizing on purpose (see [[denormalization]]) rather than avoiding the redundancy BCNF targets.
+- **Cassandra / ScyllaDB:** query-driven tables sidestep the BCNF question entirely by asking "what do I query by" instead of "what determines what." An `instructor_subject` table keyed by `instructor` is the natural way to answer "what does this instructor teach," and a separate `enrollments_by_student` table duplicates `subject` for read speed — consistent with the default of denormalizing on purpose (see [denormalization](denormalization.md)) rather than avoiding the redundancy BCNF targets.
 - **DynamoDB:** model the `instructor → subject` fact as its own item (or as an attribute on an `INSTRUCTOR#<id>` item), and treat any copy of `subject` on enrollment items as an explicit denormalization requiring an application-level or DynamoDB Streams-driven fan-out update when an instructor's subject changes — DynamoDB has no declarative way to express "this attribute is determined by that other item," so the constraint BCNF describes has to be enforced in application code.
 
 ## Examples
@@ -54,5 +54,5 @@ Require that for every non-trivial functional dependency `X → Y` in the table,
 
 ## Related Forms
 
-- **Third Normal Form ([[third-normal-form]])** is what BCNF strengthens; every BCNF table is in 3NF, but not every 3NF table is in BCNF.
-- **Fourth Normal Form ([[fourth-normal-form]])** targets a different kind of dependency (multivalued, not functional) that BCNF doesn't address at all.
+- **[Third Normal Form](third-normal-form.md)** is what BCNF strengthens; every BCNF table is in 3NF, but not every 3NF table is in BCNF.
+- **[Fourth Normal Form](fourth-normal-form.md)** targets a different kind of dependency (multivalued, not functional) that BCNF doesn't address at all.

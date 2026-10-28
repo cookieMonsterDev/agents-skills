@@ -28,7 +28,7 @@ Require every column to hold a single, atomic value from its domain, and require
 ## When Not to Use
 
 - Never skip 1NF in an OLTP relational schema; every anomaly the higher forms fix presupposes atomic values and a real key.
-- A single JSON/array column can be the _right_ denormalized choice for a value that is always read and written as a whole and never queried by its individual elements — that is a deliberate exception made by name (see [[denormalization]]), not an accidental 1NF violation.
+- A single JSON/array column can be the _right_ denormalized choice for a value that is always read and written as a whole and never queried by its individual elements — that is a deliberate exception made by name (see [denormalization](denormalization.md)), not an accidental 1NF violation.
 
 ## Trade-offs
 
@@ -57,5 +57,5 @@ Require every column to hold a single, atomic value from its domain, and require
 
 ## Related Forms
 
-- **Second Normal Form ([[second-normal-form]])** assumes 1NF already holds and additionally requires non-key attributes to depend on the _whole_ key, not part of it.
-- **Denormalization ([[denormalization]])** is the informed, named exception to storing atomic values in separate rows — not the same as an accidental 1NF violation, which happens without anyone deciding it should.
+- **[Second Normal Form](second-normal-form.md)** assumes 1NF already holds and additionally requires non-key attributes to depend on the _whole_ key, not part of it.
+- **[Denormalization](denormalization.md)** is the informed, named exception to storing atomic values in separate rows — not the same as an accidental 1NF violation, which happens without anyone deciding it should.

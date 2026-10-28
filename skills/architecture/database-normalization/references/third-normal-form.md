@@ -26,7 +26,7 @@ Require every non-key attribute to depend on the key, the whole key, and nothing
 ## When Not to Use
 
 - If the "dependent" attribute is actually a fact about the row itself, not a copy of a fact from elsewhere, it's not transitive — e.g., `shipped_at` on `orders` depends on the order, not on the customer, even though shipping speed correlates with the customer's region.
-- A deliberate, named denormalization (a reporting table joining orders and customers ahead of time for a read-heavy dashboard) is not a 3NF violation in the OLTP schema — it's a separate derived structure; see [[denormalization]].
+- A deliberate, named denormalization (a reporting table joining orders and customers ahead of time for a read-heavy dashboard) is not a 3NF violation in the OLTP schema — it's a separate derived structure; see [denormalization](denormalization.md).
 
 ## Trade-offs
 
@@ -38,9 +38,9 @@ Require every non-key attribute to depend on the key, the whole key, and nothing
 - **PostgreSQL:** `CREATE TABLE customers (...)` plus a `FOREIGN KEY (customer_id) REFERENCES customers(customer_id)` on `orders` is the direct fix. A materialized view (`CREATE MATERIALIZED VIEW`) is PostgreSQL's built-in way to get the read-side benefit of the pre-3NF flat table back, refreshed on a schedule, without keeping the base tables denormalized.
 - **MySQL:** same fix, same `FOREIGN KEY` mechanism (InnoDB only — `MyISAM` does not enforce foreign keys). MySQL has no built-in materialized view; the common substitute is a summary table maintained by a trigger or a scheduled `INSERT ... ON DUPLICATE KEY UPDATE ... SELECT`.
 - **SQLite:** same `FOREIGN KEY` split as PostgreSQL/MySQL with `PRAGMA foreign_keys = ON`. No materialized view — use a summary table kept in sync by triggers or application code for read-heavy denormalized paths.
-- **MongoDB:** this is the canonical embedding-versus-referencing decision. Embedding customer name/city directly in every order document reintroduces the transitive-dependency anomaly (the customer's data is now copied into every one of their orders and must be kept in sync on every change). MongoDB's guidance is to _reference_ the customer (store `customer_id`, `$lookup` when needed) when customer data changes independently and is shared across many orders, and to embed only a small, intentionally-frozen subset (the Extended Reference Pattern, same as in [[second-normal-form]]) for fields that should reflect the value _at order time_ rather than the live value.
+- **MongoDB:** this is the canonical embedding-versus-referencing decision. Embedding customer name/city directly in every order document reintroduces the transitive-dependency anomaly (the customer's data is now copied into every one of their orders and must be kept in sync on every change). MongoDB's guidance is to _reference_ the customer (store `customer_id`, `$lookup` when needed) when customer data changes independently and is shared across many orders, and to embed only a small, intentionally-frozen subset (the Extended Reference Pattern, same as in [second-normal-form](second-normal-form.md)) for fields that should reflect the value _at order time_ rather than the live value.
 - **Cassandra / ScyllaDB:** because a CQL query can't join `orders` to `customers`, any table built to answer "show me this order with the customer's name" must duplicate the customer's name into that table on write. This isn't a mistake, it's the model — but it means an update to a customer's name requires writing to every denormalized table that copied it (materialized views automate exactly this fan-out for a single source table, with operational caveats, so many teams maintain the fan-out in application code instead).
-- **DynamoDB:** the transitive-dependency shape maps directly onto the single-table design decision of whether to store customer attributes on the order item. AWS's own guidance is to denormalize the frequently-read, slowly-changing customer fields (name, tier) onto the order item to avoid a second `GetItem` round trip, and to accept that a customer name change requires updating (or accepting staleness in) every order item that copied it — see [[denormalization]] for the general trade this reflects.
+- **DynamoDB:** the transitive-dependency shape maps directly onto the single-table design decision of whether to store customer attributes on the order item. AWS's own guidance is to denormalize the frequently-read, slowly-changing customer fields (name, tier) onto the order item to avoid a second `GetItem` round trip, and to accept that a customer name change requires updating (or accepting staleness in) every order item that copied it — see [denormalization](denormalization.md) for the general trade this reflects.
 
 ## Examples
 
@@ -54,5 +54,5 @@ Require every non-key attribute to depend on the key, the whole key, and nothing
 
 ## Related Forms
 
-- **Second Normal Form ([[second-normal-form]])** eliminates dependency on _part_ of a composite key; 3NF eliminates dependency on _another non-key attribute_ — the two are the composite-key and single-key versions of the same underlying problem.
-- **Boyce-Codd Normal Form ([[boyce-codd-normal-form]])** is a stricter version of 3NF that closes a gap 3NF leaves open when a table has more than one candidate key.
+- **[Second Normal Form](second-normal-form.md)** eliminates dependency on _part_ of a composite key; 3NF eliminates dependency on _another non-key attribute_ — the two are the composite-key and single-key versions of the same underlying problem.
+- **[Boyce-Codd Normal Form](boyce-codd-normal-form.md)** is a stricter version of 3NF that closes a gap 3NF leaves open when a table has more than one candidate key.

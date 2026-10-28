@@ -9,7 +9,7 @@ Require that a table have no join dependency that isn't implied by its candidate
 ## Problem
 
 - The classic example (C. J. Date): `agent_company_product(agent, company, product)` records that agent A sells product P made by company C — but only under a three-way business rule: _if_ agent A represents company C, _and_ company C makes product P, _and_ agent A sells product P, _then_ the combination (A, C, P) is valid.
-- This looks like it might split into two tables the way [[fourth-normal-form]] would suggest — but a two-way split loses information here. Splitting into `agent_company(agent, company)` and `agent_product(agent, product)` and rejoining them produces combinations that were never actually true: if agent A represents companies C1 and C2, and sells products P1 (from C1) and P2 (from C2), rejoining the two binary tables would also assert that A sells P1-from-C2, which was never a fact.
+- This looks like it might split into two tables the way [fourth-normal-form](fourth-normal-form.md) would suggest — but a two-way split loses information here. Splitting into `agent_company(agent, company)` and `agent_product(agent, product)` and rejoining them produces combinations that were never actually true: if agent A represents companies C1 and C2, and sells products P1 (from C1) and P2 (from C2), rejoining the two binary tables would also assert that A sells P1-from-C2, which was never a fact.
 - This is a genuine **three-way join dependency**: the table can only be losslessly decomposed into _three_ pairwise tables (`agent_company`, `company_product`, `agent_product`) together — no two of the three suffice, and all three must be rejoined to reconstruct exactly the original valid combinations, no more and no less.
 - The anomaly this prevents: without the three-way split, adding a new company-product relationship (company C now makes product P) that hasn't yet been sold by any agent has nowhere to go in the single flat table, and removing the one row recording an agent-company-product fact can silently destroy the independently true company-product or agent-company facts it happened to be the last row expressing.
 
@@ -52,5 +52,5 @@ Require that a table have no join dependency that isn't implied by its candidate
 
 ## Related Forms
 
-- **Fourth Normal Form ([[fourth-normal-form]])** handles independent multivalued facts that split cleanly into pairs; 5NF handles the case where three (or more) facts are genuinely interdependent and no pairwise split suffices alone.
-- **Denormalization ([[denormalization]])** is often the practical answer once a 5NF-shaped relationship is identified but the three-way join is too costly for a hot query path — the pairwise tables stay as the source of truth, and a denormalized read table serves the hot path.
+- **[Fourth Normal Form](fourth-normal-form.md)** handles independent multivalued facts that split cleanly into pairs; 5NF handles the case where three (or more) facts are genuinely interdependent and no pairwise split suffices alone.
+- **[Denormalization](denormalization.md)** is often the practical answer once a 5NF-shaped relationship is identified but the three-way join is too costly for a hot query path — the pairwise tables stay as the source of truth, and a denormalized read table serves the hot path.

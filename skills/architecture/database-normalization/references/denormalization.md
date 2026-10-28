@@ -22,7 +22,7 @@ Deliberately reintroduce redundancy that normalization removed, in order to trad
 
 - A specific, measured read path is too slow because of joins or cross-partition fan-out, and the alternative (better indexing, a smaller join, caching) doesn't close the gap.
 - The database's native query model has no efficient multi-entity join (Cassandra, DynamoDB) — here, denormalizing per access pattern isn't optional, it's how the database is meant to be used.
-- A value should be captured as a historical snapshot rather than a live reference (`price_at_purchase` on an order line) — this looks like denormalization but is really a distinct fact that happens to start out equal to another fact; see the note on this in [[second-normal-form]].
+- A value should be captured as a historical snapshot rather than a live reference (`price_at_purchase` on an order line) — this looks like denormalization but is really a distinct fact that happens to start out equal to another fact; see the note on this in [second-normal-form](second-normal-form.md).
 
 ## When Not to Use
 
@@ -55,7 +55,7 @@ Deliberately reintroduce redundancy that normalization removed, in order to trad
 - [examples/denormalization/scylladb.cql](../examples/denormalization/scylladb.cql)
 - [examples/denormalization/dynamodb.md](../examples/denormalization/dynamodb.md)
 
-## Related
+## Related Forms
 
-- **Third Normal Form ([[third-normal-form]])** and **Fifth Normal Form ([[fifth-normal-form]])** describe the redundancy denormalization reintroduces on purpose — understanding the anomaly a form prevents is what lets you scope a denormalization to _only_ the read path that needs it, instead of losing the anomaly's protection everywhere.
-- **First Normal Form ([[first-normal-form]])** — a deliberately-chosen array/JSON column for bag-of-values data is a narrow, single-column instance of the same trade discussed here.
+- **[Third Normal Form](third-normal-form.md)** and **[Fifth Normal Form](fifth-normal-form.md)** describe the redundancy denormalization reintroduces on purpose — understanding the anomaly a form prevents is what lets you scope a denormalization to _only_ the read path that needs it, instead of losing the anomaly's protection everywhere.
+- **[First Normal Form](first-normal-form.md)** — a deliberately-chosen array/JSON column for bag-of-values data is a narrow, single-column instance of the same trade discussed here.

@@ -57,7 +57,7 @@ INSERT INTO agent_product  VALUES ('A1', 'P1'), ('A1', 'P2');
 -- Reconstruct the ternary fact: only combinations consistent with all three
 -- binary tables survive this three-way join -- exactly the valid set, no more.
 -- If this join is on a hot path, a maintained summary table is the MySQL
--- substitute for a materialized view (see [[denormalization]]).
+-- substitute for a materialized view (see references/denormalization.md).
 SELECT ac.agent, ac.company, cp.product
 FROM agent_company ac
 JOIN company_product cp ON cp.company = ac.company
