@@ -1,0 +1,43 @@
+name: Skill improvement
+description: A change to an existing skill, grounded in a failure you saw. One change per issue.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe something that went wrong in a real session, not a hypothetical improvement. For a skill that does not exist yet, use **New skill request** instead.
+  - type: input
+    id: skill
+    attributes:
+      label: Skill
+      description: Which existing skill this changes.
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: What went wrong
+      description: What you ran, what the skill did, and why that was a problem. Include harness and model.
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: Proposed change
+      description: The smallest change that fixes it. Describe it; don't paste a rewritten `SKILL.md`.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Official sources
+      description: Links to the official documentation, filing or regulation text that backs the change, if any.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: This issue is about one change.
+          required: true
+        - label: I searched open and closed issues for a duplicate.
+          required: true

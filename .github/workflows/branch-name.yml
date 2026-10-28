@@ -1,0 +1,24 @@
+name: Branch name
+
+on:
+  pull_request:
+
+permissions: {}
+
+jobs:
+  branch-name:
+    runs-on: ubuntu-latest
+    steps:
+      # Conventional Branch: <type>/<lowercase-hyphenated-description>;
+      # release branches may carry a dotted version, e.g. release/v1.2.0.
+      - env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          if [[ "$BRANCH" == dependabot/* ]] \
+            || [[ "$BRANCH" =~ ^(feat|feature|fix|bugfix|hotfix|chore|ai)/[a-z0-9]+(-[a-z0-9]+)*$ ]] \
+            || [[ "$BRANCH" =~ ^release/v?[0-9]+(\.[0-9]+)*(-[a-z0-9]+)*$ ]]; then
+            echo "Branch name OK: $BRANCH"
+          else
+            echo "::error::Branch '$BRANCH' must match <type>/<description>, e.g. feat/docs-add-mariadb-docs. Types: feat, feature, fix, bugfix, hotfix, release, chore, ai."
+            exit 1
+          fi

@@ -1,0 +1,55 @@
+name: Bug
+description: A skill did the wrong thing in a real session. One bug per issue.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Keep it short and put the repro first. If an agent wrote this for you, cut it down to the repro before you post.
+
+        A broken documentation link is a bug too: name the skill and paste the link.
+  - type: input
+    id: skill
+    attributes:
+      label: Skill
+      description: Which skill, as listed in [`SKILLS.md`](https://github.com/cookieMonsterDev/agents-skills/blob/master/SKILLS.md), e.g. `postgresql-17-docs`, `gdpr-compliance`.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Commit
+      description: The commit SHA you installed or linked from. Many bugs are already fixed on `master`.
+      placeholder: 46e1dcc
+    validations:
+      required: true
+  - type: input
+    id: harness
+    attributes:
+      label: Harness and model
+      description: e.g. Claude Code 2.3.1 with Opus, Codex CLI 0.40, Cursor.
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: The smallest steps that show the bug, and what the skill did. Paste the relevant part of the session.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: What the skill should have done instead, and which line of the `SKILL.md` or reference (if any) says so.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: This issue is about one problem.
+          required: true
+        - label: I searched open and closed issues for a duplicate.
+          required: true

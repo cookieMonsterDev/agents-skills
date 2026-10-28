@@ -1,0 +1,51 @@
+name: New skill request
+description: Propose a skill this repository doesn't have yet. One skill per issue.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Check [`SKILLS.md`](https://github.com/cookieMonsterDev/agents-skills/blob/master/SKILLS.md) first: if a skill already covers the topic, file a **Skill improvement** instead. Every skill is grounded in official sources, so a request without one is unlikely to be picked up.
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Docs
+        - Architecture
+        - Finance
+        - Compliance
+        - New category
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: Proposed skill name
+      description: Lowercase and hyphenated, following the category's naming, e.g. `mariadb-docs`, `sox-compliance`.
+    validations:
+      required: true
+  - type: textarea
+    id: use-case
+    attributes:
+      label: When an agent should use it
+      description: The requests that should trigger the skill, and what an agent gets wrong today without it.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Official sources
+      description: The authoritative documentation, regulation text or filings the skill should cite, with versions where they matter.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: No skill in `SKILLS.md` covers this topic.
+          required: true
+        - label: I searched open and closed issues for a duplicate.
+          required: true
+        - label: I'm willing to open a pull request for it.

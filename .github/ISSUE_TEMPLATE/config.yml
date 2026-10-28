@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Which skills exist?
+    url: https://github.com/cookieMonsterDev/agents-skills/blob/master/SKILLS.md
+    about: Check the skills map before filing. A topic may already be covered.
+  - name: How do I add or change a skill myself?
+    url: https://github.com/cookieMonsterDev/agents-skills/blob/master/CONTRIBUTING.md
+    about: Layout, templates and the checks every pull request must pass.
