@@ -1,6 +1,6 @@
 # Evidence bundle and handoff
 
-The canonical output name remains `{as_of}-report-{window_start}-{window_end}.csv`. The CSV columns are unchanged. Each run also writes `{same_stem}.manifest.json`. Optional SEC snapshots are in `{same_stem}-documents/`.
+Each run writes the CSV named in [csv-schema.md](csv-schema.md), a `{same_stem}.manifest.json` beside it, and optional SEC snapshots in `{same_stem}-documents/`.
 
 The writer refuses to replace any existing bundle path before network collection starts. Pick a new `--out-dir` when retrying or changing the entity set for the same date window. Exact duplicate rows collapse, while different values or provenance remain distinct. A partially written bundle after a filesystem failure should be inspected and retried into a new directory.
 

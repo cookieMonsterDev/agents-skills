@@ -2,21 +2,15 @@
 
 ## Acquisition
 
-The required sibling is `../financial-reports-scraper/` relative to this skill root. Read its SKILL.md before use; its `scripts/financial_reports_scraper/schema.py` owns CSV columns. `analyze_report.py` imports that schema locally, validates all required headers, and leaves the input unchanged. Extra columns are allowed. It calculates one ticker at a time; for a portfolio enumerate stocks and run separately, retaining identifiers. Conflicting CIKs or ISINs under one ticker require an identifier-filtered copy with provenance.
+The required sibling is `../financial-reports-scraper/` relative to this skill root. Acquire with the command in its SKILL.md step 2 (five years, `--all-facts`, `--download-filings`), using the user's cutoff; that step also covers its environment and SEC contact. Its `scripts/financial_reports_scraper/schema.py` owns the CSV columns, and its [evidence-bundle.md](../../financial-reports-scraper/references/evidence-bundle.md) describes the manifest and snapshots.
 
-For a five-year starting window, run from the user's working directory, where `<scraper-dir>` is the scraper's folder (dates are illustrative; use the user's cutoff):
+`analyze_report.py` imports that schema locally, validates all required headers, and leaves the input unchanged. Extra columns are allowed. It calculates one ticker at a time; for a portfolio enumerate stocks and run separately, retaining identifiers. Conflicting CIKs or ISINs under one ticker require an identifier-filtered copy with provenance.
 
-```bash
-python3 <scraper-dir>/scripts/run_report.py --tickers ACME \
-  --history-years 5 --as-of 2026-09-15 --all-facts --download-filings --max-filings 32 \
-  --out-dir /absolute/path/to/new-run
-```
+Fetch history long enough for the fiscal periods the analysis needs, and check the returned coverage: a window guarantees neither five complete annual periods nor a full archive. The analyzer independently rechecks `filed_at` and `period_end` against the cutoff, including in older CSVs.
 
-The scraper requires its own installed requirements and a real `SEC_USER_AGENT` contact. Reuse configured identity; ask for the contact when missing. Fetch acquisition history long enough for the actual needed fiscal periods, checking returned coverage. A window is neither a guarantee of five complete annual periods nor a full archive. The scraper follows historical submissions files and applies an information cutoff, then selects fallback facts by economic period and duration class. The analyzer independently rechecks `filed_at` and `period_end`, including for legacy CSVs generated before these protections.
+Companyfacts lacks custom tags and dimensional notes even with `--all-facts`, and snapshots are raw sources, not normalized prose or segment tables. Follow material exhibits or official filing links as needed. Keep manually extracted evidence in a separate source ledger with section/page, date, unit, scope and calculation bridge, leaving the CSV untouched and custom tags distinct from standard ones.
 
-Core mode now includes more debt/lease components, goodwill, inventory, receivables and stock compensation. `--all-facts` adds other supported standard concepts, but Companyfacts still lacks custom tags and dimensional notes. Optional primary filing snapshots provide the source HTML/PDF and readable HTML text for MD&A and note review; they do not automatically normalize prose or segment tables. Follow missing material exhibits or official filing links as necessary. Keep manually extracted evidence in a separate source ledger with section/page, date, unit, scope and calculation bridge; do not silently rewrite the CSV or treat custom tags as standard tags.
-
-Read the matching `.manifest.json` for per-entity coverage, download status and source-document locators. The analyzer verifies its CSV hash and carries its location and snapshot list into the workpaper JSON. Mismatching bundles are rejected. `document_directory` is relative to the CSV parent; each raw/text filename is relative to that directory. Check document hashes before citing local copies. A partial bundle or snapshot limit is a visible evidence gap, even if some financial metrics calculate successfully. CSV-only legacy inputs remain supported. The scraper refuses existing output bundles; use a new `--out-dir` when retrying.
+When a `.manifest.json` sits beside the CSV, the analyzer verifies the CSV hash, rejects a mismatching bundle, and carries the manifest location and snapshot list into the workpaper JSON. Check document hashes before citing local copies. A partial bundle or snapshot limit is a visible evidence gap, even if some metrics calculate successfully. CSV-only inputs remain supported.
 
 ## Intake outcomes
 

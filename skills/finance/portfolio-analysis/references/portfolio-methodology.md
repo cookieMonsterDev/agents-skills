@@ -5,14 +5,13 @@
 Keep statement date, research cutoff, quote timestamps and FX dates separate.
 Account NAV is not the same as invested securities value. Review cash, accrued
 interest/dividends, margin debt and other liabilities before explaining residuals.
-If the export is incomplete, do not renormalize the visible subset to 100% and
-call it the whole portfolio. A subset allocation must name its denominator.
+If the export is incomplete, report the visible subset against its own named
+denominator rather than renormalizing it to 100% of the portfolio.
 Analyze different account snapshots separately until their dates/currencies align.
 
 Position weights use market value / validated NAV. Report signed and gross
 exposures for shorts/leverage; market value alone does not measure derivative
-exposure. Do not report HHI/effective holdings as meaningful diversification for
-leveraged or incomplete books. For a fully valued long-only book, top issuer
+exposure. Reserve HHI/effective holdings for fully valued, unleveraged books. For a fully valued long-only book, top issuer
 weights and an optional sum-of-squared-weights concentration measure are useful,
 but broad funds require look-through interpretation.
 
@@ -37,7 +36,7 @@ domicile, listing venue and underlying geography. For bond funds discuss duratio
 credit, issuer concentration and currency. For ETCs assess collateral, custody,
 issuer/counterparty structure and commodity sensitivity. For ETFs assess index
 concentration, tracking difference, TER and securities lending where material.
-Do not imply generic company fundamentals complete a fund review.
+Company fundamentals alone never complete a fund review.
 
 ## Costs and contribution efficiency
 

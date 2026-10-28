@@ -1,6 +1,6 @@
 # Specialist businesses and non-company instruments
 
-This is a routing boundary, not a complete sector valuation manual. It is a modern adaptation to prevent the general industrial calculations from answering the wrong question. `analyze_report.py` cannot infer industry from the CSV; the agent must classify the business before interpreting ratios. Mark specialist metrics unassessed until their definitions and issuer disclosures are available.
+This is a routing boundary, not a complete sector valuation manual: it keeps the general industrial calculations from answering the wrong question. `analyze_report.py` cannot infer industry from the CSV; classify the business before interpreting ratios. Mark specialist metrics unassessed until their definitions and issuer disclosures are available.
 
 ## Banks and lenders
 

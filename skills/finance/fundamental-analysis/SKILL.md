@@ -1,17 +1,17 @@
 ---
 name: fundamental-analysis
-description: Analyzes a company's official financial reports, collected by financial-reports-scraper, and writes an evidence-backed Markdown report on business quality, financial resilience, valuation, and risks, with reproducible calculations and explicit evidence gaps. Use when users ask about a company's fundamentals, financial health, earnings quality, valuation (DCF, earnings multiple, asset value, margin of safety), value screens, or want to build or reassess an investment thesis from filings. Not for portfolio allocation; use portfolio-analysis for that.
+description: Company fundamental analysis from official filings, written up as a cited Markdown report with reproducible calculations. Use for a company's financial health, earnings quality, valuation (DCF, multiples, asset value, margin of safety) or value screens, or to build or reassess an investment thesis; portfolio allocation belongs to portfolio-analysis.
 metadata:
   required-skill: financial-reports-scraper
 ---
 
 # Fundamental analysis
 
-Turn official filings into a defensible company thesis with reproducible calculations and explicit evidence gaps. The metadata names a workflow dependency; it does not install or invoke the sibling skill.
+Turn official filings into a defensible company thesis with reproducible calculations and explicit evidence gaps.
 
 Run the scripts by path (`<skill-dir>` is this skill's folder) from the user's working directory. Save workpapers, model outputs and the finished report there (default `reports/`) or where the user chooses, never inside the skill folder.
 
-This skill produces research, not personalized financial advice. It does not authorize trades or schedule monitoring.
+The output is research, not personalized financial advice: the work ends at the report, with trades and monitoring left to the user.
 
 ## 1. Establish the evidence
 
@@ -19,7 +19,9 @@ Read [financial-reports-scraper](../financial-reports-scraper/SKILL.md) and [inp
 
 If the sibling skill is missing, name the required path and stop acquisition and calculation until it is available. If history is thin, widen the scraper window before drawing trends.
 
-Done when the input CSV is identified, the cutoff is explicit, and missing coverage is recorded. ETF/ETC rows and specialized financial businesses route through [scenario-special-sectors.md](references/scenario-special-sectors.md).
+ETF/ETC rows and specialized financial businesses route through [scenario-special-sectors.md](references/scenario-special-sectors.md).
+
+Done when the input CSV is identified, the cutoff is explicit, and missing coverage is recorded.
 
 ## 2. Establish comparable financial facts
 

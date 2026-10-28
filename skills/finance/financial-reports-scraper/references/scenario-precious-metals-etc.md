@@ -15,10 +15,10 @@ Face-statement equity metrics (revenue, EPS, book value) do not apply. The extra
 - Base currency, ISIN, issuing company
 - Annual report / prospectus / KID PDF links for iShares Physical Metals plc
 
-The `ishares` adapter already maps those labels when they appear on the product page. Holdings of an ETC are the bullion, not a stock book — do not expect a 400-line equity holdings CSV.
+The `ishares` adapter already maps those labels when they appear on the product page. An ETC's holdings are its bullion, so expect metal-in-trust facts rather than an equity holdings table.
 
 ## Failure modes
 
-- Treating the ETC as a stock and sending it to EDGAR (no CIK). Router must keep `entity_type=etc` on the iShares path.
-- Using a broker ticker (`LSEETF`) instead of the ISIN.
-- Valuing the ETC with P/E. Use metal entitlement and spot, not earnings.
+- Routing the ETC to EDGAR as a stock (it has no CIK). Keep `entity_type=etc` so the router stays on the iShares path.
+- Keying on a broker ticker (`LSEETF`). Key on the ISIN.
+- Valuing the ETC with P/E. Value it from metal entitlement and spot.

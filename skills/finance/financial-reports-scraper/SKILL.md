@@ -1,6 +1,6 @@
 ---
 name: financial-reports-scraper
-description: Collects official company financial facts and filings from SEC EDGAR, plus iShares/BlackRock fund literature and holdings, into a tidy CSV with a coverage manifest and optional filing snapshots. Use when users ask to download, refresh, or check official financial reports, filings, XBRL company facts, or ETF/ETC documents for a ticker, CIK, ISIN, or portfolio, or when fundamental-analysis or portfolio-analysis needs source evidence. Not an investment analysis on its own.
+description: Official financial evidence for a ticker, CIK, ISIN or portfolio, collected from SEC EDGAR and iShares into a CSV with a coverage manifest. Use to download or refresh filings, XBRL company facts or ETF/ETC documents, or when fundamental-analysis or portfolio-analysis needs source evidence.
 ---
 
 # Financial reports scraper
@@ -35,7 +35,7 @@ python3 <skill-dir>/scripts/run_report.py --tickers ACME --as-of 2026-09-15 --hi
 
 The ticker and dates are illustrative. For an ordinary monthly portfolio extract, use `--portfolio /absolute/path/to/portfolio.csv --period month`. `--help` lists every flag. An existing bundle is never overwritten; use a new `--out-dir` for a rerun.
 
-The EDGAR adapter follows older submissions files, keeps the latest available annual and interim filing locators, and drops publications and economic periods after `min(window_end, as_of)`. Fallback facts choose the latest economic period separately for annual, quarter, six/nine-month YTD and instant observations; tied conflicting values stay visible. `--all-facts` keeps every supported standard taxonomy concept; core mode keeps balance-sheet, working-capital, debt/lease, cash-flow and dilution tags and still cannot guarantee a complete statement.
+`--all-facts` keeps every supported standard taxonomy concept; core mode keeps balance-sheet, working-capital, debt/lease, cash-flow and dilution tags. Neither guarantees a complete statement. The EDGAR window and fallback rules are in the US equity scenario.
 
 `--download-filings` saves bounded primary SEC filing HTML/PDF and readable text with hashes. Read [evidence-bundle.md](references/evidence-bundle.md) for limits, locators and validation. Fund literature is linked by URL, not downloaded.
 
@@ -43,9 +43,9 @@ Done when the CLI prints the CSV path and a companion manifest exists. Exit 0 me
 
 ## 3. Check and hand off
 
-Check the CSV against [csv-schema.md](references/csv-schema.md): per-entity row counts, actual periods, errors, and omitted or failed documents in the manifest. Preserve leading zeros and raw concepts and units. Read the source statements and notes rather than treating a missing item as zero. A first-quarter YTD value equals the quarter; other YTD flows need explicit reconciliation before quarter or TTM calculations.
+Check the CSV against [csv-schema.md](references/csv-schema.md): per-entity row counts, actual periods, errors, and omitted or failed documents in the manifest. Preserve leading zeros and raw concepts and units. A missing item stays unknown until the source statements and notes resolve it. A first-quarter YTD value equals the quarter; other YTD flows need explicit reconciliation before quarter or TTM calculations.
 
-For a recoverable error, inspect the cause and retry the affected entity once in a new output directory, honoring `Retry-After`. Keep the partial evidence if the retry fails. One entity's failure does not discard another's data. Unsupported home markets stay explicit errors; do not substitute a data aggregator for official filings.
+For a recoverable error, inspect the cause and retry the affected entity once in a new output directory, honoring `Retry-After`. Keep the partial evidence if the retry fails. One entity's failure does not discard another's data. Unsupported home markets stay explicit error rows; official filings are the only source, never an aggregator.
 
 Hand the CSV and its manifest to `fundamental-analysis`, and point to downloaded filings when asked. For historical fund work, undated product-page links are discovery evidence, not proof of publication before the cutoff, and a year-only title never establishes a December 31 publication date.
 

@@ -45,7 +45,7 @@ Explain whether a company-specific advantage over a diversified alternative is s
 
 ## What would change the conclusion
 List observable operating, financial or valuation developments and their implications.
-Give exact outstanding evidence needs; do not schedule monitoring without a request.
+Give exact outstanding evidence needs; monitoring stays report content unless requested.
 
 ## Sources and calculation trail
 Link official filing sections/pages/accessions and dated market inputs near claims.

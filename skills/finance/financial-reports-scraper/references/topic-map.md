@@ -14,9 +14,7 @@ Identifier first, then one adapter:
 | iShares Physical ETC | ISIN in the same catalog | `ishares` | [scenario-precious-metals-etc.md](scenario-precious-metals-etc.md) |
 | Anything else | local company number / LEI / ISIN | none (error row) | this map's Non-US section |
 
-Do not route a miss to Yahoo or FMP. Add a catalog row or a new adapter instead.
-
-Identifier lookup comes first. US work needs a zero-padded 10-digit CIK. Non-US work needs the local company number, LEI, or ISIN, then the home-market repository.
+A miss gets a new catalog row or adapter; aggregators stay unofficial. Non-US work needs the local company number, LEI or ISIN, then the home-market repository.
 
 ## Getting Started
 
@@ -63,9 +61,6 @@ Revenue, COGS, gross profit, operating expenses, operating income, interest, tax
 - [SEC company concept — Revenues](https://data.sec.gov/api/xbrl/companyconcept/CIK##########/us-gaap/Revenues.json)
 - [SEC company concept — NetIncomeLoss](https://data.sec.gov/api/xbrl/companyconcept/CIK##########/us-gaap/NetIncomeLoss.json)
 - [SEC company concept — OperatingIncomeLoss](https://data.sec.gov/api/xbrl/companyconcept/CIK##########/us-gaap/OperatingIncomeLoss.json)
-- [Alpha Vantage `INCOME_STATEMENT`](https://www.alphavantage.co/documentation/#income-statement)
-- [FMP income statement](https://site.financialmodelingprep.com/developer/docs/stable/income-statement)
-- [Polygon stock financials (`income_statement`)](https://polygon.io/docs/stocks/get_vx_reference_financials)
 
 Common US-GAAP tags to try, in order: `RevenueFromContractWithCustomerExcludingAssessedTax`, `Revenues`, `SalesRevenueNet`, `CostOfGoodsAndServicesSold`, `GrossProfit`, `OperatingIncomeLoss`, `InterestExpense`, `IncomeTaxExpenseBenefit`, `NetIncomeLoss`, `EarningsPerShareBasic`, `EarningsPerShareDiluted`.
 
@@ -80,9 +75,6 @@ Current and non-current assets, current and non-current liabilities, shareholder
 - [SEC company concept — AssetsCurrent](https://data.sec.gov/api/xbrl/companyconcept/CIK##########/us-gaap/AssetsCurrent.json)
 - [SEC company concept — Liabilities](https://data.sec.gov/api/xbrl/companyconcept/CIK##########/us-gaap/Liabilities.json)
 - [SEC company concept — StockholdersEquity](https://data.sec.gov/api/xbrl/companyconcept/CIK##########/us-gaap/StockholdersEquity.json)
-- [Alpha Vantage `BALANCE_SHEET`](https://www.alphavantage.co/documentation/#balance-sheet)
-- [FMP balance sheet statement](https://site.financialmodelingprep.com/developer/docs/stable/balance-sheet-statement)
-- [Polygon stock financials (`balance_sheet`)](https://polygon.io/docs/stocks/get_vx_reference_financials)
 
 Point-in-time (stock) facts use the period-end value. Frame queries for balance-sheet tags append `I` (instant), for example `CY2024Q4I`.
 
@@ -94,9 +86,6 @@ Operating, investing, and financing activities, plus free cash flow (derived: op
 - [IAS 7 Statement of Cash Flows](https://www.ifrs.org/issued-standards/list-of-standards/ias-7-statement-of-cash-flows/)
 - [SEC company concept — NetCashProvidedByUsedInOperatingActivities](https://data.sec.gov/api/xbrl/companyconcept/CIK##########/us-gaap/NetCashProvidedByUsedInOperatingActivities.json)
 - [SEC company concept — PaymentsToAcquirePropertyPlantAndEquipment](https://data.sec.gov/api/xbrl/companyconcept/CIK##########/us-gaap/PaymentsToAcquirePropertyPlantAndEquipment.json)
-- [Alpha Vantage `CASH_FLOW`](https://www.alphavantage.co/documentation/#cash-flow)
-- [FMP cash flow statement](https://site.financialmodelingprep.com/developer/docs/stable/cash-flow-statement)
-- [Polygon stock financials (`cash_flow_statement`)](https://polygon.io/docs/stocks/get_vx_reference_financials)
 
 Quarterly flow facts in 10-Q filings are often year-to-date. Derive the standalone quarter by subtracting the prior YTD value. There is no Q4 10-Q; Q4 flows are FY minus Q1–Q3.
 
@@ -112,7 +101,6 @@ Share issuance, buybacks, dividends paid, retained earnings movement. Needed for
 - [SEC company concept — ProceedsFromIssuanceOfCommonStock](https://data.sec.gov/api/xbrl/companyconcept/CIK##########/us-gaap/ProceedsFromIssuanceOfCommonStock.json)
 - [SEC company concept — RetainedEarningsAccumulatedDeficit](https://data.sec.gov/api/xbrl/companyconcept/CIK##########/us-gaap/RetainedEarningsAccumulatedDeficit.json)
 - [DEF 14A proxy statement (share plans, votes, dilution)](https://www.sec.gov/files/def14a.pdf)
-- [FMP cash flow statement (financing lines)](https://site.financialmodelingprep.com/developer/docs/stable/cash-flow-statement)
 
 Aggregators often skip this statement. Prefer the 10-K HTML/iXBRL equity roll-forward, then reconcile issuance/buybacks/dividends against the cash-flow financing section.
 
@@ -142,8 +130,6 @@ Revenue and operating income by business line and geography.
 - [IFRS 8 Operating Segments](https://www.ifrs.org/issued-standards/list-of-standards/ifrs-8-operating-segments/)
 - [Form 10-K Item 1 — business description](https://www.sec.gov/files/form10-k.pdf)
 - [DERA financial statement and notes data sets](https://www.sec.gov/dera/data/financial-statement-and-notes-data-set.html)
-- [FMP revenue geographic segments](https://site.financialmodelingprep.com/developer/docs/stable/revenue-geographic-segments)
-- [FMP revenue product segmentation](https://site.financialmodelingprep.com/developer/docs/stable/revenue-product-segmentation)
 
 Segment tables are usually dimensional XBRL in the notes, not top-level Company Facts tags. Cross-check the MD&A narrative against the note; they should describe the same operating view.
 
@@ -177,22 +163,12 @@ Weighted-average and period-end shares outstanding. Needed for anything per shar
 - [EarningsPerShareDiluted](https://data.sec.gov/api/xbrl/companyconcept/CIK##########/us-gaap/EarningsPerShareDiluted.json)
 - [10-K Item 5 — market for common equity](https://www.sec.gov/files/form10-k.pdf)
 - [DEF 14A — equity compensation and dilution](https://www.sec.gov/files/def14a.pdf)
-- [FMP shares float](https://site.financialmodelingprep.com/developer/docs/stable/shares-float)
 
 Period-end shares (`EntityCommonStockSharesOutstanding`) are for per-share book value and market cap. Weighted-average basic/diluted shares are for EPS. Option and RSU overhang lives in the stock-based compensation note and the proxy, not on the face statements.
 
 ## Ratios, Valuation, and Growth
 
-Margins, ROE, ROIC, current ratio, debt-to-equity, interest coverage, P/E, P/B, EV/EBITDA, and multi-period growth. Compute from the statements above, or take a vendor's precomputed series and audit it against the filing.
-
-- [Alpha Vantage `OVERVIEW` (P/E, EPS, margins, book value)](https://www.alphavantage.co/documentation/#company-overview)
-- [Alpha Vantage `EARNINGS`](https://www.alphavantage.co/documentation/#earnings)
-- [FMP financial ratios](https://site.financialmodelingprep.com/developer/docs/stable/ratios)
-- [FMP key metrics](https://site.financialmodelingprep.com/developer/docs/stable/key-metrics)
-- [FMP financial growth](https://site.financialmodelingprep.com/developer/docs/stable/financial-growth)
-- [FMP enterprise values](https://site.financialmodelingprep.com/developer/docs/stable/enterprise-values)
-- [FMP discounted cash flow](https://site.financialmodelingprep.com/developer/docs/stable/discounted-cash-flow)
-- [Polygon stock financials](https://polygon.io/docs/stocks/get_vx_reference_financials)
+Margins, ROE, ROIC, current ratio, debt-to-equity, interest coverage, P/E, P/B, EV/EBITDA, and multi-period growth. Compute from the statements above, or take a vendor's precomputed series (see Aggregators) and audit it against the filing.
 
 Market-price inputs (for P/E, P/B, EV) are not in the filing. Pair statement data with a quote source, and use diluted EPS plus diluted shares for per-share valuation.
 
@@ -232,8 +208,4 @@ Search `{company} investor relations annual report` or `{ticker} SEC filings`. T
 
 ## iShares issuer literature
 
-UCITS ETFs and Physical ETCs in this portfolio are Irish-domiciled products. Official documents live on the issuer site, not EDGAR.
-
-- [iShares Core MSCI Europe UCITS ETF (IE00B1YZSC51)](https://www.ishares.com/uk/individual/en/products/251860)
-- [iShares MSCI EM Asia UCITS ETF (IE00B5L8K969)](https://www.ishares.com/uk/individual/en/products/253723)
-- [iShares Physical Gold ETC (IE00B4ND3602)](https://www.ishares.com/uk/individual/en/products/258441)
+iShares UCITS ETFs and Physical ETCs are Irish-domiciled; their official documents live on the issuer's product pages, not EDGAR. Supported products are listed in `scripts/data/ishares_catalog.json`; see [scenario-ucits-etf.md](scenario-ucits-etf.md) and [scenario-precious-metals-etc.md](scenario-precious-metals-etc.md).

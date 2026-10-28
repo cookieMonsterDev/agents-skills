@@ -18,10 +18,10 @@ Product pages and literature PDFs are the issuer's own publications. Fetch them 
 
 The optional `--download-filings` feature applies to SEC primary filings, not these fund-literature PDFs. It preserves local source evidence and hashes; uploading or publishing a bundle is outside acquisition.
 
-## What not to treat as official
+## Unofficial sources
 
-Yahoo Finance, FMP, Alpha Vantage, Polygon, and similar aggregators. Spot-check material figures against the filing if some other tool used them.
+Yahoo Finance, FMP, Alpha Vantage, Polygon and similar aggregators are normalized copies. Spot-check any material figure another tool took from them against the filing.
 
 ## Operating rules
 
-Check each site's terms of use before automating access; this skill fetches only public pages and documents. Facts are not copyrightable. Creative works (MD&A prose, branded PDFs) are. `robots.txt` is practical courtesy. Password gates are off limits. Rate limits are architecture, not an afterthought.
+Check each site's terms of use before automating access, honor `robots.txt`, and fetch only public pages and documents, staying outside login and password gates. Facts are not copyrightable; creative works (MD&A prose, branded PDFs) are, which is why fund literature is linked rather than copied.
