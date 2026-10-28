@@ -1,103 +1,37 @@
 ---
 name: fastapi-docs
-description: Use when users ask how to build, explain, configure, validate, secure, test, deploy, or troubleshoot FastAPI applications and APIs, including path operations, dependencies, Pydantic models, OpenAPI docs, middleware, background tasks, WebSockets, lifespan events, SQL databases, authentication, or async Python, especially when they need official FastAPI documentation, exact links, or docs-grounded Python guidance.
+description: Official FastAPI documentation, answered with links to the exact pages. Use for any FastAPI question, including path operations, dependencies, Pydantic models and validation, security and OAuth2, OpenAPI docs, WebSockets and background tasks, testing, or deployment.
 ---
 
-FastAPI questions are easy to answer from stale memory or Flask/Django assumptions. Use this skill to ground answers in the official FastAPI documentation and return the closest authoritative page instead of generic Python web advice.
+# FastAPI Docs
 
-## When to Use
+FastAPI answers drift with its releases and the move from Pydantic v1 to v2, so ground each answer in the live docs at <https://fastapi.tiangolo.com/>, not memory, and link the exact page behind every claim.
 
-Use this skill when the request is about:
-
-- FastAPI concepts, path operations, routing, and application structure
-- Request parameters, body models, response models, and validation with Pydantic
-- Dependencies (`Depends`, `Security`), sub-dependencies, and dependency injection
-- Authentication, OAuth2, JWT, HTTP Basic, and security utilities
-- Middleware, CORS, exception handlers, and custom responses
-- Background tasks, lifespan events, WebSockets, and streaming/SSE
-- SQL databases, testing with `TestClient`, and deployment with Uvicorn
-- OpenAPI schema, Swagger UI, ReDoc, and API metadata
-- Advanced topics: mounts, proxies, templates, static files, and async tests
-
-Do not use this skill for:
-
-- Django ORM, admin, or URLconf patterns. Use `django-docs` instead.
-- Flask blueprints, WSGI context, or Jinja-first apps. Use `flask-docs` instead.
-- Starlette internals unless the question is about FastAPI's documented Starlette integration.
-- Pydantic-only questions with no FastAPI context unless the docs page is linked from FastAPI guides.
+Route Django ORM, admin or URLconf patterns to `django-docs`, and Flask blueprints, WSGI context or Jinja-first apps to `flask-docs`. Starlette internals and standalone Pydantic belong to their own docs unless the question turns on FastAPI's documented integration.
 
 ## Workflow
 
-### 1. Classify the request
+1. **Locate** the question in [`references/topic-map.md`](references/topic-map.md), a selective index of docs entry points. Done when each part of the question maps to a section of the map, or you have noted that none fits.
+2. **Search** `fastapi.tiangolo.com` with the user's exact terms plus FastAPI vocabulary such as `Depends`, `APIRouter`, `response_model`, `HTTPException`, `lifespan`, or `TestClient`, starting from the map's pages and the Routing rules below. Done when you hold the one page that most directly answers each part.
+3. **Read** each page down to the relevant section. Done when you have read the passage behind every claim you will make. When a page has moved, been renamed, or stops short, say so and link the nearest authoritative pages.
+4. **Answer** with the direct answer first, each docs link beside the claim it supports, and code examples only when the user asks or the page needs them. Mark any conclusion that joins several pages as `Inference:`. Done when every claim cites a specific page, not the docs home.
 
-Decide which bucket the question belongs to before searching:
+## Routing
 
-- Getting started, installation, and first steps
-- Tutorial: parameters, bodies, validation, and responses
-- Dependencies and security
-- Middleware, CORS, and error handling
-- Databases, testing, and deployment
-- Advanced: WebSockets, lifespan, mounts, proxies, templates
-- API reference (`FastAPI`, `APIRouter`, `Depends`, etc.)
-- How-to recipes and migration guides
+- Pydantic v2 migration: the Pydantic v1 to v2 recipe.
+- First steps: First Steps and the Tutorial - User Guide, before deep reference pages.
+- Recommended patterns: the tutorial; exact signatures: the API reference.
+- Validation: the tutorial sections on parameters and bodies, before Pydantic config.
+- Dependencies: `Depends`, sub-dependencies, and dependencies with `yield`.
+- Security: Security - First Steps and the OAuth2 guides.
+- Async: Concurrency and async/await, for whether a route needs `def` or `async def`.
+- Deployment: the Deployment section and its Uvicorn and Docker guides.
+- OpenAPI: Metadata and Docs URLs, or the advanced OpenAPI guides.
 
-If you need a quick starting point, load `references/topic-map.md` and jump to the closest section.
+## Gotchas
 
-### 2. Search official FastAPI docs first
-
-- Treat `fastapi.tiangolo.com` as the source of truth for FastAPI.
-- Prefer pages under <https://fastapi.tiangolo.com/>.
-- Search with the user's exact terms plus focused FastAPI phrases such as `Depends`, `APIRouter`, `response_model`, `HTTPException`, `lifespan`, or `TestClient`.
-- When multiple pages are plausible, compare 2-3 candidate pages and pick the one that most directly answers the user's question.
-- For Pydantic v2 migration questions, check the Pydantic v1 to v2 recipe before answering from older patterns.
-
-### 3. Open the best page before answering
-
-- Read the most relevant page, and the exact section when practical.
-- Use the topic map only to narrow the search space or surface likely starting pages.
-- Distinguish tutorial guidance from API reference before recommending patterns.
-- If a page appears renamed, moved, or incomplete, say that explicitly and return the nearest authoritative pages instead of guessing.
-
-### 4. Answer with docs-grounded guidance
-
-- Start with a direct answer in plain language.
-- Include exact FastAPI docs links, not just the docs homepage.
-- Only provide code examples when the user asks for them or when the docs page makes an example necessary.
-- Make any inference explicit. Good phrasing:
-  - `According to FastAPI docs, ...`
-  - `Inference: this likely means ...`
-
-## Answer Shape
-
-Use a compact structure unless the user asks for depth:
-
-1. Direct answer
-2. Relevant docs
-3. Example code, only if needed
-4. Explicit inference callout, only if you had to connect multiple docs pages
-
-Keep citations close to the claim they support.
-
-## Search and Routing Tips
-
-- For beginner questions, prefer First Steps and the Tutorial before deep reference pages.
-- For validation questions, prefer tutorial sections on parameters and bodies before guessing Pydantic config.
-- For dependency questions, map to `Depends`, sub-dependencies, or `yield` dependencies as documented.
-- For security questions, start with Security - First Steps and OAuth2 guides before inventing auth flows.
-- For async questions, check Concurrency and async/await and whether `def` vs `async def` matters for the route.
-- For deployment questions, prefer Deployment and Uvicorn/Docker guides over ad hoc server advice.
-- For OpenAPI questions, prefer Metadata and Docs URLs or OpenAPI advanced guides.
-
-## Common Mistakes
-
-- Answering from memory without verifying the current FastAPI docs
-- Linking the FastAPI homepage when a narrower tutorial or reference page exists
-- Treating FastAPI like Flask (global request objects, sync-only handlers by default)
-- Confusing Pydantic v1 patterns with v2 when the docs recommend v2 models
-- Using `def` for I/O-bound async code or `async def` for CPU-bound work without checking async guidance
-- Recommending manual OpenAPI schema when FastAPI generates it from type hints
-- Mixing Django REST Framework or Flask patterns with FastAPI dependency injection
-
-## Bundled Reference
-
-Read `references/topic-map.md` only as a compact index of likely doc entry points. It is intentionally incomplete and should never replace the live FastAPI docs as the final authority.
+- FastAPI hands request data to handlers through parameters and dependencies rather than a Flask-style global request object, and handlers can be `async def`.
+- Write Pydantic v2 models, which the docs recommend; v1 patterns differ.
+- Choose `def` or `async def` per the Concurrency and async/await page, matching I/O-bound and CPU-bound work to the guidance there.
+- FastAPI generates the OpenAPI schema from type hints; customize it through the OpenAPI guides rather than writing it by hand.
+- Use FastAPI dependency injection, kept separate from Django REST Framework or Flask patterns.

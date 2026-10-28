@@ -1,106 +1,33 @@
 ---
 name: mongodb-docs
-description: Use when users ask how to deploy, connect to, query, model, index, aggregate, secure, scale, back up, monitor, or troubleshoot MongoDB databases and applications, including Atlas, Community Edition, Enterprise Advanced, CRUD, the aggregation framework, search, vector search, transactions, change streams, replication, sharding, drivers, Compass, or data modeling, especially when they need official MongoDB documentation, exact links, or docs-grounded guidance.
+description: Official MongoDB documentation, answered with links to the exact pages. Use for any MongoDB question, including CRUD and data modeling, indexes, aggregation, Search and Vector Search, transactions and change streams, replication and sharding, drivers, or Atlas.
 ---
 
-MongoDB questions are easy to answer from stale memory or SQL-centric assumptions. Use this skill to ground answers in the official MongoDB documentation and return the closest authoritative page instead of generic NoSQL advice.
+# MongoDB Docs
 
-## When to Use
+MongoDB features differ between Atlas, Community Edition and Enterprise Advanced and shift across releases, so ground each answer in the live docs at <https://www.mongodb.com/docs/>, not memory, and link the exact page behind every claim.
 
-Use this skill when the request is about:
-
-- MongoDB concepts, documents, collections, and databases
-- Getting started with Atlas, Community Edition, or local development
-- CRUD operations, queries, updates, and deletes
-- Indexes, query optimization, and explain plans
-- Data modeling, schema design, and embedding vs referencing
-- Aggregation pipelines and analytics patterns
-- MongoDB Search, Atlas Search, and Vector Search
-- Transactions, change streams, and time series collections
-- Replication, sharding, and deployment architecture
-- Security, authentication, authorization, and encryption
-- Client libraries and language drivers
-- Atlas administration, backups, monitoring, and scaling
-- Tools: Compass, Atlas CLI, Charts, and Migrator
-
-Do not use this skill for:
-
-- Raw AWS DocumentDB console operations when the question is provider-specific rather than MongoDB behavior. Use `aws-cli-docs` for AWS CLI commands.
-- PostgreSQL SQL, schemas, or relational modeling. Use the appropriate `postgresql-*-docs` skill instead.
-- Redis caching or BullMQ job queues. Use `redis-docs` or `bullmq-docs` instead.
-- Kafka change data capture unless the question is specifically about MongoDB stream processing documented by MongoDB.
+Route AWS CLI commands to `aws-cli-docs`, PostgreSQL to `postgresql-16-docs`, `postgresql-17-docs` or `postgresql-18-docs` by version, Redis caching to `redis-docs`, BullMQ job queues to `bullmq-docs`, and Kafka change data capture to `kafka-docs` unless it is MongoDB stream processing. Amazon DocumentDB console operations belong to AWS's own docs unless the question turns on MongoDB behavior.
 
 ## Workflow
 
-### 1. Classify the request
+1. **Locate** the question in [`references/topic-map.md`](references/topic-map.md), a selective index of docs entry points. Done when each part of the question maps to a section of the map, or you have noted that none fits.
+2. **Search** `mongodb.com/docs` with the user's exact terms plus MongoDB vocabulary such as `aggregation pipeline`, `$lookup`, `compound index`, `replica set`, `change stream`, or `vector search`, starting from the map's pages and the Routing rules below. Done when you hold the one page that most directly answers each part.
+3. **Read** each page down to the relevant section. Done when you have read the passage behind every claim you will make. When a page has moved, been renamed, or stops short, say so and link the nearest authoritative pages.
+4. **Answer** with the direct answer first, each docs link beside the claim it supports, and query or driver code only when the user asks or the page needs it. Mark any conclusion that joins several pages as `Inference:`. Done when every claim cites a specific page, not the docs home.
 
-Decide which bucket the question belongs to before searching:
+## Routing
 
-- Getting started and deployment choice
-- Development: CRUD, queries, indexes, and modeling
-- Aggregation, search, and vector features
-- Transactions, change streams, and streaming data
-- Management: security, backup, scaling, and monitoring
-- Client libraries and application integration
-- Atlas cloud operations and architecture guidance
-- Server administration for self-managed deployments
+- Deployment: tell Atlas docs, Development docs, and self-managed server docs apart; Atlas questions go to Atlas docs, not self-managed install guides.
+- Shell examples: confirm whether the user runs Atlas, a local deployment, or a self-managed server.
+- Driver questions: the language-specific driver docs under Client Libraries.
+- Performance: the indexes and explain-output docs, before recommending schema changes.
+- AI and RAG: the Vector Search and AI Integrations docs.
+- Discovery beyond the map: the live index at <https://www.mongodb.com/docs/llms.txt>; append `.md` to a page path for its Markdown version.
 
-If you need a quick starting point, load `references/topic-map.md` and jump to the closest section. For broader discovery, the live docs index is at <https://www.mongodb.com/docs/llms.txt>. Markdown versions of pages are available by appending `.md` to URL paths.
+## Gotchas
 
-### 2. Search official MongoDB docs first
-
-- Treat `mongodb.com/docs` as the source of truth for MongoDB.
-- Prefer pages under <https://www.mongodb.com/docs/>.
-- Distinguish Atlas docs, Development docs, and self-managed server docs before answering.
-- Search with the user's exact terms plus focused MongoDB phrases such as `aggregation pipeline`, `$lookup`, `compound index`, `replica set`, `change stream`, or `vector search`.
-- When multiple pages are plausible, compare 2-3 candidate pages and pick the one that most directly answers the user's question.
-- For driver API questions, prefer the language-specific driver docs under Client Libraries.
-
-### 3. Open the best page before answering
-
-- Read the most relevant page, and the exact section when practical.
-- Use the topic map only to narrow the search space or surface likely starting pages.
-- For shell examples, check whether the user is on Atlas, local deployment, or self-managed server.
-- If a page appears renamed, moved, or incomplete, say that explicitly and return the nearest authoritative pages instead of guessing.
-
-### 4. Answer with docs-grounded guidance
-
-- Start with a direct answer in plain language.
-- Include exact MongoDB docs links, not just the docs homepage.
-- Only provide query or driver code examples when the user asks for them or when the docs page makes an example necessary.
-- Make any inference explicit. Good phrasing:
-  - `According to MongoDB docs, ...`
-  - `Inference: this likely means ...`
-
-## Answer Shape
-
-Use a compact structure unless the user asks for depth:
-
-1. Direct answer
-2. Relevant docs
-3. Example queries or driver code, only if needed
-4. Explicit inference callout, only if you had to connect multiple docs pages
-
-Keep citations close to the claim they support.
-
-## Search and Routing Tips
-
-- For beginner questions, prefer Get Started before the full manual.
-- For query behavior, prefer CRUD and manual reference pages before guessing syntax.
-- For performance questions, check indexes and explain output docs before recommending schema changes.
-- For Atlas questions, open Atlas docs rather than self-managed install guides.
-- For AI and RAG questions, check Vector Search and AI Integrations docs.
-- For driver questions, route by language under Client Libraries.
-
-## Common Mistakes
-
-- Answering from memory without verifying the current MongoDB docs
-- Linking the MongoDB docs homepage when a narrower Atlas, manual, or driver page exists
-- Treating MongoDB as schema-less without checking data modeling guidance
-- Mixing Atlas-only features with Community Edition capabilities
-- Recommending unindexed regex or `$where` queries without checking performance docs
-- Confusing MongoDB Search with Atlas Vector Search feature boundaries
-
-## Bundled Reference
-
-Read `references/topic-map.md` only as a compact index of likely doc entry points. It is intentionally incomplete and should never replace the live MongoDB docs as the final authority.
+- Ground schema advice in the data modeling docs; MongoDB collections are flexible, not schema-less.
+- Confirm a feature is available outside Atlas before offering it to Community Edition users.
+- Check the performance docs before recommending unindexed regex or `$where` queries.
+- Keep MongoDB Search and Atlas Vector Search feature boundaries apart.

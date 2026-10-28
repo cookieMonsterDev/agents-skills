@@ -1,115 +1,34 @@
 ---
 name: mysql-docs
-description: Use when users ask how to write, explain, configure, tune, secure, replicate, back up, monitor, or troubleshoot MySQL SQL, schemas, indexes, transactions, users, privileges, InnoDB, replication, Group Replication, InnoDB Cluster, connectors, or server settings, especially when they need official MySQL documentation, exact links, or docs-grounded guidance.
+description: Official MySQL documentation, answered with links to the exact pages. Use for any MySQL question, including SQL and the optimizer, InnoDB, users and privileges, replication, Group Replication and InnoDB Cluster, connectors, or MySQL Shell, Router, NDB Cluster and HeatWave.
 ---
 
-MySQL questions are easy to answer from stale memory, PostgreSQL assumptions, or the wrong major version. Use this skill to ground answers in the official MySQL documentation and return the closest authoritative page instead of generic relational-database advice.
+# MySQL Docs
 
-## When to Use
+MySQL behavior drifts between the 8.0, 8.4 and 9.7 LTS series and the calendar-versioned Innovation releases, so ground each answer in the live Reference Manual at <https://dev.mysql.com/doc/refman/9.7/en/>, not memory, and link the exact page behind every claim.
 
-Use this skill when the request is about:
-
-- MySQL concepts, terminology, or product boundaries
-- SQL syntax, DDL, DML, queries, data types, functions, operators, or views
-- Indexes, full-text search, transactions, isolation levels, or locking
-- Query performance, optimizer behavior, EXPLAIN output, or statistics
-- Installation, server setup, configuration options, or runtime operation
-- Users, privileges, roles, authentication, encryption, or auditing
-- Routine maintenance, backups, restore, or binary logs
-- Replication, Group Replication, InnoDB Cluster, InnoDB ReplicaSet, or failover
-- InnoDB storage engine behavior, tablespaces, and buffer pool tuning
-- Client libraries and connectors: Connector/J, Connector/Python, Connector/NET, ODBC
-- MySQL Shell, Workbench, Router, Operator for Kubernetes, or NDB Cluster
-- MySQL HeatWave, Enterprise features, or cloud deployment guides
-- Release notes, version-specific behavior, or error codes
-
-Do not use this skill for:
-
-- PostgreSQL SQL, schemas, or server behavior. Use the appropriate `postgresql-*-docs` skill instead.
-- MongoDB document modeling or aggregation. Use `mongodb-docs` instead.
-- Amazon RDS or Aurora console operations when the question is provider-specific rather than MySQL behavior.
-- MariaDB-only features unless the user explicitly asks about MySQL-compatible behavior documented by Oracle.
+Route PostgreSQL to `postgresql-16-docs`, `postgresql-17-docs` or `postgresql-18-docs` by version, and MongoDB modeling or aggregation to `mongodb-docs`. Amazon RDS or Aurora console operations belong to AWS's own docs, and MariaDB-only features to MariaDB's, unless the question turns on MySQL behavior.
 
 ## Workflow
 
-### 1. Classify the request
+1. **Locate** the question in [`references/topic-map.md`](references/topic-map.md), a selective index of docs entry points. Done when each part of the question maps to a section of the map, or you have noted that none fits.
+2. **Search** `dev.mysql.com/doc` with the user's exact terms plus MySQL vocabulary such as `InnoDB`, `binary log`, `Group Replication`, `EXPLAIN`, or `privileges`, starting from the map's pages and the Routing rules below. Done when you hold the one page that most directly answers each part.
+3. **Read** each page down to the relevant section. Done when you have read the passage behind every claim you will make. When a page has moved, been renamed, or stops short, say so and link the nearest authoritative pages.
+4. **Answer** with the direct answer first, each docs link beside the claim it supports, and SQL, `my.cnf` or privilege examples only when the user asks or the page needs them. Mark any conclusion that joins several pages as `Inference:`. Done when every claim cites a specific page, not the docs home.
 
-Decide which bucket the question belongs to before searching:
+## Routing
 
-- Getting started and tutorials
-- SQL language and data modeling
-- Query writing and performance
-- Server administration and configuration
-- Security, users, and authentication
-- Backup, restore, and reliability
-- Replication and high availability
-- Storage engines and InnoDB internals
-- Connectors, APIs, and client tools
-- Cloud, HeatWave, or Enterprise features
-- NDB Cluster, Router, or Kubernetes operator
-- Reference, error codes, or release notes
+- Version: start in the 9.7 Reference Manual; when the user names another version, switch the path segment (`9.7`, `8.4`, `8.0`, `26.10`) before answering.
+- Product: tell Community Server docs apart from the HeatWave, Enterprise, NDB Cluster, and Router guides.
+- Connector or API questions: the Connectors & APIs docs for the user's language, not the server Reference Manual.
+- Performance: the optimization and `EXPLAIN` docs.
+- Locking or transactions: the InnoDB and transaction docs.
+- Access control: the account management and privileges docs, plus the enterprise security docs for Enterprise features.
+- Replication: tell asynchronous replication, Group Replication, and InnoDB Cluster apart before answering.
 
-If you need a quick starting point, load `references/topic-map.md` and jump to the closest section.
+## Gotchas
 
-### 2. Search official MySQL docs first
-
-- Treat `dev.mysql.com/doc` as the source of truth for MySQL.
-- Prefer the MySQL Reference Manual at <https://dev.mysql.com/doc/refman/9.7/en/> unless the user names a different major version.
-- 9.7 is the current LTS series. 8.4 and 8.0 are the older LTS series; 5.7 is end-of-life. Since 9.7, Innovation and LTS releases use calendar versioning in `YY.M` form, so `26.10` is the October 2026 Innovation release.
-- For version-specific behavior, switch the manual path segment (`9.7`, `8.4`, `8.0`, `26.10`, etc.) before answering.
-- Search with the user's exact terms plus focused MySQL phrases such as `InnoDB`, `binary log`, `Group Replication`, `EXPLAIN`, `privileges`, or `replication`.
-- When multiple pages are plausible, compare 2-3 candidate pages and pick the one that most directly answers the user's question.
-- For connector or API questions, prefer the Connectors & APIs docs rather than the server reference manual.
-
-### 3. Open the best page before answering
-
-- Read the most relevant page, and the exact section when practical.
-- Use the topic map only to narrow the search space or surface likely starting pages.
-- Distinguish Community Server docs from HeatWave, Enterprise, NDB Cluster, or Router guides before answering.
-- If a page appears renamed, moved, or incomplete, say that explicitly and return the nearest authoritative pages instead of guessing.
-
-### 4. Answer with docs-grounded guidance
-
-- Start with a direct answer in plain language.
-- Include exact MySQL docs links, not just the docs homepage.
-- Only provide SQL, `my.cnf`, or privilege examples when the user asks for them or when the docs page makes an example necessary.
-- Make any inference explicit. Good phrasing:
-  - `According to MySQL docs, ...`
-  - `Inference: this likely means ...`
-
-## Answer Shape
-
-Use a compact structure unless the user asks for depth:
-
-1. Direct answer
-2. Relevant docs
-3. Example SQL or configuration, only if needed
-4. Explicit inference callout, only if you had to connect multiple docs pages
-
-Keep citations close to the claim they support.
-
-## Search and Routing Tips
-
-- For concept questions, prefer the tutorial or introduction before deep reference pages.
-- For syntax questions, prefer SQL Statements, DDL, DML, or Queries chapters.
-- For performance questions, prefer optimization and EXPLAIN docs before guessing tuning advice.
-- For locking or transaction questions, prefer InnoDB and transaction docs.
-- For security questions, prefer account management, privileges, and enterprise security docs.
-- For replication questions, distinguish asynchronous replication, Group Replication, and InnoDB Cluster before answering.
-- For connector questions, route by language under Connectors & APIs.
-- If the user asks for a beginner walkthrough, start with the tutorial instead of a raw reference page.
-
-## Common Mistakes
-
-- Answering from memory without verifying the current MySQL docs
-- Linking the MySQL docs landing page when a narrower manual or connector page exists
-- Mixing MySQL 8.0, 8.4, and 9.7 behavior without checking release notes
-- Reading a calendar version such as `26.10` as an older release than `9.7` - it is newer
-- Applying PostgreSQL syntax or semantics to MySQL without checking the manual
-- Confusing Group Replication, InnoDB Cluster, and traditional replication
-- Recommending deprecated storage engines or authentication plugins without checking current guidance
-- Treating MariaDB-specific behavior as MySQL docs behavior
-
-## Bundled Reference
-
-Read `references/topic-map.md` only as a compact index of likely doc entry points. It is intentionally incomplete and should never replace the live MySQL docs as the final authority.
+- 9.7 is the current LTS series, 8.4 and 8.0 are older LTS series, and 5.7 is end-of-life; check the release notes before carrying behavior across them.
+- Since 9.7, Innovation and LTS releases use `YY.M` calendar versions, so `26.10` (October 2026) is newer than `9.7`.
+- Check syntax and semantics in the MySQL manual; PostgreSQL's differ.
+- Check current guidance before recommending a storage engine or authentication plugin; some are deprecated.

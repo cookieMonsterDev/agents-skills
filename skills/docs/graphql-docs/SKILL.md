@@ -1,110 +1,40 @@
 ---
 name: graphql-docs
-description: Use when users ask how to design, query, mutate, subscribe to, validate, secure, deploy, or troubleshoot GraphQL APIs, including schemas and types, queries and mutations, subscriptions, resolvers, validation, execution, responses, introspection, HTTP transport, authorization, pagination, federation, performance, security, or schema evolution, especially when they need official GraphQL documentation, exact links, or docs-grounded guidance from graphql.org.
+description: Official GraphQL documentation, answered with links to the exact pages. Use for any GraphQL question, including schemas and types, queries, mutations and subscriptions, validation and execution, serving over HTTP, pagination, or federation.
 ---
 
-GraphQL questions are easy to answer from stale memory or REST-centric assumptions. Use this skill to ground answers in the official GraphQL documentation at graphql.org and return the closest authoritative page instead of generic API advice.
+# GraphQL Docs
 
-## When to Use
+GraphQL answers drift toward REST-centric assumptions, so ground each answer in the live docs at <https://graphql.org/learn/>, not memory, and link the exact page behind every claim.
 
-Use this skill when the request is about:
-
-- GraphQL concepts, terminology, and how GraphQL compares to REST
-- Schema definition language (SDL), types, fields, arguments, and nullability
-- Queries, mutations, subscriptions, variables, fragments, aliases, and directives
-- Validation rules, execution, resolvers, and response formats (`data`, `errors`, `extensions`)
-- Introspection, `__typename`, and schema exploration
-- Serving GraphQL over HTTP, request/response formats, and status codes
-- Authorization, pagination, schema design, and global object identification
-- Caching, performance (N+1, batching, DataLoader), and security
-- Federation, subgraphs, gateways, and composite schemas
-- Building robust clients that handle schema evolution
-- GraphQL.js, the specification, and FAQ topics on graphql.org
-
-Do not use this skill for:
-
-- NestJS GraphQL module setup and decorators. Use `nestjs-docs` instead.
-- Apollo Server, Yoga, Hasura, or other vendor-specific server docs unless graphql.org links to them.
-- Raw Express or Fastify HTTP setup without GraphQL context. Use `expressjs-docs` or `fastify-docs` instead.
+Route NestJS GraphQL module setup to `nestjs-docs`, and raw Express or Fastify HTTP setup to `expressjs-docs` or `fastify-docs`. Apollo Server, Yoga, Hasura and other vendor servers belong to their own docs unless graphql.org links to them.
 
 ## Workflow
 
-### 1. Classify the request
+1. **Locate** the question in [`references/topic-map.md`](references/topic-map.md), a selective index of docs entry points. Done when each part of the question maps to a section of the map, or you have noted that none fits.
+2. **Search** `graphql.org/learn` with the user's exact terms plus GraphQL vocabulary such as `resolver`, `selection set`, `Non-Null`, `@include`, or `node(id:)`, starting from the map's pages and the Routing rules below. Done when you hold the one page that most directly answers each part.
+3. **Read** each page down to the relevant section. Done when you have read the passage behind every claim you will make. When a page has moved, been renamed, or stops short, say so and link the nearest authoritative pages.
+4. **Answer** with the direct answer first, each docs link beside the claim it supports, and schema or query examples only when the user asks or the page needs them. Mark any conclusion that joins several pages as `Inference:`. Done when every claim cites a specific page, not the docs home.
 
-Decide which bucket the question belongs to before searching:
+## Routing
 
-- Getting started and core concepts
-- Schemas, types, and SDL
-- Operations (queries, mutations, subscriptions)
-- Request lifecycle (validation, execution, response)
-- Introspection and tooling
-- Best practices (HTTP, auth, pagination, schema design)
-- Performance, caching, and security
-- Federation and distributed schemas
-- Client robustness and schema evolution
-- Specification and FAQ
+- Specification details: <https://spec.graphql.org/>.
+- GraphQL.js reference: <https://graphql.org/graphql-js/>.
+- Beginner questions: Introduction and Schemas and Types, before the best-practice pages.
+- Query syntax: the Queries page.
+- Write operations: Mutations; top-level mutation fields run serially, while query fields resolve in parallel.
+- Real-time data: Subscriptions.
+- HTTP transport: Serving over HTTP and debug-errors.
+- Auth: tell authentication (middleware, before validation) from authorization (business logic, during execution).
+- Pagination: the Pagination lesson, before recommending Relay-style connections.
+- Performance: Performance and Caching, covering N+1 and batching when resolver patterns are involved.
+- Distributed APIs: Federation, before suggesting monolithic schema splits.
 
-If you need a quick starting point, load `references/topic-map.md` and jump to the closest section.
+## Gotchas
 
-### 2. Search official GraphQL docs first
-
-- Treat `graphql.org/learn` as the source of truth for GraphQL concepts and best practices.
-- Prefer pages under <https://graphql.org/learn/>.
-- For specification details, use <https://spec.graphql.org/>.
-- For GraphQL.js reference material, use <https://graphql.org/graphql-js/>.
-- Search with the user's exact terms plus focused GraphQL phrases such as `resolver`, `selection set`, `Non-Null`, `@include`, or `node(id:)`.
-- When multiple pages are plausible, compare 2-3 candidate pages and pick the one that most directly answers the user's question.
-- For HTTP transport questions, check Serving over HTTP and debug-errors before answering from memory.
-
-### 3. Open the best page before answering
-
-- Read the most relevant page, and the exact section when practical.
-- Use the topic map only to narrow the search space or surface likely starting pages.
-- If a page appears renamed, moved, or incomplete, say that explicitly and return the nearest authoritative pages instead of guessing.
-
-### 4. Answer with docs-grounded guidance
-
-- Start with a direct answer in plain language.
-- Include exact GraphQL docs links, not just the docs homepage.
-- Only provide schema or query examples when the user asks for them or when the docs page makes an example necessary.
-- Make any inference explicit. Good phrasing:
-  - `According to GraphQL docs, ...`
-  - `Inference: this likely means ...`
-
-## Answer Shape
-
-Use a compact structure unless the user asks for depth:
-
-1. Direct answer
-2. Relevant docs
-3. Example schema or query, only if needed
-4. Explicit inference callout, only if you had to connect multiple docs pages
-
-Keep citations close to the claim they support.
-
-## Search and Routing Tips
-
-- For beginner questions, prefer Introduction and Schemas and Types before deep best-practice pages.
-- For query syntax questions, prefer Queries before guessing operation structure.
-- For write operations, distinguish mutations (serial top-level fields) from queries (parallel field resolution).
-- For real-time data, prefer Subscriptions and note transport is implementation-specific (often WebSockets).
-- For HTTP questions, prefer Serving over HTTP and debug-errors over generic REST guidance.
-- For auth questions, distinguish authentication (middleware, before validation) from authorization (business logic during execution).
-- For pagination, check the Pagination lesson before recommending Relay-style connections blindly.
-- For performance, check Performance and Caching; mention N+1 and batching when resolver patterns are involved.
-- For distributed APIs, check Federation before suggesting monolithic schema splits.
-
-## Common Mistakes
-
-- Answering from memory without verifying the current graphql.org docs
-- Linking the graphql.org homepage when a narrower learn page exists
-- Treating GraphQL as a database query language instead of an API query language
-- Confusing validation errors (no `data` key) with field errors (partial `data` with `errors`)
-- Placing authorization only in resolvers instead of delegating to the business logic layer
-- Assuming subscriptions use HTTP like queries and mutations
-- Recommending introspection in production without noting security trade-offs
-- Using REST versioning patterns when GraphQL favors continuous schema evolution
-
-## Bundled Reference
-
-Read `references/topic-map.md` only as a compact index of likely doc entry points. It is intentionally incomplete and should never replace the live GraphQL docs as the final authority.
+- GraphQL is an API query language, not a database query language.
+- Validation errors return no `data` key; field errors return partial `data` alongside `errors`.
+- Delegate authorization to the business logic layer rather than placing it only in resolvers.
+- Subscription transport is implementation-specific (often WebSockets), unlike queries and mutations over HTTP.
+- Note the security trade-offs before recommending introspection in production.
+- Evolve the schema continuously; GraphQL favors that over REST-style versioning.

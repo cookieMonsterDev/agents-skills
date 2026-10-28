@@ -1,111 +1,41 @@
 ---
 name: nestjs-docs
-description: Use when users ask how to build, explain, configure, secure, test, deploy, or troubleshoot NestJS applications, including modules, controllers, providers, dependency injection, middleware, guards, pipes, interceptors, exception filters, configuration, databases, validation, caching, queues, GraphQL, microservices, WebSockets, OpenAPI/Swagger, observability, reliability, CLI, NestJS 12 migration, or platform adapters (Express/Fastify), especially when they need official NestJS documentation, exact links, or docs-grounded TypeScript guidance.
+description: Official NestJS documentation, answered with links to the exact pages. Use for any NestJS question, including modules and dependency injection, guards, pipes and interceptors, GraphQL, microservices, OpenAPI, Express or Fastify adapters, or NestJS 12 migration.
 ---
 
-NestJS questions are easy to answer from stale memory, NestJS 11 assumptions that no longer apply in NestJS 12, or generic Node.js advice. Use this skill to ground answers in the official NestJS documentation and return the closest authoritative page instead of improvising framework patterns.
+# NestJS Docs
 
-## When to Use
+NestJS 12 breaks many NestJS 11 assumptions, so ground each answer in the live docs at <https://docs.nestjs.com/>, not memory, and link the exact page behind every claim.
 
-Use this skill when the request is about:
-
-- NestJS concepts, architecture, terminology, or project structure
-- Modules, controllers, providers, services, and dependency injection
-- Middleware, guards, pipes, interceptors, exception filters, and custom decorators
-- Request lifecycle, execution context, or scoping (global, controller, route)
-- Configuration, environment variables, and dynamic modules
-- Databases, ORMs, validation, serialization, caching, queues, and task scheduling
-- Authentication, authorization, CORS, Helmet, CSRF, rate limiting, and encryption
-- GraphQL, microservices, WebSockets, and hybrid applications
-- OpenAPI/Swagger documentation and API design with `@nestjs/swagger`
-- Testing, CLI scaffolding, deployment, serverless, and performance tuning
-- Observability, reliability patterns (resilience, idempotency, outbox, locks), and health checks
-- NestJS 12 migration, ESM packages, and version differences from NestJS 11
-- Express or Fastify as the underlying HTTP platform (`@nestjs/platform-express`, `@nestjs/platform-fastify`)
-
-Do not use this skill for:
-
-- Raw Express or Fastify usage without NestJS abstractions. Use `expressjs-docs` or `fastify-docs` instead.
-- Angular frontend questions unless the user is asking about shared Nest/Angular patterns in the NestJS docs.
-- Third-party package behavior not covered by NestJS docs unless the docs explicitly reference that package.
+Route raw Express usage without Nest abstractions to `expressjs-docs`, and raw Fastify usage to `fastify-docs`. Angular frontend questions and third-party packages belong to their own docs unless the NestJS docs cover them.
 
 ## Workflow
 
-### 1. Classify the request
+1. **Locate** the question in [`references/topic-map.md`](references/topic-map.md), a selective index of docs entry points. Done when each part of the question maps to a section of the map, or you have noted that none fits.
+2. **Search** `docs.nestjs.com` with the user's exact terms plus NestJS vocabulary such as `CanActivate`, `ValidationPipe`, `NestFactory`, `SwaggerModule`, or `Transport`, starting from the map's pages and the Routing rules below. Done when you hold the one page that most directly answers each part.
+3. **Read** each page down to the relevant section. Done when you have read the passage behind every claim you will make. When a page has moved, been renamed, or stops short, say so and link the nearest authoritative pages.
+4. **Answer** with the direct answer first, each docs link beside the claim it supports, and TypeScript examples only when the user asks or the page needs them. Mark any conclusion that joins several pages as `Inference:`. Done when every claim cites a specific page, not the docs home.
 
-Decide which bucket the question belongs to before searching:
+## Routing
 
-- Getting started or first steps
-- Core fundamentals (modules, controllers, providers, DI)
-- Request pipeline (middleware, guards, pipes, interceptors, filters)
-- Techniques (configuration, database, validation, caching, queues, etc.)
-- Security and authentication
-- GraphQL, microservices, or WebSockets
-- OpenAPI/Swagger
-- Observability or reliability
-- CLI, testing, deployment, or FAQ
-- Migration and version differences
-- Recipes and integration patterns
+- Version: the NestJS 12 docs at <https://docs.nestjs.com/> by default; <https://docs.nestjs.com/v11> only when the user needs NestJS 11.
+- Upgrades and version differences: the migration guide.
+- Lifecycle or ordering: the request lifecycle FAQ.
+- First steps: First Steps and the fundamentals, before technique pages.
+- Dependency injection: providers, custom providers and injection scopes.
+- Validation: pipes and the validation technique page; on NestJS 12, check whether the page uses Standard Schema (`StandardSchemaValidationPipe`, route `schema` options) or `class-validator`.
+- Auth: keep authentication (who you are) apart from authorization (what you can do).
+- OpenAPI: the OpenAPI introduction, then its decorators or operations pages.
+- Microservices: tell message patterns, event patterns and HTTP gateways apart.
+- Platform behavior: confirm Express or Fastify, then the platform section of First Steps.
+- Module system or test runner: confirm whether the project is ESM or CommonJS first.
+- Third-party ORM or queue libraries: the relevant application, data or recipe page.
 
-If you need a quick starting point, load `references/topic-map.md` and jump to the closest section.
+## Gotchas
 
-### 2. Search official NestJS docs first
-
-- Treat `docs.nestjs.com` as the source of truth for NestJS 12, the current major version.
-- Prefer pages under <https://docs.nestjs.com/>. Use <https://docs.nestjs.com/v11> only when the user explicitly needs NestJS 11.
-- For upgrade or version-specific questions, check the migration guide before answering from NestJS 11 knowledge.
-- Search with the user's exact terms plus focused NestJS phrases such as `CanActivate`, `ValidationPipe`, `NestFactory`, `SwaggerModule`, or `Transport`.
-- When multiple pages are plausible, compare 2-3 candidate pages and pick the one that most directly answers the user's question.
-- For lifecycle or ordering questions, check the request lifecycle FAQ before answering from memory.
-
-### 3. Open the best page before answering
-
-- Read the most relevant page, and the exact section when practical.
-- Use the topic map only to narrow the search space or surface likely starting pages.
-- If a page appears renamed, moved, or incomplete, say that explicitly and return the nearest authoritative pages instead of guessing.
-
-### 4. Answer with docs-grounded guidance
-
-- Start with a direct answer in plain language.
-- Include exact NestJS docs links, not just the docs homepage.
-- Only provide TypeScript examples when the user asks for them or when the docs page makes an example necessary.
-- Make any inference explicit. Good phrasing:
-  - `According to NestJS docs, ...`
-  - `Inference: this likely means ...`
-
-## Answer Shape
-
-Use a compact structure unless the user asks for depth:
-
-1. Direct answer
-2. Relevant docs
-3. Example code, only if needed
-4. Explicit inference callout, only if you had to connect multiple docs pages
-
-Keep citations close to the claim they support.
-
-## Search and Routing Tips
-
-- For beginner questions, prefer First Steps and fundamentals before deep technique pages.
-- For DI questions, prefer providers, custom providers, and injection scopes docs.
-- For validation questions, prefer pipes and the validation technique page before guessing `class-validator` setup.
-- For auth questions, distinguish authentication (who you are) from authorization (what you can do).
-- For OpenAPI questions, start with the OpenAPI introduction, then decorators or operations as needed.
-- For microservice questions, distinguish message patterns, event patterns, and HTTP gateways.
-- For platform-specific behavior, check whether the user is on Express or Fastify and consult the platform section in First Steps.
-- For module system or test runner questions, check whether the project is ESM or CommonJS: NestJS 12 packages ship as ESM, ESM projects default to Vitest, and CommonJS projects keep Jest.
-- For validation questions on NestJS 12, check whether the docs page uses Standard Schema (`StandardSchemaValidationPipe`, route `schema` options) or `class-validator` before answering.
-
-## Common Mistakes
-
-- Answering from memory without verifying the current NestJS docs
-- Linking the NestJS docs landing page when a narrower page exists
-- Confusing middleware order with guard/pipe/interceptor order in the request lifecycle
-- Suggesting Express-only patterns when the user is on the Fastify adapter (or vice versa)
-- Mixing up `@nestjs/swagger` decorators with framework-agnostic OpenAPI concepts
-- Treating third-party ORM or queue library APIs as NestJS core behavior without checking the relevant application, data, or recipe page
-- Assuming NestJS 11 behavior on NestJS 12, such as CommonJS-only packages, Jest as the default test runner, `subscriptions-transport-ws`, the legacy Terminus health indicator API, or inherited `@Optional()` constructor parameters
-
-## Bundled Reference
-
-Read `references/topic-map.md` only as a compact index of likely doc entry points. It is intentionally incomplete and should never replace the live NestJS docs as the final authority.
+- NestJS 12 packages ship as ESM; ESM projects default to Vitest, and CommonJS projects keep Jest.
+- Answer with NestJS 12 behavior; CommonJS-only packages, Jest as the default runner, `subscriptions-transport-ws`, the legacy Terminus health indicator API and inherited `@Optional()` constructor parameters are NestJS 11 assumptions.
+- Middleware runs as its own stage, separate from the guard, interceptor and pipe order; take the full order from the request lifecycle FAQ.
+- Match platform code to the user's adapter, Express or Fastify.
+- `@nestjs/swagger` decorators are Nest-specific, separate from framework-agnostic OpenAPI concepts.
+- Third-party ORM and queue APIs belong to those libraries, not NestJS core.

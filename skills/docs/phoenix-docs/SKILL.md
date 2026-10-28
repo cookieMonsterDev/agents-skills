@@ -1,107 +1,38 @@
 ---
 name: phoenix-docs
-description: Use when users ask how to build, explain, configure, route, secure, test, deploy, or troubleshoot Phoenix web applications and APIs, including routers, controllers, contexts, Ecto, LiveView, channels, plugs, HEEx templates, authentication, PubSub, generators, or Elixir releases, especially when they need official Phoenix documentation, exact links, or docs-grounded Elixir guidance.
+description: Official Phoenix documentation, answered with links to the exact pages. Use for any Phoenix question, including routers and plugs, controllers and HEEx templates, contexts and Ecto, LiveView, channels and PubSub, authentication, or releases and deployment.
 ---
 
-Phoenix questions are easy to answer from stale memory or Rails/Django assumptions. Use this skill to ground answers in the official Phoenix documentation and return the closest authoritative page instead of generic Elixir or Plug advice.
+# Phoenix Docs
 
-## When to Use
+Phoenix answers drift with each release and span several Hex packages, so ground each answer in the live docs at <https://phoenix.hexdocs.pm/>, not memory, and link the exact page behind every claim.
 
-Use this skill when the request is about:
-
-- Phoenix concepts, project structure, endpoints, routers, and the request life-cycle
-- Controllers, views, HEEx templates, function components, and layouts
-- Routing, pipelines, scopes, and verified routes
-- Plug middleware in endpoints, routers, and controllers
-- Contexts, Ecto schemas, changesets, queries, and migrations
-- LiveView, channels, PubSub, and real-time features
-- Authentication and authorization (`mix phx.gen.auth`, scopes)
-- Testing with `ConnTest`, `DataCase`, and channel tests
-- Deployment, releases, assets, secrets, and production configuration
-- Generators: `mix phx.new`, `mix phx.gen.html`, `mix phx.gen.live`, `mix phx.gen.auth`
-
-Do not use this skill for:
-
-- Raw Elixir language questions without Phoenix context. Prefer the Elixir guides.
-- Ecto-only questions with no Phoenix web layer unless the docs page is linked from Phoenix guides.
-- Django, Flask, or FastAPI patterns. Use `django-docs`, `flask-docs`, or `fastapi-docs` instead.
-- Third-party packages not covered by Phoenix docs unless the question is about general Phoenix integration.
+Route Django, Flask or FastAPI patterns to `django-docs`, `flask-docs` or `fastapi-docs`. Plain Elixir language questions belong to the Elixir guides, and Ecto-only or third-party package questions to their own docs, unless the question turns on Phoenix behavior.
 
 ## Workflow
 
-### 1. Classify the request
+1. **Locate** the question in [`references/topic-map.md`](references/topic-map.md), a selective index of docs entry points. Done when each part of the question maps to a section of the map, or you have noted that none fits.
+2. **Search** `phoenix.hexdocs.pm` with the user's exact terms plus Phoenix vocabulary such as `pipe_through`, `assign`, `LiveView`, `context`, `changeset`, or `mix phx.gen.auth`, starting from the map's pages and the Routing rules below. Done when you hold the one page that most directly answers each part.
+3. **Read** each page down to the relevant section. Done when you have read the passage behind every claim you will make. When a page has moved, been renamed, or stops short, say so and link the nearest authoritative pages.
+4. **Answer** with the direct answer first, each docs link beside the claim it supports, and code examples only when the user asks or the page needs them. Mark any conclusion that joins several pages as `Inference:`. Done when every claim cites a specific page, not the docs home.
 
-Decide which bucket the question belongs to before searching:
+## Routing
 
-- Getting started, installation, and project structure
-- Request life-cycle, plug, routing, and controllers
-- Templates, HEEx, components, and layouts
-- Contexts, Ecto, and data modelling
-- LiveView, channels, and real-time features
-- Authentication, scopes, and authorization
-- Testing and deployment
-- Generators and how-to guides
-- API reference (`Phoenix.Controller`, `Phoenix.Endpoint`, etc.)
+- LiveView, PubSub and HEEx component modules: their own Hex packages at <https://hexdocs.pm/phoenix_live_view/> and <https://hexdocs.pm/phoenix_pubsub/>, not `phoenix.hexdocs.pm`.
+- Version-specific changes: the changelog and migration notes.
+- First steps: Overview, Installation and Up and Running, before deep reference pages.
+- Routing: the Routing guide, including pipeline and scope behavior.
+- Request flow: Endpoint, Router, Controller, then View, in the request life-cycle guides.
+- Data: the Contexts and Ecto guides.
+- Real-time: tell LiveView from Channels, and check the PubSub clustering notes for production.
+- Auth: `mix phx.gen.auth` and Scopes.
+- Deployment: the Deployment and Releases guides.
+- Generators: `mix help phx.new` and the generator docs, for flags such as `--no-ecto` or `--no-live`.
 
-If you need a quick starting point, load `references/topic-map.md` and jump to the closest section.
+## Gotchas
 
-### 2. Search official Phoenix docs first
-
-- Treat `phoenix.hexdocs.pm` as the source of truth for Phoenix.
-- Prefer pages under <https://phoenix.hexdocs.pm/>.
-- LiveView, PubSub, and HEEx components ship as separate Hex packages, so their module docs live at <https://hexdocs.pm/phoenix_live_view/> and <https://hexdocs.pm/phoenix_pubsub/> rather than under `phoenix.hexdocs.pm`.
-- Search with the user's exact terms plus focused Phoenix phrases such as `pipe_through`, `assign`, `LiveView`, `context`, `changeset`, or `mix phx.gen.auth`.
-- When multiple pages are plausible, compare 2-3 candidate pages and pick the one that most directly answers the user's question.
-- For version-specific changes, check the changelog and migration notes before answering from older knowledge.
-
-### 3. Open the best page before answering
-
-- Read the most relevant page, and the exact section when practical.
-- Use the topic map only to narrow the search space or surface likely starting pages.
-- Distinguish guides from API reference before recommending patterns.
-- If a page appears renamed, moved, or incomplete, say that explicitly and return the nearest authoritative pages instead of guessing.
-
-### 4. Answer with docs-grounded guidance
-
-- Start with a direct answer in plain language.
-- Include exact Phoenix docs links, not just the docs homepage.
-- Only provide code examples when the user asks for them or when the docs page makes an example necessary.
-- Make any inference explicit. Good phrasing:
-  - `According to Phoenix docs, ...`
-  - `Inference: this likely means ...`
-
-## Answer Shape
-
-Use a compact structure unless the user asks for depth:
-
-1. Direct answer
-2. Relevant docs
-3. Example code, only if needed
-4. Explicit inference callout, only if you had to connect multiple docs pages
-
-Keep citations close to the claim they support.
-
-## Search and Routing Tips
-
-- For beginner questions, prefer Overview, Installation, and Up and Running before deep reference pages.
-- For routing questions, prefer the Routing guide and note pipeline/scope behavior.
-- For request flow questions, follow Endpoint → Router → Controller → View in the life-cycle guides.
-- For data questions, prefer Contexts and Ecto guides before scattering logic in controllers.
-- For real-time questions, distinguish LiveView from Channels and check PubSub clustering notes for production.
-- For auth questions, start with `mix phx.gen.auth` and Scopes before inventing custom auth.
-- For deployment questions, prefer Deployment and Releases guides over `mix phx.server` in production.
-- For generator questions, check `mix help phx.new` and generator-specific docs for flags like `--no-ecto` or `--no-live`.
-
-## Common Mistakes
-
-- Answering from memory without verifying the current Phoenix docs
-- Linking the Phoenix overview when a narrower guide or API page exists
-- Treating Phoenix like Django (fat controllers instead of contexts)
-- Confusing LiveView stateful processes with stateless controller actions
-- Forgetting that plugs compose at endpoint, router pipeline, and controller levels
-- Using the development server configuration in production without checking deployment docs
-- Ignoring clustering/sticky-session requirements for LiveView or long-polling in multi-node deployments
-
-## Bundled Reference
-
-Read `references/topic-map.md` only as a compact index of likely doc entry points. It is intentionally incomplete and should never replace the live Phoenix docs as the final authority.
+- Keep business logic in contexts and controllers thin.
+- LiveViews are stateful processes; controller actions are stateless.
+- Plugs compose at three levels: the endpoint, router pipelines and controllers.
+- Configure production through the Deployment and Releases guides rather than the development setup.
+- Multi-node LiveView or long-polling deployments need the clustering and sticky-session setup the docs describe.

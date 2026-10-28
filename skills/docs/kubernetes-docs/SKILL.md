@@ -1,110 +1,39 @@
 ---
 name: kubernetes-docs
-description: Use when users ask how to install, configure, deploy, scale, secure, network, store, schedule, debug, or troubleshoot Kubernetes clusters and workloads, including pods, deployments, services, ingress, configmaps, secrets, RBAC, kubectl, kubeadm, Helm-adjacent core APIs, autoscaling, jobs, statefulsets, daemonsets, CRDs, or cluster administration, especially when they need official Kubernetes documentation, exact links, or docs-grounded guidance.
+description: Official Kubernetes documentation, answered with links to the exact pages. Use for any Kubernetes question, including workloads such as Pods and Deployments, Services and Ingress, storage, RBAC and Pod security, kubectl, or cluster setup with kubeadm.
 ---
 
-Kubernetes questions are easy to answer from stale memory or pre-dockershim patterns. Use this skill to ground answers in the official Kubernetes documentation and return the closest authoritative page instead of generic cloud-native advice.
+# Kubernetes Docs
 
-## When to Use
+Kubernetes APIs are deprecated and removed between minor versions, so ground each answer in the live docs at <https://kubernetes.io/docs/home/>, not memory, and link the exact page behind every claim.
 
-Use this skill when the request is about:
-
-- Kubernetes concepts, architecture, and cluster components
-- Installing clusters with kubeadm, Minikube, or production setup paths
-- Workloads: Pods, Deployments, StatefulSets, DaemonSets, Jobs, and CronJobs
-- Services, Ingress, Gateway API, NetworkPolicy, and DNS
-- Storage: PersistentVolumes, StorageClasses, CSI, and volume snapshots
-- Configuration: ConfigMaps, Secrets, and resource requests/limits
-- Security: RBAC, ServiceAccounts, Pod Security Standards, and admission control
-- Scheduling: affinity, taints, tolerations, topology spread, and priority
-- kubectl usage, kubeconfig, contexts, and imperative vs declarative management
-- Kubernetes API resources, server-side apply, and CustomResourceDefinitions
-- Monitoring, logging, debugging pods and nodes
-- Upgrading clusters, feature gates, and version compatibility
-
-Do not use this skill for:
-
-- A different Kubernetes version when the user explicitly needs that version. Say which version you are using and offer to switch docs if needed.
-- Raw Docker Engine or Compose usage without Kubernetes context. Use `docker-docs` instead.
-- AWS EKS-specific console or CLI operations when the question is provider-specific rather than core Kubernetes behavior. Use `aws-cli-docs` for AWS CLI commands against EKS.
-- Third-party tools (Helm charts, Argo CD, Istio) unless the question is about core Kubernetes resources or patterns documented on kubernetes.io.
+Route raw Docker Engine or Compose usage to `docker-docs`, Helm charts to `helm-docs`, EKS-specific operations to `aws-eks-docs`, and AWS CLI commands against EKS to `aws-cli-docs`. Argo CD, Istio and other third-party tools belong to their own docs unless the question turns on core Kubernetes resources or patterns.
 
 ## Workflow
 
-### 1. Classify the request
+1. **Locate** the question in [`references/topic-map.md`](references/topic-map.md), a selective index of docs entry points. Done when each part of the question maps to a section of the map, or you have noted that none fits.
+2. **Search** `kubernetes.io/docs` with the user's exact terms plus Kubernetes vocabulary such as `PodDisruptionBudget`, `readinessProbe`, `server-side apply`, `kubeconfig`, `taints`, or `StorageClass`, starting from the map's pages and the Routing rules below. Done when you hold the one page that most directly answers each part.
+3. **Read** each page down to the relevant section. Done when you have read the passage behind every claim you will make. When a page has moved, been renamed, or stops short, say so and link the nearest authoritative pages.
+4. **Answer** with the direct answer first, each docs link beside the claim it supports, and YAML manifests or `kubectl` commands only when the user asks or the page needs them. Mark any conclusion that joins several pages as `Inference:`. Done when every claim cites a specific page, not the docs home.
 
-Decide which bucket the question belongs to before searching:
+## Routing
 
-- Getting started, concepts, and tutorials
-- Cluster setup and administration (kubeadm, nodes, upgrades)
-- Workloads and Pod configuration
-- Services, networking, and ingress
-- Storage and persistent data
-- Security, RBAC, and policy
-- Scheduling and resource management
-- kubectl and API reference
-- Debugging, monitoring, and troubleshooting
-- Extending Kubernetes (CRDs, operators, webhooks)
+- Version: default to the current docs version (v1.37); when the user needs another supported version, say which version you are using and switch to its docs.
+- Deprecated APIs or removed features: the deprecation guide, before older knowledge.
+- Concepts: the Concepts pages, before Tasks or Reference.
+- Cluster setup: Getting started and the kubeadm docs, before cloud-provider steps.
+- API fields: the API reference page for that resource, such as Pod, Deployment or Ingress.
+- `kubectl` flags or output format: the specific subcommand reference page.
+- Debugging: Tasks > Troubleshooting.
+- Security: RBAC and Pod Security Standards; PodSecurityPolicy guidance is legacy.
+- Networking: Service types and the Ingress or Gateway API docs, before defaulting to NodePort.
 
-If you need a quick starting point, load `references/topic-map.md` and jump to the closest section.
+## Gotchas
 
-### 2. Search official Kubernetes docs first
-
-- Treat `kubernetes.io/docs` as the source of truth for Kubernetes.
-- Prefer pages under <https://kubernetes.io/docs/home/>.
-- Default to the current documentation version (v1.37) unless the user specifies another supported version.
-- Search with the user's exact terms plus focused Kubernetes phrases such as `PodDisruptionBudget`, `readinessProbe`, `server-side apply`, `kubeconfig`, `taints`, or `StorageClass`.
-- When multiple pages are plausible, compare 2-3 candidate pages and pick the one that most directly answers the user's question.
-- For deprecated APIs or removed features, check the deprecation guide before answering from older knowledge.
-
-### 3. Open the best page before answering
-
-- Read the most relevant page, and the exact section when practical.
-- Use the topic map only to narrow the search space or surface likely starting pages.
-- For API fields, open the specific API reference page for the resource (for example Pod, Deployment, Ingress).
-- If a page appears renamed, moved, or incomplete, say that explicitly and return the nearest authoritative pages instead of guessing.
-
-### 4. Answer with docs-grounded guidance
-
-- Start with a direct answer in plain language.
-- Include exact Kubernetes docs links, not just the docs homepage.
-- Only provide YAML manifests or kubectl examples when the user asks for them or when the docs page makes an example necessary.
-- Make any inference explicit. Good phrasing:
-  - `According to Kubernetes docs, ...`
-  - `Inference: this likely means ...`
-
-## Answer Shape
-
-Use a compact structure unless the user asks for depth:
-
-1. Direct answer
-2. Relevant docs
-3. Example YAML or kubectl commands, only if needed
-4. Explicit inference callout, only if you had to connect multiple docs pages
-
-Keep citations close to the claim they support.
-
-## Search and Routing Tips
-
-- For concept questions, prefer Concepts before Tasks or Reference pages.
-- For setup questions, prefer Getting started and kubeadm docs before guessing cloud-provider steps.
-- For workload questions, distinguish Deployments (stateless) from StatefulSets (stable identity and storage).
-- For networking questions, check Service types and Ingress/Gateway API docs before recommending NodePort as default.
-- For storage questions, distinguish PersistentVolume, PersistentVolumeClaim, and StorageClass before suggesting hostPath.
-- For security questions, start with RBAC and Pod Security Standards before legacy PodSecurityPolicy guidance.
-- For debugging questions, prefer Tasks > Troubleshooting before generic log-grep advice.
-- For kubectl questions, open the specific subcommand reference page when flags or output format matter.
-
-## Common Mistakes
-
-- Answering from memory without verifying the current Kubernetes docs
-- Linking the Kubernetes docs homepage when a narrower Concepts, Tasks, or Reference page exists
-- Assuming dockershim or Docker as the required container runtime without checking CRI docs
-- Confusing namespaces (isolation) with labels (selection) or annotations (metadata)
-- Mixing deprecated API versions (`extensions/v1beta1` Ingress) with current stable APIs
-- Recommending `latest` image tags or default ServiceAccount permissions without checking security guidance
-- Treating Helm or operator behavior as built-in Kubernetes API behavior without checking core docs
-
-## Bundled Reference
-
-Read `references/topic-map.md` only as a compact index of likely doc entry points. It is intentionally incomplete and should never replace the live Kubernetes docs as the final authority.
+- Deployments run stateless workloads; StatefulSets add stable identity and storage.
+- Persistent storage comes from PersistentVolume, PersistentVolumeClaim and StorageClass, kept apart, before any `hostPath` suggestion.
+- Take container runtimes from the CRI docs; Docker and dockershim are not required runtimes.
+- Namespaces isolate, labels select, and annotations carry metadata.
+- Use current stable API versions: Ingress is `networking.k8s.io/v1`, since `extensions/v1beta1` was removed in v1.22.
+- Check the security guidance before recommending `latest` image tags or default ServiceAccount permissions.
+- Confirm Helm or operator behavior in their own docs; it is not built-in Kubernetes API behavior.

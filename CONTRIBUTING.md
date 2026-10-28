@@ -77,8 +77,8 @@ block the checker this way, so their links need a browser to confirm. Pass `--st
 to count them as failures anyway.
 
 When a link is genuinely gone, fix the entry in the skill's `references/topic-map.md`
-and, if the docs site moved a whole section, update the "Search official docs first"
-guidance in its `SKILL.md` too.
+and, if the docs site moved a whole section, update the docs base URL and the Routing
+rules in its `SKILL.md` too.
 
 ## Commit messages (Conventional Commits)
 

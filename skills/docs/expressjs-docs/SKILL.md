@@ -1,102 +1,36 @@
 ---
 name: expressjs-docs
-description: Use when users ask how to build, explain, configure, route, secure, debug, migrate, or troubleshoot Express.js web applications and APIs, including middleware, routing, error handling, request/response objects, the Router, static files, templates, proxies, performance, security, graceful shutdown, or Express 5 migration, especially when they need official Express documentation, exact links, or docs-grounded JavaScript guidance.
+description: Official Express.js documentation, answered with links to the exact pages. Use for any Express question, including routing and the Router, middleware, error handling, request and response APIs, Express 5 migration, or production security and performance.
 ---
 
-Express questions are easy to answer from stale memory or outdated Express 4 patterns. Use this skill to ground answers in the official Express.js documentation and return the closest authoritative page instead of generic Node.js HTTP advice.
+# Express.js Docs
 
-## When to Use
+Express 5 changed route syntax and async error handling from Express 4, so ground each answer in the live docs at <https://expressjs.com/en/>, not memory, and link the exact page behind every claim.
 
-Use this skill when the request is about:
-
-- Express concepts, middleware model, routing, and application structure
-- `express()`, the application object, request/response objects, and `Router`
-- Route paths, parameters, handlers, and HTTP method routing
-- Writing and using middleware, including error-handling middleware
-- Static files, template engines, and serving assets
-- Error handling, debugging, and working behind proxies
-- Database integration patterns documented by Express
-- Express 5 migration, performance best practices, security, and graceful shutdown
-- Official Express middleware packages (body-parser, cors, session, etc.)
-
-Do not use this skill for:
-
-- NestJS abstractions built on Express. Use `nestjs-docs` instead.
-- Fastify-specific APIs or plugin architecture. Use `fastify-docs` instead.
-- Third-party middleware behavior not covered by Express docs unless the question is about general Express middleware integration.
+Route NestJS abstractions built on Express to `nestjs-docs`, and Fastify APIs or plugin architecture to `fastify-docs`. Third-party middleware belongs to its own docs unless the question turns on Express middleware integration.
 
 ## Workflow
 
-### 1. Classify the request
+1. **Locate** the question in [`references/topic-map.md`](references/topic-map.md), a selective index of docs entry points. Done when each part of the question maps to a section of the map, or you have noted that none fits.
+2. **Search** `expressjs.com/en` with the user's exact terms plus Express vocabulary such as `app.use`, `next(err)`, `Router`, `res.send`, or `path-to-regexp`, starting from the map's pages and the Routing rules below. Done when you hold the one page that most directly answers each part.
+3. **Read** each page down to the relevant section. Done when you have read the passage behind every claim you will make. When a page has moved, been renamed, or stops short, say so and link the nearest authoritative pages.
+4. **Answer** with the direct answer first, each docs link beside the claim it supports, and code examples only when the user asks or the page needs them. Mark any conclusion that joins several pages as `Inference:`. Done when every claim cites a specific page, not the docs home.
 
-Decide which bucket the question belongs to before searching:
+## Routing
 
-- Getting started and installation
-- Routing and route handlers
-- Middleware (application-level and router-level)
-- Request and response APIs
-- Error handling and debugging
-- Templates, static files, and proxies
-- Migration (Express 4 to 5)
-- Performance, security, and production operations
-- Official middleware reference
+- Version: the Express 5.x docs by default; Express 4 pages only when the user needs Express 4.
+- Breaking changes: the Express 4 to 5 migration guide.
+- First steps: Getting Started and basic routing, before API reference pages.
+- Route syntax: the routing guide, for path-to-regexp v8 wildcard and optional segment syntax.
+- Middleware: tell application-level `app.use` from router-level middleware.
+- Errors: the error handling guide.
+- API methods: the 5.x API reference for Application, Request, Response and Router.
+- Production: the advanced guides on health checks, graceful shutdown, performance and security.
+- Middleware packages: the official Middleware section, before alternatives.
 
-If you need a quick starting point, load `references/topic-map.md` and jump to the closest section.
+## Gotchas
 
-### 2. Search official Express docs first
-
-- Treat `expressjs.com/en` as the source of truth for Express.js.
-- Prefer pages under <https://expressjs.com/en/>.
-- Default to Express 5.x docs unless the user explicitly needs Express 4.
-- Search with the user's exact terms plus focused Express phrases such as `app.use`, `next(err)`, `Router`, `res.send`, or `path-to-regexp`.
-- When multiple pages are plausible, compare 2-3 candidate pages and pick the one that most directly answers the user's question.
-- For Express 5 breaking changes, check the migration guide before answering from Express 4 knowledge.
-
-### 3. Open the best page before answering
-
-- Read the most relevant page, and the exact section when practical.
-- Use the topic map only to narrow the search space or surface likely starting pages.
-- If a page appears renamed, moved, or incomplete, say that explicitly and return the nearest authoritative pages instead of guessing.
-
-### 4. Answer with docs-grounded guidance
-
-- Start with a direct answer in plain language.
-- Include exact Express docs links, not just the docs homepage.
-- Only provide code examples when the user asks for them or when the docs page makes an example necessary.
-- Make any inference explicit. Good phrasing:
-  - `According to Express docs, ...`
-  - `Inference: this likely means ...`
-
-## Answer Shape
-
-Use a compact structure unless the user asks for depth:
-
-1. Direct answer
-2. Relevant docs
-3. Example code, only if needed
-4. Explicit inference callout, only if you had to connect multiple docs pages
-
-Keep citations close to the claim they support.
-
-## Search and Routing Tips
-
-- For beginner questions, prefer Getting Started and basic routing before API reference pages.
-- For routing questions, note Express 5 uses path-to-regexp v8; check the routing guide for wildcard and optional segment syntax.
-- For middleware questions, distinguish application-level `app.use` from router-level middleware.
-- For error questions, prefer the error handling guide and remember Express 5 auto-forwards rejected promises to `next`.
-- For API method questions, use the 5.x API reference for Application, Request, Response, and Router.
-- For production questions, prefer health checks, graceful shutdown, performance, and security advanced guides.
-- For middleware package questions, check the official Middleware section before recommending alternatives.
-
-## Common Mistakes
-
-- Answering from memory without verifying the current Express docs
-- Linking the Express homepage when a narrower page exists
-- Using Express 4 route syntax (e.g. `:param?`, `*`) without checking Express 5 path-to-regexp changes
-- Forgetting that error-handling middleware requires four arguments: `(err, req, res, next)`
-- Placing error-handling middleware before routes instead of after them
-- Treating Express as opinionated about project structure when it is intentionally minimal
-
-## Bundled Reference
-
-Read `references/topic-map.md` only as a compact index of likely doc entry points. It is intentionally incomplete and should never replace the live Express docs as the final authority.
+- Write routes in Express 5's path-to-regexp v8 syntax; Express 4 forms such as `:param?` and `*` changed.
+- Express 5 forwards rejected promises from handlers to `next` automatically.
+- Error-handling middleware takes four arguments, `(err, req, res, next)`, and goes after the routes.
+- Express is intentionally minimal and leaves project structure to the user.

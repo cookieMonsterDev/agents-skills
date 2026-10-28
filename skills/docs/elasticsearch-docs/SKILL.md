@@ -1,114 +1,37 @@
 ---
 name: elasticsearch-docs
-description: Use when users ask how to deploy, index, search, map, secure, scale, monitor, ingest, aggregate, alert on, or troubleshoot Elasticsearch clusters and the Elastic Stack, including Kibana, Query DSL, ES|QL, data streams, ingest pipelines, vector search, machine learning, Elastic Cloud, Fleet, Beats, Logstash, Elastic Security, or Elastic Observability, especially when they need official Elastic documentation, exact links, or docs-grounded guidance.
+description: Official Elasticsearch documentation, answered with links to the exact pages. Use for any Elasticsearch or Elastic Stack question, including mappings and data streams, Query DSL and ES|QL, ingest pipelines, vector search, Kibana, or Elastic Cloud and self-managed deployments.
 ---
 
-Elasticsearch questions are easy to answer from stale memory, OpenSearch assumptions, or pre–data-stream patterns. Use this skill to ground answers in the official Elastic documentation and return the closest authoritative page instead of generic search-engine advice.
+# Elasticsearch Docs
 
-## When to Use
+Elasticsearch answers drift toward pre-data-stream patterns, OpenSearch assumptions and the older `elastic.co/guide` pages, so ground each one in the live docs at <https://www.elastic.co/docs/>, not memory, and link the exact page behind every claim.
 
-Use this skill when the request is about:
-
-- Elasticsearch concepts, indices, documents, mappings, and data streams
-- Getting started with Elastic Cloud, self-managed, or serverless deployments
-- Indexing, updating, searching, aggregating, and deleting data
-- Query DSL, ES|QL, EQL, SQL, and search application patterns
-- Mappings, analyzers, templates, aliases, and text analysis
-- Ingest pipelines, connectors, Fleet, Elastic Agent, Beats, and Logstash
-- Vector search, semantic search, RAG, and Elastic Inference
-- Machine learning, anomaly detection, and alerting
-- Kibana: Discover, Lens, Dashboards, reporting, and workflows
-- Cluster deployment, scaling, autoscaling, backup, and snapshot/restore
-- Security: users, roles, API keys, encryption, and Elastic Security
-- Elastic Observability: logs, metrics, traces, APM, and Synthetics
-- Cross-cluster search, remote clusters, and data lifecycle management
-- Troubleshooting cluster health, shard allocation, and query performance
-
-Do not use this skill for:
-
-- OpenSearch-specific plugins, APIs, or Dashboards behavior. Use `opensearch-docs` instead.
-- Raw AWS OpenSearch Service console operations when the question is provider-specific rather than Elasticsearch behavior.
-- Solr, Meilisearch, or other search engines unless the question maps to documented Elasticsearch API behavior.
-- Grafana or OpenTelemetry unless the question is specifically about Elastic Observability integration documented by Elastic.
+Route OpenSearch plugins, APIs or Dashboards to `opensearch-docs`, and Grafana or OpenTelemetry to `grafana-docs` or `opentelemetry-docs` unless the question is about an Elastic Observability integration. Amazon OpenSearch Service console operations, Solr, Meilisearch and other search engines belong to their own docs unless the question turns on Elasticsearch behavior.
 
 ## Workflow
 
-### 1. Classify the request
+1. **Locate** the question in [`references/topic-map.md`](references/topic-map.md), a selective index of docs entry points. Done when each part of the question maps to a section of the map, or you have noted that none fits.
+2. **Search** `elastic.co/docs` with the user's exact terms plus Elastic vocabulary such as `data stream`, `ingest pipeline`, `Query DSL`, `index template`, `snapshot`, or `vector search`, starting from the map's pages and the Routing rules below. Done when you hold the one page that most directly answers each part.
+3. **Read** each page down to the relevant section. Done when you have read the passage behind every claim you will make. When a page has moved, been renamed, or stops short, say so and link the nearest authoritative pages.
+4. **Answer** with the direct answer first, each docs link beside the claim it supports, and API requests, mappings or pipeline examples only when the user asks or the page needs them. Mark any conclusion that joins several pages as `Inference:`. Done when every claim cites a specific page, not the docs home.
 
-Decide which bucket the question belongs to before searching:
+## Routing
 
-- Getting started and deployment choice
-- Data store: indices, mappings, templates, and data streams
-- Ingestion, pipelines, and connectors
-- Search, query languages, and aggregations
-- Vector search, AI features, and machine learning
-- Kibana exploration, visualization, and alerting
-- Deploy, scale, backup, and production guidance
-- Security, users, roles, and API keys
-- Elastic Observability or Elastic Security solutions
-- Reference APIs, clients, and scripting
-- Troubleshooting and release notes
+- REST API questions: the Elasticsearch API reference, before blog posts or older `elastic.co/guide` pages.
+- Version-specific behavior: the release notes and versioning docs.
+- Deployment differences: the page's applicability badges for serverless, Elastic Cloud hosted, and self-managed clusters.
+- Data modeling: the data store and mapping docs.
+- Query behavior: the Query DSL or ES|QL docs.
+- Ingestion: tell ingest pipelines, Fleet, connectors, and Logstash apart, then open the matching docs.
+- Production: the deploy-and-manage and production guidance docs.
+- Security: the deploy-manage security docs and the Elastic Security docs.
+- Observability: the Elastic Observability solution docs, before generic Elasticsearch search pages.
 
-If you need a quick starting point, load `references/topic-map.md` and jump to the closest section.
+## Gotchas
 
-### 2. Search official Elastic docs first
-
-- Treat `elastic.co/docs` as the source of truth for Elasticsearch and the Elastic Stack.
-- Prefer pages under <https://www.elastic.co/docs/>.
-- Distinguish Elasticsearch reference, solution guides, deployment docs, and Kibana docs before answering.
-- Check applicability badges for deployment type (Elastic Cloud, self-managed, serverless) when features may differ.
-- Search with the user's exact terms plus focused Elastic phrases such as `data stream`, `ingest pipeline`, `Query DSL`, `index template`, `snapshot`, or `vector search`.
-- When multiple pages are plausible, compare 2-3 candidate pages and pick the one that most directly answers the user's question.
-- For REST API questions, prefer the Elasticsearch API reference over blog posts or older `elastic.co/guide` pages.
-
-### 3. Open the best page before answering
-
-- Read the most relevant page, and the exact section when practical.
-- Use the topic map only to narrow the search space or surface likely starting pages.
-- For version-specific behavior, check release notes and versioning docs before answering from older knowledge.
-- If a page appears renamed, moved, or incomplete, say that explicitly and return the nearest authoritative pages instead of guessing.
-
-### 4. Answer with docs-grounded guidance
-
-- Start with a direct answer in plain language.
-- Include exact Elastic docs links, not just the docs homepage.
-- Only provide API requests, mappings, or pipeline examples when the user asks for them or when the docs page makes an example necessary.
-- Make any inference explicit. Good phrasing:
-  - `According to Elastic docs, ...`
-  - `Inference: this likely means ...`
-
-## Answer Shape
-
-Use a compact structure unless the user asks for depth:
-
-1. Direct answer
-2. Relevant docs
-3. Example API request, mapping, or configuration, only if needed
-4. Explicit inference callout, only if you had to connect multiple docs pages
-
-Keep citations close to the claim they support.
-
-## Search and Routing Tips
-
-- For beginner questions, prefer Get Started and fundamentals before deep reference pages.
-- For data modeling questions, prefer data store and mapping docs before guessing index design.
-- For query behavior, prefer Query DSL or ES|QL docs before inventing syntax.
-- For ingestion questions, distinguish ingest pipelines, Fleet, connectors, and Logstash.
-- For production questions, prefer deploy-and-manage and production guidance docs.
-- For security questions, prefer deploy-manage security and Elastic Security docs.
-- For observability questions, route to Elastic Observability solution docs rather than generic Elasticsearch search pages.
-- Note deployment type: serverless, Elastic Cloud hosted, and self-managed clusters differ in available features.
-
-## Common Mistakes
-
-- Answering from memory without verifying the current Elastic docs
-- Linking the Elastic docs homepage when a narrower reference or solution page exists
-- Mixing OpenSearch and Elasticsearch API or feature behavior
-- Treating legacy index types or types mapping as current guidance
-- Recommending unbounded wildcard or regex queries without checking performance docs
-- Confusing data streams with regular indices when lifecycle or rollover behavior matters
-- Using outdated `elastic.co/guide` Asciidoc URLs when newer `elastic.co/docs` pages exist
-
-## Bundled Reference
-
-Read `references/topic-map.md` only as a compact index of likely doc entry points. It is intentionally incomplete and should never replace the live Elastic docs as the final authority.
+- Keep Elasticsearch and OpenSearch apart; their APIs and features differ.
+- Treat index types and types mappings as legacy, not current guidance.
+- Check the performance docs before recommending unbounded wildcard or regex queries.
+- Confirm whether the user has a data stream or a regular index when lifecycle or rollover behavior matters.
+- Link current `elastic.co/docs` pages; `elastic.co/guide` Asciidoc URLs are the older docs.
