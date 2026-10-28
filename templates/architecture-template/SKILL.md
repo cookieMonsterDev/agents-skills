@@ -1,27 +1,23 @@
 ---
 name: {skill-name}
-description: Explains and applies {domain, e.g. "the Gang of Four design patterns" / "the 12-factor app principles"} with idiomatic {guidance/examples} in {context, e.g. "Python, Java, Go, and Rust" or "system design"}. Use when users ask about {topic-1}, {topic-2}, {topic-3}, when they need help choosing {an item} for a design problem, when refactoring toward {an item}, or when they want {an item} example in a specific {language/context}.
+description: {Domain, e.g. "Gang of Four (GoF) design patterns"}, with a reference{ and runnable examples} per {item}. Use when a question names {an item} ({item-1}, {item-2}...), describes a problem {an item} might solve, compares {items}, or asks to refactor toward one.
 ---
+
+<!--
+  The description is always loaded: keep it to what the skill is plus one trigger per
+  distinct case. Leave language lists and other details the body carries out of it.
+-->
 
 # {Skill Title}
 
-Ground {domain} answers in the reference files bundled with this skill instead of improvising definitions. Each {item, e.g. "pattern" / "principle"} has a reference file explaining it{, and a folder of runnable examples in popular languages — delete this clause if the skill has no code examples}.
-
-## When to Use
-
-- The user names {an item} directly ("show me the {item} in {language}")
-- The user describes a problem that maps to {an item} ("{example problem phrasing}")
-- The user asks to compare {items} ("{item A} vs {item B}?")
-- The user wants existing code or design refactored toward {an item}
+Ground every {domain} answer in this skill's reference files, not in improvised definitions. {One sentence on when an item earns its place, e.g. "A pattern is the answer to specific forces: recommend one only when the user's problem shows them."}
 
 ## Workflow
 
-1. **Identify the {item(s)}** from the user's question using the catalog below.
-2. **Read the reference file** at `references/<item>.md` for the explanation, applicability, trade-offs, and related {items}.
-3. **Read the language example** at `examples/<item>/<item>.<ext>` when the user works in (or asks for) a specific language. Adapt it to their domain rather than pasting the generic example verbatim. _(Delete this step if the skill has no code examples.)_
-4. **Answer** with: what the {item} does, when to use it (and when not to), and {code/guidance} adapted to the user's context.
-
-If the user's problem does not match any {item} cleanly, say so — do not force {an item} where a simpler solution fits.
+1. **Identify the {item(s)}** in the catalog below, by name or by the symptoms in the user's problem. Done when every {item} the question names or implies is listed, or when none fits; then answer with the simpler solution that does.
+2. **Read each identified reference** at `references/<item>.md` in full. When comparing {items}, read every one compared and contrast their intent, not their structure.
+3. **Read the language example** at `examples/<item>/<item>.<ext>` for the user's language. For a language without an example, use the reference's Language Notes. _(Delete this step if the skill has no code examples.)_
+4. **Answer** with what the {item} does, when it applies, the simpler alternative and when it wins, and {code/guidance} adapted to the user's domain in the language's idiomatic form. Done when every identified {item} has all four parts.
 
 ## {Domain} Catalog
 
@@ -51,9 +47,11 @@ Group {items} into the categories that make sense for this domain (creational/st
 
 ## Examples
 
-Each {item} has a folder `examples/<item>/` with self-contained, runnable examples named `<item>.<ext>`.
+Examples are self-contained and runnable, in {Language A, Language B, ...}. {Any idiomatic substitution, e.g. "C emulates objects with structs and function pointers."}
 
 ### Choosing languages
+
+_Maintainer guidance: delete this subsection from a new skill._
 
 **Only add an example file when the language genuinely supports the skill's concepts** — do not ship a file in every language for completeness.
 
@@ -63,17 +61,11 @@ Each {item} has a folder `examples/<item>/` with self-contained, runnable exampl
 | Design patterns (GoF, composable techniques) | Python, C, C++, Java, C#, JavaScript, Rust, Go, PHP, Swift | — | Patterns are idiomatically adapted (C emulates with structs/function pointers; Go/Rust use interfaces/traits). |
 | Other catalog skills | Pick per item | — | Omit a language when the item is built into the language or has no honest mapping. |
 
-List only the languages your skill actually ships in the table below and in the skill `description` frontmatter.
+List only the languages the skill actually ships. A language file may be absent per item
+when it does not translate meaningfully; the item's reference notes the gap and the
+idiomatic alternative in Language Notes.
 
-| Language   | File            | Notes                                            |
-| ---------- | --------------- | ------------------------------------------------- |
-| {Language} | `<item>.{ext}`  | {Any gap or idiomatic substitution for this language} |
-
-A language file may be absent per {item} when it does not translate meaningfully; the {item}'s reference file notes such gaps and idiomatic alternatives in **Language Notes**.
-
-## Answering Guidelines
-
-- Prefer the language's/domain's idiomatic form over a literal textbook description.
-- Mention trade-offs and simpler alternatives, not just the mechanics.
-- When comparing {items}, read both reference files and contrast intent, not structure.
-- Do not recommend {a commonly-overused item}, or any {item}, as a default; {items} are solutions to specific forces, not style goals.
+<!--
+  Cross-references between reference files use relative Markdown links, e.g.
+  [Builder](builder.md), so agents can follow them and scripts/lint.sh can check them.
+-->

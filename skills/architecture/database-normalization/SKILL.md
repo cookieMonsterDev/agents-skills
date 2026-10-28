@@ -1,28 +1,18 @@
 ---
 name: database-normalization
-description: Explains and applies the database normal forms (1NF, 2NF, 3NF, BCNF, 4NF, 5NF) and strategic denormalization, with worked examples in PostgreSQL, MySQL, SQLite, MongoDB, Cassandra, ScyllaDB, and DynamoDB. Use when users ask about normal forms, functional/multivalued/join dependencies, anomalies (insertion/update/deletion), schema design and refactoring, when they need help deciding how far to normalize a schema, or when they want a normalization concept translated into a specific database's modeling idioms (relational tables, MongoDB embedding/referencing, Cassandra/ScyllaDB query-driven tables, DynamoDB single-table design).
+description: Database normal forms (1NF to 5NF, BCNF) and deliberate denormalization, with a reference per form and worked examples per database. Use when a question names a normal form or a functional, multivalued, or join dependency, describes an insertion, update, or deletion anomaly, asks to normalize, denormalize, or review a schema, or asks how normalization applies in MongoDB, Cassandra, ScyllaDB, or DynamoDB.
 ---
 
 # Database Normalization
 
-Ground normalization answers in the reference files bundled with this skill instead of improvising definitions. Each normal form has a reference file explaining it and a folder of worked examples across popular databases.
-
-## When to Use
-
-- The user names a normal form directly ("what is BCNF", "show me 3NF in PostgreSQL")
-- The user describes an anomaly that maps to a missing normal form ("if I delete the last order for a customer I lose their address")
-- The user asks whether a schema is normalized, or asks to normalize/denormalize a schema
-- The user asks how a normalization concept applies (or doesn't) in a non-relational database ("does 1NF matter in MongoDB?", "how do I avoid joins in DynamoDB?")
-- The user wants existing tables or documents refactored toward or away from a normal form
+Ground every normalization answer in this skill's reference files, not in improvised definitions. Each form exists to remove a real **anomaly**: normalize exactly as far as the user's data has anomalies to remove. Most schemas stop at 3NF/BCNF; 4NF and 5NF are narrow tools for specific dependency shapes.
 
 ## Workflow
 
-1. **Identify the normal form(s)** from the user's question using the catalog below. If the user describes symptoms (repeating groups, partial/transitive dependency, update anomalies) rather than naming a form, diagnose which form addresses it.
-2. **Read the reference file** at `references/<form>.md` for the definition, the dependency it eliminates, the anomalies it prevents, and when going further stops paying off.
-3. **Read the database example** at `examples/<form>/<database>.<ext>` when the user works in (or asks for) a specific database. Adapt it to their schema rather than pasting the generic example verbatim.
-4. **Answer** with: what the form requires, what anomaly it prevents, and a schema/model adapted to the user's context — including whether that database's idioms call for staying normalized or deliberately denormalizing.
-
-If the user's schema is already anomaly-free at a given form, say so — do not push further normalization for its own sake. Every step past 3NF/BCNF is a judgment call against real anomalies, not a checklist to exhaust.
+1. **Identify the normal form(s)** in the catalog below. When the user describes symptoms instead of naming a form, trace each anomaly to the dependency causing it (functional, partial, transitive, multivalued, join) and the form that eliminates it. Done when every anomaly is traced to a named dependency and form, or the schema is shown anomaly-free at the form in question; then say so.
+2. **Read each identified reference** at `references/<form>.md` in full, including its Database Notes. When comparing forms, read every one compared and contrast the dependency each one targets.
+3. **Read the database example** at `examples/<form>/<file>` for the user's database (file names in the table below).
+4. **Answer** with the dependency, the anomaly it causes stated in terms of the user's own schema, and a schema or model adapted to it. For MongoDB, Cassandra, ScyllaDB, and DynamoDB, lead with access patterns and consistency requirements, and say whether that database's idiom calls for staying normalized or denormalizing on purpose. Done when every identified form has all three parts.
 
 ## Normal Form Catalog
 
@@ -56,24 +46,14 @@ The deliberate, informed reversal of normalization for a specific performance or
 
 ## Examples
 
-Each form has a folder `examples/<form>/` with a worked example per database, named `<database>.<ext>`:
+| Database   | File            | Contents                                                   |
+| ---------- | --------------- | ---------------------------------------------------------- |
+| PostgreSQL | `postgres.sql`  | Runnable DDL/DML                                           |
+| MySQL      | `mysql.sql`     | Runnable DDL/DML, noting MySQL-specific syntax             |
+| SQLite     | `sqlite.sql`    | Runnable DDL/DML                                           |
+| MongoDB    | `mongodb.js`    | `mongosh` script: embedding vs. referencing                |
+| Cassandra  | `cassandra.cql` | CQL script: query-driven tables                            |
+| ScyllaDB   | `scylladb.cql`  | CQL script: query-driven tables                            |
+| DynamoDB   | `dynamodb.md`   | Walkthrough with item JSON and access patterns             |
 
-| Database   | File            | Notes                                                                                                                                                   |
-| ---------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| PostgreSQL | `postgres.sql`  | Runnable DDL/DML; uses `psql`-compatible SQL (identity columns, `CHECK`, `jsonb` where relevant)                                                        |
-| MySQL      | `mysql.sql`     | Runnable DDL/DML; calls out `AUTO_INCREMENT`, engine (InnoDB), and syntax that diverges from PostgreSQL                                                 |
-| SQLite     | `sqlite.sql`    | Runnable DDL/DML; uses `INTEGER PRIMARY KEY AUTOINCREMENT`, `PRAGMA foreign_keys`, and a summary table instead of materialized views where relevant     |
-| MongoDB    | `mongodb.js`    | `mongosh` script; shows the document shape and when embedding vs. referencing plays the role a normal form plays in SQL                                 |
-| Cassandra  | `cassandra.cql` | CQL script; shows the query-driven, denormalized-by-default table design and where atomicity/dependency concerns still apply                            |
-| ScyllaDB   | `scylladb.cql`  | CQL script (compatible with Cassandra); same query-driven modeling posture as Cassandra with ScyllaDB-specific operational notes in the reference files |
-| DynamoDB   | `dynamodb.md`   | Walkthrough with item JSON and access patterns (no native query language); shows single-table design as the intentional counterpoint to normalizing     |
-
-Normalization is a relational concept built on functional/multivalued/join dependencies. The PostgreSQL, MySQL, and SQLite examples are direct applications of a form. The MongoDB, Cassandra, ScyllaDB, and DynamoDB examples show the _analogous_ problem (an anomaly-causing shape) and that database's idiomatic answer, which is frequently "duplicate the data on purpose" rather than "add another table." The reference files explain why that's a rational trade-off there, not a violation of best practice.
-
-## Answering Guidelines
-
-- Name the dependency (functional, partial, transitive, multivalued, join) causing the anomaly — "normalize this" without naming the dependency doesn't help the user recognize the next case themselves.
-- State the anomaly a form prevents (insertion, update, or deletion anomaly) in terms of the user's own schema, not the abstract definition.
-- Don't recommend normalizing past the point where it prevents a real anomaly in the user's data; 4NF and 5NF are narrow tools for narrow dependency shapes, not a ladder to climb by default.
-- For MongoDB, Cassandra, ScyllaDB, and DynamoDB, lead with access patterns and consistency requirements, not with "how do I make this look like a normalized relational schema" — read the matching reference's database-specific notes before answering.
-- When comparing forms, read both reference files and contrast the dependency each one targets, not just "which number is higher."
+The relational examples apply each form directly. The MongoDB, Cassandra, ScyllaDB, and DynamoDB examples show the analogous anomaly-causing shape and that database's idiomatic answer, which is often duplicating data on purpose: a rational trade-off there, explained in each reference's Database Notes.
