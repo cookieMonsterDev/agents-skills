@@ -1,0 +1,47 @@
+{
+  "model": "asset",
+  "label": "Synthetic demonstration only",
+  "currency": "USD",
+  "as_of": "2026-03-01",
+  "assumptions": {
+    "currency": "USD",
+    "as_of": "2026-03-01",
+    "label": "Synthetic demonstration only",
+    "rationale": "Independent fictional assumptions to demonstrate the calculator; not estimates for DEMO or a real issuer.",
+    "assets": [
+      {
+        "name": "cash",
+        "carrying_value": 100,
+        "recovery_fraction": 1,
+        "evidence": "Fictional unrestricted cash"
+      },
+      {
+        "name": "inventory",
+        "carrying_value": 200,
+        "recovery_fraction": 0.5,
+        "evidence": "Illustrative 50% recovery; no appraisal"
+      }
+    ],
+    "total_liabilities": 80,
+    "additional_senior_claims": 10,
+    "realization_costs_and_taxes": 10,
+    "diluted_shares": 10,
+    "price": 8,
+    "sources": {
+      "assets": "Synthetic assumption for offline testing, not observed market/company data.",
+      "total_liabilities": "Synthetic assumption for offline testing, not observed market/company data.",
+      "additional_senior_claims": "Synthetic assumption for offline testing, not observed market/company data.",
+      "realization_costs_and_taxes": "Synthetic assumption for offline testing, not observed market/company data.",
+      "diluted_shares": "Synthetic assumption for offline testing, not observed market/company data.",
+      "price": "Synthetic assumption for offline testing, not observed market/company data."
+    }
+  },
+  "recoverable_assets": 200.0,
+  "residual_equity": 100.0,
+  "value_per_share": 10.0,
+  "formula": "sum(carrying value \u00d7 recovery fraction) - total liabilities - additional senior claims - realization costs/taxes; divide by diluted shares",
+  "limitation": "Negative residual indicates a modeled shortfall. Realizable equity depends on legal priority, timing and a catalyst.",
+  "margin_of_safety": 0.2,
+  "price_upside": 0.25,
+  "input_sha256": "ff3291feccafe727e8875ab61d8ed47fe2ad50008d853db1f5499c09dc6c3efa"
+}

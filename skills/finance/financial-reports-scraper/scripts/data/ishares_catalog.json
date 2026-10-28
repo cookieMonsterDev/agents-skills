@@ -1,0 +1,20 @@
+{
+  "IE00B1YZSC51": {
+    "product_id": "251860",
+    "name": "iShares Core MSCI Europe UCITS ETF",
+    "entity_type": "etf",
+    "share_class": "dist"
+  },
+  "IE00B5L8K969": {
+    "product_id": "253723",
+    "name": "iShares MSCI EM Asia UCITS ETF",
+    "entity_type": "etf",
+    "share_class": "acc"
+  },
+  "IE00B4ND3602": {
+    "product_id": "258441",
+    "name": "iShares Physical Gold ETC",
+    "entity_type": "etc",
+    "share_class": "acc"
+  }
+}

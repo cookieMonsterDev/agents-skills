@@ -1,0 +1,33 @@
+{
+  "currency": "USD",
+  "as_of": "2026-03-01",
+  "label": "Synthetic demonstration only",
+  "rationale": "Independent fictional assumptions to demonstrate the calculator; not estimates for DEMO or a real issuer.",
+  "assets": [
+    {
+      "name": "cash",
+      "carrying_value": 100,
+      "recovery_fraction": 1,
+      "evidence": "Fictional unrestricted cash"
+    },
+    {
+      "name": "inventory",
+      "carrying_value": 200,
+      "recovery_fraction": 0.5,
+      "evidence": "Illustrative 50% recovery; no appraisal"
+    }
+  ],
+  "total_liabilities": 80,
+  "additional_senior_claims": 10,
+  "realization_costs_and_taxes": 10,
+  "diluted_shares": 10,
+  "price": 8,
+  "sources": {
+    "assets": "Synthetic assumption for offline testing, not observed market/company data.",
+    "total_liabilities": "Synthetic assumption for offline testing, not observed market/company data.",
+    "additional_senior_claims": "Synthetic assumption for offline testing, not observed market/company data.",
+    "realization_costs_and_taxes": "Synthetic assumption for offline testing, not observed market/company data.",
+    "diluted_shares": "Synthetic assumption for offline testing, not observed market/company data.",
+    "price": "Synthetic assumption for offline testing, not observed market/company data."
+  }
+}

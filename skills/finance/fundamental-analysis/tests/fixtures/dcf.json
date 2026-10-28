@@ -1,0 +1,28 @@
+{
+  "currency": "USD",
+  "as_of": "2026-03-01",
+  "label": "Synthetic demonstration only",
+  "rationale": "Independent fictional assumptions to demonstrate the calculator; not estimates for DEMO or a real issuer.",
+  "cash_flow_basis": "FCFF",
+  "cash_flows": [
+    100,
+    110,
+    120
+  ],
+  "discount_rate": 0.1,
+  "terminal_growth": 0.02,
+  "net_debt": 100,
+  "other_senior_claims": 0,
+  "diluted_shares": 100,
+  "price": 10,
+  "sources": {
+    "cash_flow_basis": "Synthetic assumption for offline testing, not observed market/company data.",
+    "cash_flows": "Synthetic assumption for offline testing, not observed market/company data.",
+    "discount_rate": "Synthetic assumption for offline testing, not observed market/company data.",
+    "terminal_growth": "Synthetic assumption for offline testing, not observed market/company data.",
+    "net_debt": "Synthetic assumption for offline testing, not observed market/company data.",
+    "other_senior_claims": "Synthetic assumption for offline testing, not observed market/company data.",
+    "diluted_shares": "Synthetic assumption for offline testing, not observed market/company data.",
+    "price": "Synthetic assumption for offline testing, not observed market/company data."
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "model": "dcf",
+  "label": "Synthetic demonstration only",
+  "currency": "USD",
+  "as_of": "2026-03-01",
+  "assumptions": {
+    "currency": "USD",
+    "as_of": "2026-03-01",
+    "label": "Synthetic demonstration only",
+    "rationale": "Independent fictional assumptions to demonstrate the calculator; not estimates for DEMO or a real issuer.",
+    "cash_flow_basis": "FCFF",
+    "cash_flows": [
+      100,
+      110,
+      120
+    ],
+    "discount_rate": 0.1,
+    "terminal_growth": 0.02,
+    "net_debt": 100,
+    "other_senior_claims": 0,
+    "diluted_shares": 100,
+    "price": 10,
+    "sources": {
+      "cash_flow_basis": "Synthetic assumption for offline testing, not observed market/company data.",
+      "cash_flows": "Synthetic assumption for offline testing, not observed market/company data.",
+      "discount_rate": "Synthetic assumption for offline testing, not observed market/company data.",
+      "terminal_growth": "Synthetic assumption for offline testing, not observed market/company data.",
+      "net_debt": "Synthetic assumption for offline testing, not observed market/company data.",
+      "other_senior_claims": "Synthetic assumption for offline testing, not observed market/company data.",
+      "diluted_shares": "Synthetic assumption for offline testing, not observed market/company data.",
+      "price": "Synthetic assumption for offline testing, not observed market/company data."
+    }
+  },
+  "pv_forecast_fcff": 271.9759579263711,
+  "pv_terminal": 1149.5116453794137,
+  "enterprise_value": 1421.487603305785,
+  "equity_value": 1321.487603305785,
+  "value_per_share": 13.214876033057848,
+  "terminal_value_fraction": 0.8086680761099365,
+  "formula": "PV(FCFF) + PV(terminal FCFF/(r-g)) - net debt - other senior claims; divide by diluted shares",
+  "margin_of_safety": 0.24327704815509676,
+  "price_upside": 0.32148760330578474,
+  "input_sha256": "af8498fb95c3d6b8a390380dd4678898af7568729924911f18b2a46dbb0f62bb"
+}

@@ -1,0 +1,4 @@
+# Shared scientific Python environment for larger analyses and optional extensions.
+# Scalar helpers currently run without third-party packages.
+pandas>=2.0,<3
+numpy>=1.24,<3

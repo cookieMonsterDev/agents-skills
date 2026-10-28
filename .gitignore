@@ -23,3 +23,14 @@ npm-debug.log*
 # Local tooling
 .cursor/
 .agents/
+
+# Python (finance skills)
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# Finance skill outputs and caches; reports belong in the user's working directory
+skills/finance/*/reports/
+skills/finance/*/scripts/.cache/
+user_agent.local
