@@ -1,6 +1,6 @@
 ---
 name: design-patterns
-description: Gang of Four (GoF) design patterns, with a reference and runnable examples per pattern. Use when a question names a pattern (singleton, factory, builder, observer, strategy, adapter...), describes a design problem a pattern might solve, compares patterns, or asks to refactor code toward one.
+description: Gang of Four (GoF) design patterns, with a reference and runnable examples per pattern. Use when a question names a pattern (singleton, factory, builder, observer, strategy, adapter...), describes a design problem a pattern might solve, compares patterns, or asks to review or refactor code using patterns.
 ---
 
 # Design Patterns
@@ -8,6 +8,8 @@ description: Gang of Four (GoF) design patterns, with a reference and runnable e
 Ground every pattern answer in this skill's reference files, not in improvised definitions. A pattern is the answer to specific **forces** in a design problem: recommend one only when the user's problem shows the forces it resolves.
 
 ## Workflow
+
+For code reviews or refactoring, first read [review and refactoring](references/review-and-refactoring.md) to trace callers, preserve contracts, and verify a concrete improvement.
 
 1. **Identify the pattern(s)** in the catalog below, by name or by the forces in the user's problem. Done when every pattern the question names or implies is listed, or when no pattern's forces are present; then answer with the plain function, data structure, or language feature that solves the problem.
 2. **Read each identified reference** at `references/<pattern>.md` in full. When comparing patterns, read every one compared and contrast their intent, not their structure.

@@ -56,10 +56,11 @@ Answer from a product's or framework's official documentation, with direct links
 
 ## Architecture
 
-Teach a catalog of design items (patterns, principles, practices) with references and runnable examples. Category index: [`skills/architecture/README.md`](skills/architecture/README.md).
+Explain, review, and improve architecture using focused references, concrete failure scenarios, and examples. Category index: [`skills/architecture/README.md`](skills/architecture/README.md).
 
 | Topic                                | Skill                                                                                                       |
 | ------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| Caching Strategies                   | [`caching-strategies`](skills/architecture/caching-strategies/SKILL.md)                                     |
 | Design Patterns                      | [`design-patterns`](skills/architecture/design-patterns/SKILL.md)                                           |
 | Object-Oriented Programming Paradigm | [`object-oriented-programming-paradigm`](skills/architecture/object-oriented-programming-paradigm/SKILL.md) |
 | Database Normalization               | [`database-normalization`](skills/architecture/database-normalization/SKILL.md)                             |

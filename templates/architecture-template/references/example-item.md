@@ -12,6 +12,13 @@
 - {A second forcing scenario, phrased in terms a reader would recognize from their own code/system.}
 - {A third, if there's a genuinely distinct pressure driving toward this item; delete if two is enough.}
 
+## Review Rule
+
+- **Evidence:** {The code or runtime observation that establishes this problem.}
+- **Fix:** {The smallest correction and the invariant it must preserve.}
+- **Alternative:** {When a simpler solution or no change is preferable.}
+- **Verify:** {A concrete input, event sequence, or concurrent interleaving and its expected result.}
+
 ## Structure
 
 - **{Role A}** — {what it owns and does}.

@@ -1,6 +1,6 @@
 ---
 name: {skill-name}
-description: {Domain, e.g. "Gang of Four (GoF) design patterns"}, with a reference{ and runnable examples} per {item}. Use when a question names {an item} ({item-1}, {item-2}...), describes a problem {an item} might solve, compares {items}, or asks to refactor toward one.
+description: {Domain, e.g. "Gang of Four (GoF) design patterns"}, with a reference{ and runnable examples} per {item}. Use when a question names {an item} ({item-1}, {item-2}...), describes a problem {an item} might solve, compares {items}, or asks to review or refactor toward one.
 ---
 
 <!--
@@ -13,6 +13,13 @@ description: {Domain, e.g. "Gang of Four (GoF) design patterns"}, with a referen
 Ground every {domain} answer in this skill's reference files, not in improvised definitions. {One sentence on when an item earns its place, e.g. "A pattern is the answer to specific forces: recommend one only when the user's problem shows them."}
 
 ## Workflow
+
+For reviews, trace the user's implementation and callers before selecting catalog
+items. Report evidence, a concrete failure/change scenario, impact, the smallest
+correction, and a verification criterion. Separate defects from optional design
+choices. For implementation requests, preserve supported contracts and validate
+observable behavior. Keep detailed domain-specific review rules in a linked
+reference when they would obscure the shared workflow.
 
 1. **Identify the {item(s)}** in the catalog below, by name or by the symptoms in the user's problem. Done when every {item} the question names or implies is listed, or when none fits; then answer with the simpler solution that does.
 2. **Read each identified reference** at `references/<item>.md` in full. When comparing {items}, read every one compared and contrast their intent, not their structure.

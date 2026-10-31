@@ -9,6 +9,8 @@ Ground every OOP answer in this skill's reference files, not in improvised defin
 
 ## Workflow
 
+For class-design reviews or refactoring, first read [review and refactoring](references/review-and-refactoring.md) for caller-based evidence, invariant checks, and migration boundaries.
+
 1. **Identify the concept(s)** in the catalog below, by name or by symptom: a subclass that breaks where its base is expected, a god class, a deep hierarchy, a leaky abstraction, a train-wreck call chain. Done when every concept the question names or implies is listed, or when the problem is better served by plain functions and data; then answer with those.
 2. **Read each identified reference** at `references/<concept>.md` in full. When comparing concepts, read every one compared and contrast their intent, not their structure.
 3. **Read the language example** at `examples/<concept>/<concept>.<ext>` for the user's language. For C, Go, Rust, or another language without an example, use the reference's Language Notes for the idiomatic mapping.

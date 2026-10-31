@@ -9,6 +9,8 @@ Ground every normalization answer in this skill's reference files, not in improv
 
 ## Workflow
 
+For schema reviews or migrations, first read [schema review](references/schema-review.md) to establish domain dependencies, verify lossless reconstruction, and plan the consumer transition.
+
 1. **Identify the normal form(s)** in the catalog below. When the user describes symptoms instead of naming a form, trace each anomaly to the dependency causing it (functional, partial, transitive, multivalued, join) and the form that eliminates it. Done when every anomaly is traced to a named dependency and form, or the schema is shown anomaly-free at the form in question; then say so.
 2. **Read each identified reference** at `references/<form>.md` in full, including its Database Notes. When comparing forms, read every one compared and contrast the dependency each one targets.
 3. **Read the database example** at `examples/<form>/<file>` for the user's database (file names in the table below).
